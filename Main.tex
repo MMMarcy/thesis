@@ -1,0 +1,60 @@
+% CREATED BY DAVID FRISK, 2014
+
+% IMPORT SETTINGS
+\documentclass[12pt,a4paper,twoside,openright]{report}
+\input{include/settings/Settings}
+
+\begin{document} 
+
+% COVER PAGE, TITLE PAGE AND IMPRINT PAGE
+\pagenumbering{roman}			% Roman numbering (starting with i (one)) until first main chapter
+\input{include/frontmatter/Titlepage}
+
+% ABSTRACT
+\newpage
+\input{include/frontmatter/Abstract}
+
+% ACKNOWLEDGEMENTS
+\newpage
+\input{include/frontmatter/Acknowledgements}
+
+% TABLE OF CONTENTS
+\newpage
+\tableofcontents
+
+% OTHER FRONTMATTER
+% List of figures (add to table of contents)
+\addcontentsline{toc}{chapter}{\listfigurename} \listoffigures
+% List of tables (add to table of contents)
+\addcontentsline{toc}{chapter}{\listtablename}  \listoftables
+
+
+% START OF MAIN DOCUMENT
+\cleardoublepage
+\setcounter{page}{1}
+\pagenumbering{arabic}			% Arabic numbering starting from 1 (one)
+
+% INTRODUCTION
+\input{include/Introduction}
+
+% METHODS
+\input{include/Methods}
+
+% ...
+% \input{include/...}
+
+
+% REFERENCES / BIBLIOGRAPHY
+\addcontentsline{toc}{chapter}{Bibliography}
+\input{include/backmatter/References}
+
+% APPENDICES
+\cleardoublepage
+\appendix
+\setcounter{page}{1}
+\pagenumbering{Roman}			% Capitalized roman numbering starting from I (one)
+
+\input{include/backmatter/Appendix_1}
+
+
+\end{document}
