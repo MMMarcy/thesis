@@ -1,8 +1,6 @@
 \chapter{Related work}
 
-The reviewed related work presented in this section targets three aspects: 1) Broad studies targeting the concept of TD, 2) TD studies focusing on Testing, and 3) TD research related to Source Code. A special emphasys is used while addressing studies targeting both 2 and 3, since they represent rival theories and, hence, need a more in-depth analysis \cite{case_study_guide}. The last part of the chapter summarizes how this brief literature review has been conducted.
-
-%TODO: maybe said that I don't cover interest management
+The reviewed related work presented in this section targets two aspects: 1) Broad studies targeting the concept of TD, and 2) TD studies focusing on Testing TD. A special emphasys is used while addressing studies belonging in the latter category that also cover other Debt sub-dimensions \cite{mapping_study_td}, since they represent rival theories and, hence, need a more in-depth analysis \cite{case_study_guide}. The last part of the chapter summarizes how this brief literature review has been conducted.
 
 \section{TD Definition} \label{td_definition}
 Identifying, estimating, tracking, and reducing TD and its impact are problems strongly tied with the definition of TD in use. Therefore, I believe it is necessary to address studies that shed light on such topic.
@@ -18,13 +16,12 @@ On the opposite end of the spectrum there are studies that, instead, try to broa
 The studies hereby include show the limit of the Technical Debt metaphor. Its success derives from the fact that it's easy to understand and to relate it with every-day experiences. However, this is also a drawback. In fact, diluting it is extremely easy and, hence, hinders a universal understanding of the phenomenon.
 
 \section{Testing Technical Debt} \label{testing_td}
-The term Testing Technical Debt refers to the TD that accrues in the context of \textit{testware}, meaning an umbrella term to identify artifacts and processes adopted while running tests. As indicated by \cite{mapping_study_td} there is a relevant number of sources targeting testing TD focus mainly on lack of test automation, low code coverage, and lack of tests.  %TODO: for instance \cite{x} founds the lack of test autation the ...
 
+The term Testing Technical Debt refers to the TD that accrues in the context of \textit{testware}, meaning an umbrella term to identify artifacts and processes adopted while running tests. As indicated by \cite{mapping_study_td} there is a relevant number of sources targeting testing TD, but they focus mainly on lack of test automation, low code coverage, and lack of tests.  For instance \cite{test_automation_td} founds a possible source of Technical Debt in problems related to \textit{Test Automation}. As result of their case study they report four finding that cause testing technical debt to accrue. Namely: 1) \textit{Reuse and sharing of test tools brings issues that need to be considered}, 2) \textit{Test facility infrastructure is not transparent and may alter the test results if not accounted for}, 3) \textit{Generalist engineers expect that their tools are easy to use}, and 4) \textit{Accepted development practices for test code are potentially less rigorous than for production code}. As stated before, all of these use a environmental point of view as TD enabling factor. Also number 4, which might seem that target the intrinsic nature of test code, focuses on missing documentation (relative to test scripts) and quick hacks that are dependent on the system architecture and, hence, related to such TD dimension. Shah et. al.\ \cite{exploratorying_testing_td} studied manual testing as source of Technical Debt. Precisely Exploratory Testing. This technique, has the potential to greatly inflate the accumulation of technical debt since is, by nature, not reproduceable and, hence, not suitable for regression testing. The interest matured in using only this technique as mean of Quality Assurance is therefore extremely high.
+
+Brwon et. al.\ \cite{td_current_vs_optimal_quality} consider not carrying out a test-plan the root cause of TTD since defects can remain and, hence, propagate to production code. 
 A different approach is proposed by .... Their study shows a similarities between test code and source code...
 
 However, after following the process highlighted in \ref{literature_review_process}, the number of studies showing similarities between test code and source code is small. Henceforth, there is a gap in the current state of the literature.
-
-
-\section{Code Technical Debt} \label{code_td}
 
 \section{Literature Review Process} \label{literature_review_process}
