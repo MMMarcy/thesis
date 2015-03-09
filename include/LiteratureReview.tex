@@ -1,6 +1,6 @@
 \chapter{Related work} \label{related_work}
 
-The reviewed related work presented in this section only targets aspects relevant to the goals of this Thesis \ref{thesis_goals}. Specifically the main focus is available research targeting Testing Technical Debt. However, in order to accurately assess the impact of Testing Technical Debt related to test code internal quality I also reviewed studies that 1) define and identify and quantify Source Code TD \cite{mapping_study_td}. A special emphasys has been put to studies that create a link between the two dimensions since they represent possible rival theories and, hence, need a more in-depth analysis \cite{case_study_guide}. Consequently, to be able to answer \textbf{RQ3}, I reviewed relevant studies proposing models for Interest's quantification. The last part of the chapter summarizes how this brief literature review has been conducted.
+The main focus of this brief literature review is to inform the reader about available research targeting Testing Technical Debt. However, in order to accurately assess the impact of Testing Technical Debt with respect to Test Code Internal Quality I also reviewed studies that define and identify and quantify Source Code TD \cite{mapping_study_td}. A special emphasys has been put to studies that create a link between the two dimensions since they represent possible rival theories and, hence, need a more in-depth analysis \cite{case_study_guide}. Consequently, to be able to answer \textbf{RQ3}, I reviewed relevant studies proposing models for Interest's quantification. The last part of the chapter summarizes how this brief literature review has been conducted.
 
 \section{Testing Technical Debt} \label{testing_td}
 
@@ -8,9 +8,9 @@ The term Testing Technical Debt (TDD) refers to the TD that accrues in the conte
 
 For instance Wiklund et al. \cite{test_automation_td} found a possible source of Technical Debt in problems related to \textit{Test Automation}. As result of their Case Study they report four findings that cause Testing Technical Debt to accrue. Namely: 1) \textit{Reuse and sharing of test tools brings issues that need to be considered}, 2) \textit{Test facility infrastructure is not transparent and may alter the test results if not accounted for}, 3) \textit{Generalist engineers expect that their tools are easy to use}, and 4) \textit{Accepted development practices for test code are potentially less rigorous than for production code}. As stated before, all of these use a environmental point of view as TD enabling factor. Also number 4, which seem to target the intrinsic nature of test code, focuses on missing documentation (relative to test scripts) and quick hacks that are dependent on the system architecture and, hence, related to such TD dimension. 
 
-Shah et. al.\ \cite{exploratorying_testing_td} studied manual testing as source of Technical Debt. Precisely Exploratory Testing. This technique, has the potential to greatly inflate the accumulation of technical debt since is, by nature, not reproduceable and, hence, not suitable for regression testing. The interest matured in using only this technique as mean of Quality Assurance is extremely high. 
+Shah et. al.\ \cite{exploratorying_testing_td} studied manual testing as source of Technical Debt. Precisely Exploratory Testing. This technique, has the potential to greatly inflate the accumulation of technical debt since is, by nature, not reproduceable and, hence, not suitable for regression testing. They claim that the interest matured in using only this technique as mean of Quality Assurance is extremely high. 
 
-Similarly, Brown et. al.\ \cite{td_current_vs_optimal_quality} consider not carrying out a test-plan the root cause of TTD since defects can remain and, hence, propagate to production environments. Once there, the reparation cost is extremely high both in terms of resources and brand damage. Therefore this TDD sub-item has the highest interest.
+Similarly, Brown et. al.\ \cite{td_current_vs_optimal_quality} consider not carrying out a test-plan the root cause of TTD since defects can remain and propagate to production environments. Once there, the reparation cost is extremely high both in terms of resources and brand damage. Therefore, they state that this TDD sub-item has the highest interest among all Testing Technical Debt Items.
 
 As it is possible to evince from 1) previous paragraph and 2) \ref{literature_review_process}, studies targeting the internal quality of Test Code are scarce, especially the ones framing the problem within the Technical Debt framework. However, a number of studies report a common fragility of tests with respect to maintainability. 
 
@@ -23,40 +23,25 @@ Leotta et al.\ \cite{pageObjectPattern} performed a case study in which a struct
 Summarizing, both Academia and Industry aknowledged the phenomenon of Techincal Debt in Testing Environments. However, there is a reclutance in both worlds when it comes to consider test code as important as software source code. Furthermore, the literature reviews in this Thesis don't include any study showing the implications of such approach within the Technical Debt Framework.
 
 \section{Source Code Technical Debt} \label{source_code_technical_debt}
-This section summarizes reviewed relevant studies that target identification, quantification and management of TD items that inflate source code's decay rate over time. Given the exploratory nature of this study I won't specifically adopt any of them, but instead base my data inspections on common elements that are found within this literature.
 
-After inspecting relevant papers as indicated in \ref{literature_review_process} is clear that researchers consider the panacea of code smells \cite{code_smell_definition} the main cause of code decay \cite{mapping_study_td}. For instance, \cite{domain_specific_code_smells} studies the suitability of the original definition of code smells in the context of domain-specific systems. The study reveals that only a small amount of tailoring is needed to adapt the original definitions. This finding imply that the concept is code smell is easily adaptable to other contextes. Similarly, Eisenberg \cite{threshold_approach_to_td} quantifies source code technical debt with both static and dynamic metrics applied to the code-base. The static metrics measure the presence of code-smells. After this assessment phase his approach quantifies the total amount of Technical Debt in terms of resources needed to lower such amount within accpetable levels. These levels, together with the cost per occurrence, differ between sub-items. E.g. removing a duplicate code block is four times cheaper than splitting a complex class due to dependencies.
+This section summarizes relevant studies that target identification, quantification and management of TD items that inflate Source Code's decay over time. Given the exploratory nature of this study I won't specifically adopt any of them, but instead base my data inspections on common elements that are found within this literature.
+
+After inspecting relevant papers as indicated in \ref{literature_review_process} is clear that researchers consider the set of Code Smells \cite{code_smell_definition} the main cause of code decay \cite{mapping_study_td}. For instance, \cite{domain_specific_code_smells} studies the suitability of the original definition of code smells in the context of domain-specific systems. The study reveals that only a small amount of tailoring is needed to adapt the original definitions. This finding imply that the concept is code smell is easily adaptable to other contextes. 
+
+Similarly, Eisenberg \cite{threshold_approach_to_td} quantifies source code technical debt with both static and dynamic metrics applied to the code-base. The static metrics measure the presence of Code Smells. After this assessment phase his approach quantifies the total amount of Technical Debt in terms of resources needed to lower such amount within accpetable levels. These levels, together with the cost per occurrence, differ between sub-items. E.g. removing a duplicate code block is four times cheaper than splitting a complex class due to dependencies. These relative costs derive from the SONAR \cite{sonar_evaluate_td} framework.
+
+Nugroho et. al.\ \cite{technicalDebtInterest} proposed a mathematical framework for quantifying Technical Debt with respect to Source Code. Their Their approach consists in assessing the quality of the code base through Cyclomatic Complexity \cite{cyclomatic_complexity} and divide areas based on the complexity index (e.g.\ > 50 is \textit{high risk}). The next step consists in assessing the code base quality in a scale from 1 to 5 based on the percentage of low/medium/high risk code identified in the previous step. Once this assessment phase is complete it is possible to estimate the necessary rework to reach the desired level of quality. E.g. to increase the code base quality from level one to level two require the fecatoring of 60\% of the code base. With these data is possible to calculate the Refactoring Effort in terms of man-months.
+
+Marinescu \cite{assessing_technical_debt_eclipse} conducted a Longitudinal Study on two Java projects belonging to the Eclipse ecosystem. For each of these the author analyzed the Techical Debt's variation over a time span of 11 years covering more than 30 releases. The method used in this study for quantifying Technical Debt is based on Static Code Analysis targeting eigth common bad practices. However, the study doesn't consider the interest related with such flaws and hence does not provide any indication on the impact of such items.
+
+A different approach for quantifying Source Code Technical Debt is proposed by Singh et al.\ \cite{code_td_comprehension_activities}. They developed a framework for estimating Interest on Technical debt based on code comprehension activities performed by developers. Those tend to spend more time in such activities when facing classes that contain a higher amount of Technical Debt. This contribution clearly links the results provided by Static Code analysis with a greater effort in maintain code which is affected by Technical Debt.
+
+Concluding, it is clear from the reviewed studies that quantification of Technical Debt with respect to Source Code quality is achieved directly or inderectly through Static Code Analysis.
 
 %TODO: conclusion of the section
 
 \section{Interest Quantification}
 
-\section{Literature Review Process} \label{literature_review_process}
-The literature reviewed in this section comes from a systematic approach used to ensure that all relevant studies were considered during the review phase.
+This section reviews studies that propose Models that estimates the impact of Technical Debt Interest and focuses on Source Code. It is possible to notice that there is an overlap with Section \ref{source_code_technical_debt}, but is intended. I preferred analyzing these two aspects separately to facilitate readers in extrapolating different informations from such studies.
 
-The process used consists in these four steps:
-\begin{enumerate}
-    \item Identification of secondary studies on the topic.\\
-        This first stage of the review revealed that secondary studies on the topic are scarce. The search in the main databases for the field returned three hits: 1) a Sistematic Literature Review, 2) a complementary (with respect to 1) Multivocal Literature Review, and 3) a Systematic Mapping Study of Technical Debt.
-        
-    \item First level of snowballing and filtering by meta-data.\\
-        From the analyzed studies in 1 I firstly considered the ones that in authors' opinion are not relevant for this Thesis. Specifically the ones targeting Testing Technical Debt, Source Code Technical Debt, or both. After this first coarse filter I eliminated the ones not relevant based on meta-data analysis (Title and Abstract). The remaining ones have been added to the list used during quality and relevance assessment. 
-        
-    \item Extension with main databases and filtering by meta-data.\\
-        The main databases used for extending this literature review are: IEEE Xplore, Springer Verlink, Science Direct, and ACM. The keywords inserted were "Technical Debt" and "Testing Maintenance". The filtering process is analogous to the one used in point 2.
-    
-    
-    \item Second level of snowballing and filtering by meta-data.\\
-        From the studies remaining after point 2 and 3 I performed another round of snowballing. After that the papers included has been filtered with the same procedure used in 2 and 3.
-    
-    
-    \item Assessing quality and relevance of studies.\\
-        Finally, the list of studies remained have been analyzed throughoutly. The metrics used for evaluating the studies are relevance to this Thesis and intrisic quality of the study itself. 
-    
-    
-    \item Inclusion.\\
-        The studies left after step 5 were included in the literature review
-    
-\end{enumerate}
-
-
+Nugroho et. al.\ \cite{technicalDebtInterest} propose a mathematical method to estimate the Interest (Maintenance Effort). The index they propose is directly proportional with the current level of Quality and inversely proportianal with the product of the amount of refactoring needed and the Rebuild Value. Their model accounts for different languages productivity indexes and justify it saying that a system with higher quality is easier to maintain. However, I this model does not take into account the importance that different Software Components have. For instance, an Object that is tied with many others require a bigger effort than one which is not. Therefore, their model flatten the estimation, but is useful for setting an effort baseline for assessing refactoring activities. \todo{Review other models}
