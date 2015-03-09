@@ -8,20 +8,135 @@ As recommended by Yin \cite{case_study_guide}, I gathered data from various sour
 
 However, some of the data sources were used as secondary sources, in order to refine the inquiry conducted by other methods. I.e.\ I used Informal Interviews, and the mining of the forum mainly during the first phase of this Exploratory Case Study. This allowed me to conduct a more focused Inquiry on the problems emerged during this preliminary data gathering.
 
+Finally, considering the extensive amount of data that has been generated, I won't directly include it in this Report. Instead, it is available online at \href{http://somthing/}. However, readers should be aware that the Raw Data was anonymized and every sensitive information was also removed. \todo{Insert link to thesis database}
+
 \subsection{Informal Interviews}
 I have used this Data Source to overcome resource's scarcity. In fact, the I had to keep the number of Formal Interviews (see \ref{semi-structured_interviews}) as low as possible. Consequently,I made this choice to avoid using these resources during the preliminary phases of the research. \tocite{Reference a peper on such interviews}
+
+The frequency of such Interviews was completely random. They occurred duing lunch and or coffee breaks. Therefore the settings also varied. However, most of them occurred in the coffee room that the company provides to its employees.
+
+Regarding the topic covered during such interviews vaired as well depending on my current insight and helped me to formulate a theory draft in a \textit{trial and error} fashion. For instance, at the very beginning of the studies the questions targeted where was it possible to gather more informations about documentation and such. Afterwards the scope narrowed with questions targeting current problems and solutions related to test maintenance. These last questions allowed me to take notes about critical time frames that were also reflected in the Company's Repositories.
+
+
+
+% Frequent
+% Different Settings
+% Tipical Questions Asked
+% Focused on the current problem (trial and error method)
+% Available on the Thesis Database
+% 
 
 
 
 \subsection{Mining of The Forum}
+In order to enable Knowledge Sharing the company uses a Collaborative Software / Fourm. The one adopted is Confluence, developed and maintained by Atlassian. In it both Technical and Non-Technical Employers create pages for sharing procedures, ideas, or create non synchronous discussion threads about ideas and problems. For these reasons this source is valuable since it contains numerous informations, which can shed light on the problems this Thesis aim to study.
+
+However, considering the magnitude of the data included I decided to follow a systematic approach in order to ensure that no relevant information was missed. In fact, the system contains data for several years and include several thousands discussions threads and many more answers. 
+I entered a set of keyboards in the embedded search eninge and subsequently filtered the results based on relevance to the topic. The relevance has been assessed through several metrics.
+
+The first coarser filter is based on a reduced time frame. I eliminated hits older than 1 year for several reasons. Firstly, the Technology stack has evolved considerably since then and hence my findings could be biased by information not relevant. Secondly, wehn deciding an adequate time span I considered the mortality of the resources. In fact, many people are not Employed in the company anymore and consequently any follow-up inspection could have been problematic.
+
+The second finer filter is based on the relevance. In fact, the mentioned search engine uses a full-text search and hence results are returned even if someone commented the original post mentioning the considere keywords. Therefore, I decided to eliminate every hit that did't contain the keywords in the title or in the body of the original post. However, if the answers mentioning the keyword were referring to another entry/issue I have included them.
+
+\todo{Mention the searching syntax used by confluence}
+
+Finally, the remaining set of posts has been carefully read and pertinent ones has been anonymized and transcribed in the Thesis database. Table \ref{tab:confluence_results} the results obtained for each step for the keywords used.
+
+		\begin{table}[htb]
+			\centering
+			%\renewcommand{\arraystretch}{1.2}
+			\caption{Number of hits in Confluence for a given keyword}
+			\label{tab:confluence_results}
+			\begin{tabulary}{\textwidth}{|L|L|L|L|}
+				\hline
+				\textbf{Keyword} & 
+				\textbf{Total hits} &
+				\textbf{After First Filter} &
+				\textbf{After Second Filter}\\ \hline
+				
+				\textit{"test mainteneance"} &
+				28 &
+				18 &
+				9 \\ \hline
+				
+				\textit{"tests strategy"} &
+				297 &
+				138 &
+				11 \\ \hline
+				
+				\textit{"test refactoring"} &
+				13 &
+				3 &
+				3 \\ \hline
+				
+				\textit{"test quality"} &
+				36 &
+				4 &
+				4 \\ \hline
+				
+
+			\end{tabulary}		
+		\end{table}
 
 \subsection{Mining of The Issue Tracker}
+\todo{Mention the Agile Plugin}
+
+In order to mine the Issue Tracker I used a similar approach to what has been proposed in the previous section. The company uses JIRA developed and maintained by Atlassian as well. The procedure used while filtering the data is also similar, but since the amount of data is even greater, the selection process was more rigorous.
+
+Furthermore, I included this source as one of the Primaries. In fact, it contains results directly linked with new features, which, as explained in the introduction are one of the causes of Testware maintenance and hence are crentral to this study.
+
+In addition, the fact that the format for such entries in more concise require a more careful analysis of the data (see \ref{data_interpretation}). Moreover, each of those entries that is marked as \textit{solved} is tied with a set of commits in the Company repositories. These links are reported in ???. For this reason this data source is of the utmost importance.
+
+\todo{Make table/chart/appendix with links between issues related to testing and repositories commits}
+
+		\begin{table}[htb]
+			\centering
+			%\renewcommand{\arraystretch}{1.2}
+			\caption{Number of hits in JIRA for a given keyword}
+			\label{tab:confluence_results}
+			\begin{tabulary}{\textwidth}{|L|L|L|L|}
+				\hline
+				\textbf{Keyword} & 
+				\textbf{Total hits} &
+				\textbf{After First Filter} &
+				\textbf{After Second Filter}\\ \hline
+				
+				\textit{"test mainteneance"} &
+				28 &
+				18 &
+				9 \\ \hline
+				
+				\textit{"tests strategy"} &
+				297 &
+				138 &
+				11 \\ \hline
+				
+				\textit{"test refactoring"} &
+				13 &
+				3 &
+				3 \\ \hline
+				
+				\textit{"test quality"} &
+				36 &
+				4 &
+				4 \\ \hline
+				
+
+			\end{tabulary}		
+		\end{table}
+
+\subsection{Mining of The Issue Tracker}
+\todo{Mention the Agile Plugin}
+
+
+
+
 
 \subsection{Analysis of The Repositories}
 
 \subsection{Semi-Structured Interviews} \label{semi-structured_interviews}
 
-\section{Interpretation of the Data}
+\section{Interpretation of the Data} \label{data_interpretation}
 
 
 
