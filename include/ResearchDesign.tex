@@ -3,6 +3,12 @@ This section describes the processes used within this study. However, related Va
 
 \section{Case Study Design}
 
+
+%
+%
+% START DATA GATHERING
+%
+%
 \section{Data Gathering}
 As recommended by Yin \cite{case_study_guide}, I gathered data from various sources in order to increase Triangulation and hence improve the study's reliability. Namely 1) Informal Interviews (a.k.a.\ Coffe Machine / Water Bowl Interviews), 2) Mining of Comapany's Forum, 3) Mining of Comapny's Issue Tracker, 4) Mining of Repositories, and 5) Semi-structured Interviews.
 
@@ -16,17 +22,6 @@ I used this Data Source to overcome resource's scarcity. In fact, I had to limit
 The method used for each one of these Interviews varied depending of several factors. Firstly, the frequency of such Interviews was random. They occurred during lunch and/or coffee breaks. The settings also varied both in terms of interviewee and location. However, most of them occurred in the coffee room that the company provides to its employees. Furthermore, the topic covered depended on my current insight. In fact, they helped me formulate a theory draft in a \textit{trial and error} fashion. For instance, at the beginning my questions were about documentation and similar artifacts. Afterwards the scope narrowed with questions targeting current problems and solutions related to test maintenance. These last questions allowed me to discover critical time frames that were also reflected in the Company's Repositories.
 
 As a final note, due to the randomness of both subjects, locations, and frequency, I was unable to create proper artifacts for these interviews. However, the Thesis Database contains brief descriptions of the topics covered by each one of these.
-
-
-
-% Frequent
-% Different Settings
-% Tipical Questions Asked
-% Focused on the current problem (trial and error method)
-% Available on the Thesis Database
-% 
-
-
 
 \subsection{Mining of The Forum}
 In order to enable Knowledge Sharing the company deployed a Collaborative Software / Fourm. The one in use is Confluence, developed and maintained by Atlassian. In it both Technical and Non-Technical Employers create pages for sharing procedures, ideas, or create non synchronous discussion threads about problems. For these reasons this source is valuable since it contains numerous informations, which can shed light on the problems this Thesis aim to study.
@@ -55,11 +50,38 @@ However, due to the highly sensitive informations about issues, bugs, and planne
 
 \input{table/jiraMiningResults}
 
+\todo{Fix table with data when I will have it}
 
-\subsection{Analysis of The Repositories}
+
+\subsection{Analysis of The Repositories} \label{analysis_of_the_repos}
+The company extensively uses \textit{Concurrent Versions System}. At the time of writing their system contains 870 repositories of various size belonging to 20 projects. Some of them, however, are cross project. They also have deployed two different tools to browse such repositories with ease: \textit{HgWeb} and \textit{Crucible + FishEye}. They are migrating to the second one since it also allows asynchronous code reviews and is can be integrated with the Issue Tracker and the Forum.
+
+Given the amount of data contained in this archivial source, I used data coming from other sources to select the subset of repositories that better suites the goal of this Thesis. I.e.\ a selected number of repositories targeting test code that are currently under active development or maintenance. In addition, the Issue Tracker analisys combined with the informal interviews allowed me to constrain the mining activities to specific time frames that are of particular interest for maintenance activities. 
+
+\todo{Finishing this section describing what I did with the commits when I will actually perfom the mining}
 
 \subsection{Semi-Structured Interviews} \label{semi-structured_interviews}
+During this study I conducted a total of \inote{Number of Interviews here} interviews following the guidelines expressed in \cite{interview_guideline}. I opted for the semi-structured format in order to have enough flexibility to adapt my inquiry while maintaining the scope constrained.
 
+The purpose of this data source was two-fold: to provide me some insights during the first phase of the study, and to validate my findings during the final stage of it. For the first purpose I conducted one interview to get up to speed with the system faster and also to start generating some ideas about the Testing situation within the Company. The second one, instead, used the remaining interviews and helped me confirming my findings and create some open questions that might be useful for future studies on the topic.
+
+\todo{Finish the subsection describing settings, who has been interviewed and such
+}
+
+
+
+%
+%
+% END DATA GATHERING
+%
+%
+
+
+%
+%
+% START DATA INTERPRETATION
+%
+%
 \section{Interpretation of the Data} \label{data_interpretation}
 
 
