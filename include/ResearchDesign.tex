@@ -1,8 +1,35 @@
-\chapter{Methods} \label{methods}
-This section describes the processes used within this study. However, related Validity Threats are discussed in \ref{validity_threats}.
+\chapter{Case Study Design} \label{methods}
+This study will use the \textit{Holystic Exploratory Case Study} research methodology as described by \cite{case_study_guide}. Furthermore, I will follow the guidelines expressed by Runeson and H{\"o}st \cite{case_study_software_engineering} that specifically target the Software Engineering field. Moreover, they provide a Checklist that I extensively used while performing the study.
 
-\section{Case Study Design}
+\todo{Mention Checklist in the appendix with links on where is possible to find the answers.}
 
+
+%
+%
+% START CASE DESCRIPTION
+%
+%
+\section{Case Definition}	\label{case-description}
+For properly characterize the Case under study \cite{case_study_guide} suggest to describe three items. Namely 1) the context in which the Case is, 2) the Case itself, and 3) the Units of Analysis used during the study.
+
+This study took place in the Swedish office of the Company, which globally employes more than 3000 people scattered in several offices. Its core business is licensing software products for mangaing personnel and equipments in the context of Transportation. The portfolio offers differnet solutions to cover sevaral business needs in terms of short or long term planning, personnel optimization etc.
+
+Internally, teams use Scrum for managing their development activities. They have great freedom in chosing sprint length, and the Definition of Done, which is build on top of a minimum one provided by the company. Teams are cross functional, meaning that they contain people with different areas of expertise and are self-contained meaning that they should carry out all software related activities indipendently.
+
+This last fact is important for this study. In fact, all testing activities are carried on indipendently, following the minimum guidelines expressed in the Definition of Done and adhering to the in-place testing pipeline which is divided in functional and non-functional tests. The functional side is composed of four main levels (lower to higher): unit tests, components tests, system tests, end to end tests. Whereas the non-functional one is not well defined and spans throuout all levels and test \textit{how} software shall behave.
+
+\todo{Describe the different levels of the pipeline with a table / chart}
+
+For narrowing the scope to a manageable size I decided to use as \textit{Cases} the projects that use Hewlett Packard UFT (Unified Functional Test) for GUI testing (formerly known as QTP). It has been introduced one year ago (Q3 2014) and allow testers to mix Property Based GUI testing (2nd generation tool) and Image Recognition GUI testing (3rd generation). Within these projects I will evaluate the maintenance activities that target the two higher testing levels of the functional part of the mentioned pipeline. Specifically how much extra maintenance derives from the use of bad code practices used in GUI test scripts.
+
+With that said, the chosen \textit{Unit of Analysis} are the such maintenance activities, both in terms of 
+    
+
+%
+%
+% END CASE DESCRITPION
+%
+%
 
 %
 %
@@ -10,11 +37,15 @@ This section describes the processes used within this study. However, related Va
 %
 %
 \section{Data Gathering}
-As recommended by Yin \cite{case_study_guide}, I gathered data from various sources in order to increase Triangulation and hence improve the study's reliability. Namely 1) Informal Interviews (a.k.a.\ Coffe Machine / Water Bowl Interviews), 2) Mining of Comapany's Forum, 3) Mining of Comapny's Issue Tracker, 4) Mining of Repositories, and 5) Semi-structured Interviews.
+As recommended by Yin \cite{case_study_guide,case_study_software_engineering}, I gathered data from various sources in order to increase Data Triangulation and hence improve the study's reliability. Precisely, the sources used are: 1) Informal Interviews (a.k.a.\ Coffe Machine / Water Bowl Interviews), 2) Mining of Comapany's Forum, 3) Mining of Comapny's Issue Tracker, 4) Mining of Repositories, and 5) Semi-structured Interviews.
 
 However, some of the data sources were used as secondary sources, meaning that they assited the inquiry conducted by other methods. I.e.\ I used Informal Interviews, and the mining of the forum mainly during the first phase of this Exploratory Case Study for narrowing the scope. Consequently, I achieved a more focused analysis of other sources (e.g.\ Analysis of the repositories).
 
-Finally, considering the extensive amount of data that has been generated, I won't directly include it in this Report. Instead, it is available online at \href{http://somthing/}. However, readers should be aware that the raw Data was anonymized and every sensitive information was also removed. \todo{Insert link to thesis database}
+Finally, considering the extensive amount of data that has been generated, I won't directly include it in this Report. Instead, it is available online at \href{http://somthing/}. However, readers should be aware that the raw Data was anonymized and every sensitive information was also removed. 
+
+\todo{Insert link to thesis database}
+\todo{Mention that data is 3rd stage}
+\todo{Mention that I used both quantitative and qualitative sources for improving reliability}
 
 \subsection{Informal Interviews}
 I used this Data Source to overcome resource's scarcity. In fact, I had to limit the number of Formal Interviews (see \ref{semi-structured_interviews}) and hence I opted for this source. However, considering their non-reproducible nature I decided to not use them for sensitive parts of the study like Theory Validation. \tocite{Reference a peper on such interviews}
@@ -118,6 +149,9 @@ The process used consists in these six steps:
         The studies left after step 5 were included in the literature review
     
 \end{enumerate}
+
+\todo{Fix the Literature reivew process with more details}
+\todo{Create table with the numeric results}
 
 
 
