@@ -16,9 +16,24 @@ This study took place in the Swedish office of the Company, which globally emplo
 
 Internally, teams use Scrum for managing their development activities. They have great freedom in chosing sprint length, and the Definition of Done, which is build on top of a minimum one provided by the company. Teams are cross functional, meaning that they contain people with different areas of expertise and are self-contained meaning that they should carry out all software related activities indipendently.
 
-This last fact is important for this study. In fact, all testing activities are carried on indipendently, following the minimum guidelines expressed in the Definition of Done and adhering to the in-place testing pipeline which is divided in functional and non-functional tests. The functional side is composed of four main levels (lower to higher): unit tests, components tests, system tests, end to end tests. Whereas the non-functional one is not well defined and spans throuout all levels and test \textit{how} software shall behave.
+This last fact is important for this study. In fact, all testing activities are carried on indipendently, following the minimum guidelines expressed in the Definition of Done. However, this lenient artifact causes teams to use different testing strategies for complying with testing pipeline. 
 
-\todo{Describe the different levels of the pipeline with a table / chart}
+As shown in Fig. \ref{fig:testing_pipeline} the pipeline is composed of four main levels (lower to higher): unit tests, components tests, system tests, end to end tests. Furthermore, the company uses non-functional tests in ad-hoc fashion to test \textit{how} the system should behave. These tests span on all previous mentioned levels and there is no recognizable pattern.
+
+Unit tests are carried on by developers alongside development activities and aim to test the System at function / class level. Therefore, there is a high number of those tests, which tend to be fast to execute and simple. Developers follow almost the same guidelines specified for the actual code, with the sole exception that, according to the minimum definition of done, they are not reviewed.
+
+Component tests target interaction between macro software-entities and aim to ensure that the sub-parts of the system deliver the desired functionalities. What is tested at this level is the exposed APIs entry points and not the internal mechanics of the source code.
+
+System tests are executed to assure that 
+
+\todo{Improve figure \ref{fig:testing_pipeline} readibility}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{figure/testing_pipeline.pdf}
+    \caption{Testing pipeline in use at the Company}
+    \label{fig:testing_pipeline}
+\end{figure}
 
 For narrowing the scope to a manageable size I decided to use as \textit{Cases} the projects that use Hewlett Packard UFT (Unified Functional Test) for GUI testing (formerly known as QTP). It has been introduced one year ago (Q3 2014) and allow testers to mix Property Based GUI testing (2nd generation tool) and Image Recognition GUI testing (3rd generation). Within these projects I will evaluate the maintenance activities that target the two higher testing levels of the functional part of the mentioned pipeline. Specifically how much extra maintenance derives from the use of bad code practices used in GUI test scripts.
 
