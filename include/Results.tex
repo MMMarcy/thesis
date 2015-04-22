@@ -2,7 +2,7 @@
 
 This Chapter describes all the results gathered throughout the study. They are presented accordingly to the method used and for each one of them I reported the raw numbers and relevance with respect to the RQs.
 
-As a final not, due to confidentiality issues it was not possible to report the raw data. For this reason, as briefly explained in the previous Chapter, all the sensitive information has been eliminated and anonymized.
+As a final note, due to confidentiality issues it was not possible to report the raw data. For this reason, as briefly explained in the previous Chapter, all the sensitive information has been eliminated and anonymized.
 
 
 
@@ -24,16 +24,39 @@ The topics covered, during such interviews are reported in Table \ref{tab:inform
 				\textbf{Date} {\tiny (YYYY/MM/DD)} & \textbf{Approx. duration} & \textbf{Topics covered} \\
 				\hline
 				
-				2015/02/15 &
+				2015/02/13 &
 				10 min. &
 				- How does the test pipeline works.\newline
 				- Recurrent problems with high level tests. \\
 				\hline
 				
-				2015/02/18 &
+				2015/02/16 &
 				10 min. &
-				TO be completed\\
+				- Strategy with smoke UFT tests. \newline
+				- Strategy with test automation in generel. \\
 				\hline
+				
+				2015/02/19 &
+				10 min. &
+				- Approach of different teams to testing. \\
+				\hline
+				
+				2015/02/19 &
+				10 min. &
+				- Different Definitions of Done in use. \\
+				\hline
+				
+				2015/02/19 &
+				10 min. &
+				- Strategy with regression testing. \newline
+				- How issues with system level testing are reported. \\
+				\hline
+				
+				2015/02/19 &
+				10 min. &
+				- How the automation works (Jenkins, Nightly builds ecc.\ ). \\
+				\hline
+				
 				
                 
 			\end{tabulary}		
@@ -67,6 +90,19 @@ Some of these documents are central to this study, whereas others only highlight
 
 \section{Mining of the Issue Tracer / Backlogs}
 
+\todo{Update method description for issue tracker analysis.}
+
+The process described in Section \ref{mining_issue_tracker}, as of the 11th of April 2015, yielded a total of 104 entries which has been inspected accordingly. For each issue several factors has been considered.
+
+Firstly, issues that entailed CUD operations (create, update, and delete) on the testware source code has been separated from the ones reporting environments' problem. This task however, is not trivial due to a thin boundary between the two categories. For instance, an issue attributed to the environment can be instead triggered by problems within the source code. Among the one belonging to the first group, the results of interest are the ones revealing maintenance activities, i.e.\ update and delete.
+
+From such subset further statistics have been collected. Namely, story point and time statistics which reflect how long the issue has been opened without been addressed and how long did it take to address it.
+
+\todo{Fine tune the script for mining the result}
+
+\todo{Plot the chart from this data.}
+
+\todo{Check if a time analysis of issues related to particular projects yields something interesting}
 
 \section{Analysis of the Repositories}
 

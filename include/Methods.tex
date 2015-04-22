@@ -59,9 +59,11 @@ Finally, considering the extensive amount of data that has been generated, it ha
 \todo{Mention that I used both quantitative and qualitative sources for improving reliability}
 
 \subsection{Informal Interviews}
+As stated by Milberg and Strang \cite{informal_interview} researchers should strive to attain qualitative data from various sources in order to gain a well-rounded knowledge of the phenomenon under study and for this reason this study attained some information from Informal Interviews.
+
 This source helped defining the scope of the inquiry in the first stages of the study by identifying at very high level main problems and triggering causes. However, due to the lack of repeatability associated with this method, such data has not been used for sensitive parts of the study like theory validation.
 
-In fact, the frequency, the location, and the interviewee were random. They occurred during lunch and/or coffee breaks whenever possible. Furthermore, the topics covered were not willful and depended on current issues encountered by the interviewee. Anyhow, their importance during the first phases of this study is clear since focused the attention on important parts, sources, and documentation.
+In fact, the frequency, the location, and the interviewee were random. Furthermore, as highlighted by McNamara \cite{general_guidelines_for_interview}, this kind of inquiry is not steered by schemes, but instead affected by the interaction between participants. Moreover, they occurred during lunch and/or coffee breaks whenever possible and bootstrapped by current issues encountered by the interviewee. Clearly a not-controlled environment. However, their importance during the first phases of this study is clear since it focused the attention on important parts, sources, and documentation.
 
 \subsection{Mining of The Forum} \label{mining_forum}
 In order to enable Knowledge Sharing the company adopted Confluence, a collaborative software / forum developed and maintained by Atlassian, which allows technical and non-technical employers to share procedures, ideas, and comments in an asynchronous fashion. For this reason this source is valuable since it contains numerous information, which can shed light on the problems this Thesis aim to study.
@@ -72,14 +74,52 @@ The keywords entered in the search engine were included in double quotes in orde
 
 This paragraph reports the rationale connected with the first filtering activity. The temporal time frame is narrow for two reasons. Firstly, the testware stack has changed during last year (2014) and hence the findings could be biased by information not relevant or dependant to the old technologies. Secondly, the mortality of the resources has been taken into account. In fact, the Company greatly relies on consultants and their turnover is shorter than normal employees. 
 
-\subsection{Mining of The Issue Tracker / Backlogs}
-The Company uses an all in one solution for managing issues and their Agile Environments: JIRA + JIRA Agile Plugin which are also managed by Atlassian. Similarly to the forum this source contains a high number of entries that have been filtered before being analyzed and included in this study evidence. However, the filtering process has been tailored to consider the different nature of these entries.
+\subsection{Mining of The Issue Tracker / Backlogs} \label{mining_issue_tracker}
+The Company uses an all in one solution for managing issues and their Agile Environments: JIRA + JIRA Agile Plugin which are also managed by Atlassian. Similarly to the forum this source contains a high number of entries that have been mined to provide insights regarding the problems under analysis.
 
-In fact, the descriptive text inserted in \textit{user stories} or \textit{issues} is more concise than the one found in the forum. Moreover, the entries simply consist of a list of actions. Some entries, however, contain a rationale which tend to be slightly more verbose, but still succinct. 
+This activity has been carried on firstly with a parsing script \footnote{\href{https://github.com/MMMarcy/JiraMiner4Thesis}{https://github.com/MMMarcy/JiraMiner4Thesis}} that, after parsing the JSON file created through the JIRA Rest APIs \footnote{\href{https://developer.atlassian.com/jiradev/api-reference/jira-rest-apis}{https://developer.atlassian.com/jiradev/api-reference/jira-rest-apis}} created a spreadsheet with the relevant data of choice.
 
-For this reason the decision of only using \textit{``UFT''} as keyword has been taken and  the resulting entry set has been filtered only based on relevance since the number of result yielded by the query was manageable.
+The issues filtering has been made through the JQL query language, which is supported natively by the APIs mentioned above. The data field targeted by the query was \textit{text}, which is a macro-field that includes issue's name, description, summary, and comments. Regarding the keywords used, they were tested in a trial  and error fashion. However, the process showed that the query using a boolean or wiht \textit{``UFT''} and \textit{``QTP''} yielded the best combination of relevant results.
 
-However, due to the highly sensitive information about issues, bugs, and planned features included in this source I cannot disclose any part of them and hence I limit to report the the keywords used with the raw numbers.
+The spreadsheet contains some statistics that are not contained in the dataset, but they have been generated because of possible interest. For instance, the column \textit{´´Effective time (h)``} uses the \textit{´´Modified on``} and \textit{´´Closed on``} columns to generate an approximate time in hours through an operation between these dates. Differently, some columns have been manually generated since an automatic analysis would require text-comprehension that is out of the scope of this Thesis. Table \ref{tab:spreadsheet_description} shows all the data fields included, provides a rationale, and finally shows an example record for every column.
+
+
+\begin{table}[htb]
+			\centering
+			\renewcommand{\arraystretch}{1.2}
+			\tabulinesep=1.2mm
+            \caption[Original spreadsheet description]{Description of the original spreadsheet created by the process described in section \ref{mining_issue_tracker}}
+            \label{tab:spreadsheet_description}
+            
+			\begin{tabu} to \textwidth {|X|X[4]|X|}
+			    
+				\hline
+				\textbf{Col. name} & \textbf{Description} & \textbf{Example} \\ \hline
+				
+				Key & This entry is composed by two parts: Project name and issue number. It was used to keep a link between projects under study and data gathered & PRJONE-001 \\ \hline
+				
+				Priority & Indicates the priority assigned to the issues by internal stakeholders after the evaluation phase of the sprint. A lower number means greater priority. & 3 \\ \hline
+				
+				Estimate time & Shows the effort estimation performed by the developers of the team & 2.5 \\ \hline
+				
+				Effective time & Shows the effective time it took to complete the issue from when the status was updated & 5 \\ \hline
+				
+				Opened on & Date and time of when the issue was opened. & Tue Jan 07 09:39:59 CET 2014 \\ \hline
+				
+				Updated on & Date and time of when the work on the issue started & Thu Jan 22 10:41:27 CET 2015  \\ \hline
+				
+				Closed on & Date and time of when the issue was closed & Wed Jan 21 14:58:25 CET 2015 \\ \hline
+				
+				Description & Field that contains description, summary and comments related to the issue. & The process pipeline break when... \\ \hline
+				
+			\end{tabu}		
+		\end{table}
+
+\todo{Fix the script output with dates that are parseable by excel :( }
+
+
+
+For future studies an version of the spreadsheet stripped of all sensitive information is available at \inote{Link of spreadsheet}. The process removed all these column that were intellectual properties of the Company, e.g.\ Project name has been replaced with a cardinal number in order to allow a per-project analysis.
 
 
 \subsection{Analysis of The Repositories} \label{analysis_of_the_repos}
