@@ -12,7 +12,7 @@ Shah et al.\ \cite{exploratorying_testing_td} studied manual testing as source o
 
 Similarly, Brown et. al.\ \cite{td_current_vs_optimal_quality} consider not carrying out a test-plan the root cause of TTD since defects can remain and propagate to production environments. Once there, the reparation cost is extremely high both in terms of resources and brand damage. Therefore, they state that this TTD sub-item has the highest interest among all Testing Technical Debt ones.
 
-As it is possible to evince from 1) previous paragraph and 2) \ref{literature_review_process}, studies targeting the internal quality of Test Code are scarce, especially the ones framing the problem within the Technical Debt framework. However, a number of studies report a common fragility of tests with respect to maintainability. 
+As it is possible to evince from the previous paragraph, studies targeting the internal quality of Test Code are scarce, especially the ones framing the problem within the Technical Debt framework. However, a number of studies report a common fragility of tests with respect to maintainability. 
 
 For instance, Chen and Wang \cite{gui_scripts_bad_smells} identified 11 \textit{Bad Smells} in GUI test scripts. Nine of them map to known source code bad smells, whereas two of them apply to GUI test scripts only. The authors propose a total of 16 refactoring patterns which will lessen the amount of time spent on future maintenance activities. Moreover, they proved their claim through two experiments that showed that 1) by looking for bad smells, the potential problems in a test script can be identified; 2) bad smells do exist in test scripts; and 3) the refactoring methods proposed in their study are useful to eliminate Bad Smells. However, the article doesn't indicate the sample size used by the experiments and, hence, is impossible to evaluate the reliability. 
 
@@ -26,7 +26,7 @@ Summarizing, both Academia and Industry acknowledged the phenomenon of Technical
 
 This section summarizes relevant studies that target identification, quantification and management of TD items that inflate Source Code's decay over time. Given the exploratory nature of this study it won't specifically adopt any of them during theory building, but instead base data inspections on common elements that are found within this literature.
 
-After inspecting relevant papers as indicated in \ref{literature_review_process} is clear that researchers consider the set of Code Smells \cite{code_smell_definition} the main cause of code decay \cite{mapping_study_td}. For instance, \cite{domain_specific_code_smells} studies the suitability of the original definition of code smells in the context of domain-specific systems. The study reveals that only a small amount of tailoring is needed to adapt the original definitions. This finding imply that the concept is code smell is easily adaptable to other contexts. 
+After inspecting relevant papers is clear that researchers consider the set of Code Smells \cite{code_smell_definition} the main cause of code decay \cite{mapping_study_td}. For instance, \cite{domain_specific_code_smells} studies the suitability of the original definition of code smells in the context of domain-specific systems. The study reveals that only a small amount of tailoring is needed to adapt the original definitions. This finding imply that the concept is code smell is easily adaptable to other contexts. 
 
 Similarly, Eisenberg \cite{threshold_approach_to_td} quantifies source code technical debt with both static and dynamic metrics applied to the code-base. The static metrics measure the presence of Code Smells. After this assessment phase his approach quantifies the total amount of Technical Debt in terms of resources needed to lower it within acceptable levels. These levels, together with the cost per occurrence, differ between sub-items; e.g.\ removing a duplicate code block is four times less demanding than splitting a complex class due to dependencies. These relative costs are extrapolated from the SONAR \cite{sonar_evaluate_td} framework.
 
@@ -52,44 +52,3 @@ Zazworka et al.\ \cite{4_methods_to_identify_td} studied the effectiveness of fo
 buildup, and modularity violations. Interestingly, the study shows no correlation between any of the approaches meaning that Technical Debt Identification procedures must be tailored accordingly.
 
 This brief review of models show that despite having access to quantitative models for estimating the interest, they are still incomplete. Furthermore, there are studies suggesting that an holistic model is not viable, given the complexity of Software Systems and Development Activities. For this reason I believe that shedding light on Testing Technical Debt will help to create a specific framework to better Estimate this source of Technical Debt.
-
-
-
-
-
-\section{Literature Review Process} \label{literature_review_process}
-The literature reviewed in this section comes from a systematic approach used to ensure that all relevant studies were considered during the review phase. The research has been performed into the following databases: IEEE Xplore, Springer Verlink, Science Direct, and ACM.
-
-The process used consists in these six steps:
-\begin{enumerate}
-    \item Identification of secondary studies on the topic.\\
-        This first stage of the review revealed that secondary studies on the topic are scarce. These are scarce and this signals a general immaturity in the field. However, the search in the main databases returned three hits: 1) a Sistematic Literature Review \cite{exploration_of_td}, 2) a complementary (with respect to 1) Multivocal Literature Review \cite{exploration_of_td2}, and 3) a Systematic Mapping Study of Technical Debt \cite{mapping_study_td}.
-        
-        
-    \item First level of snowballing and filtering by meta-data.\\
-        From the studies analyzed in step 1 the references targeting Testing Technical Debt, Source Code Technical Debt, or both have been extracted. Subsequently, after applying this coarser filter studies irrelevant were removed. The remaining ones were added to the list of candidates. 
-        
-    \item Extension with main databases and filtering by meta-data.\\
-    Since the identified secondary studies include only studies published before January 2014, the candidate list has been extended with more recent studies. Therefore, after setting the time filters accordingly the following keywords were used for querying the main databases:"Technical Debt", "Test Maintenance", and "Testing maintenance". The number of studies yielded were further filtered similarly to the ones in step 2.
-    
-    
-    \item Second level of snowballing and filtering by meta-data.\\
-        To further increase the possible candidates a further snowballing step took place. Once again the results yielded were filtered by metadata and subsequently included in the candidate set.
-    
-    
-    \item Assessing quality and relevance of studies.\\
-        Finally, the list of studies remained have been analyzed throughout. The metrics used for evaluating the studies are relevance to this Thesis and intrinsic quality.
-    
-    
-    \item Inclusion.\\
-        The remaining studies were included in the literature review. To assure the all significant studies were included the report drafts were revised by an expert in the field.
-        
-\end{enumerate}
-
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[]{figure/literature_review_process.pdf}
-    \caption{Literature review process followed for this study.}
-    \label{fig:literature_review_process}
-\end{figure}
