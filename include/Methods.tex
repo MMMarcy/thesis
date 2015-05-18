@@ -38,7 +38,7 @@ As shown in Fig. \ref{fig:testing_pipeline}, this pipeline is composed of four l
 
 Notably, unit tests are carried on by developers alongside development activities and aim to test the System at function and class level. Therefore, there is a high number of them and tend to be fast to execute and relatively simple. At this level, developers follow the same guidelines specified for the actual source code, with the sole exception that, according to the minimum definition of done, they are not reviewed. Above in the hierarchy, there are component tests that target the interaction between macro software entities and aim to ensure that the sub-parts of the system deliver the desired functionality. At this level, tests target the exposed APIs and not the internal mechanics of the source code. The next level in the pipeline, System level tests, aims to assure that user functionality and business processes of a single system comply with the specification. These tests execute at user interface level with realistic data sets and possibly data volume. Finally, End to End tests are similar in concept and execution to System tests, but they test the interaction of two or more complete systems. Furthermore, these levels can be further divided into functional and non-functional tests, which respectively target functionality and quality attributes of the system.
 
-Finally, the two middle layers of the pipeline contain test that can be semantically divided into two groups: smoke tests and regression tests. The former group contains simpler tests that control the behavior of macro functionalities, e.g.\ a window is displayed if the new window button is pressed. The latter group, instead, includes tests that represent use-case scenarios and hence more detailed and complicated. The following sub-section provides additional information on the topic.
+Finally, the two middle layers of the pipeline contain test that can be semantically divided into two groups: smoke tests and regression tests. The former group contains simpler tests that control the behavior of macro functionality, e.g.\ a window is displayed if the new window button is pressed. The latter group, instead, includes tests that represent use-case scenarios and hence more detailed and complicated. The following sub-section provides additional information on the topic.
 
 \todo{Improve figure \ref{fig:testing_pipeline} readability}
 \todo{Extract the image from the testing chapter document}
@@ -52,11 +52,23 @@ Finally, the two middle layers of the pipeline contain test that can be semantic
 
 \subsection{Cases definition and units of Analysis}
 
-Among the ongoing projects at the Company, this study will inspect the accretion of TD in projects using Hewlett Packard's Unified Functional Tests (UFT) to perform user interface tests.
+Among the ongoing projects at the Company, this study will inspect the accretion of TD in projects using Hewlett Packard's Unified Functional Tests (UFT) to test user interfaces. Precisely, there are two projects meeting this requirement and will be called Project A and B in the rest of the document.
 
-To properly framing the inquiry the chosen \textit{Cases} are the projects that use Hewlett Packard UFT (Unified Functional Test) for GUI testing (formerly known as QTP) both for smoke testing and for regression testing. This tool allows testers to mix Property Based GUI testing with Image Recognition GUI testing. Within these projects I will evaluate the maintenance activities that target the two higher testing levels of the functional part of the mentioned pipeline. Specifically how much extra maintenance derives from the use of bad code practices used in GUI test scripts. With that said, the chosen \textit{Unit of Analysis} are the such maintenance activities. 
-    
-\todo{Divide thesis in case A (manpower) and B (atrium)}
+Both projects have associated two unique repositories, one for Smoke Testing and another one for Regression Testing. Furthermore, there are two shared repositories that contain common methods and functions used by test scripts. For this reason, considering the substantial difference in purpose of such repositories they are considered separately. Therefore, the label \textit{Project C} is used to group them within an abstract entity that does not map to any real active project.
+
+Fig. \inote{Create figure with repositories layout.} illustrates the configuration of the cases under analysis and their relations.
+
+\subsubsection{Project A}
+Project A consist of a highly customizable software used to manage crew personnel both in the short and long term. Given their high customizability some tests are customer specific and hence not included in the analysis since represent corner cases that are too specific and could hinder external validity.
+
+\subsubsection{Project B}
+Project B is a tool used for registering and handling passengers. It register who is on-board of which airplane and so forth. This tool is less customizable than project A, but it is a more critical part of the Ecosystem. In fact, international rules require a constant monitoring of airplanes' passengers.
+
+\subsubsection{Project C}
+As mentioned before, Project C consists of two repositories that contain generic functions used by test suites. These tie UFT tests with the Windows operating system. They allow to kill and spawn a process, create and read files, etc. Furthermore, they also create skeleton for the report engines; they are used to create summaries of test runs in different formats such as HTML, XML, etc.
+
+
+\todo{Finish the description}
 %
 %
 % END CASE DESCRITPION
@@ -89,7 +101,7 @@ In order to enable Knowledge Sharing the company adopted Confluence, a collabora
 
 However, considering the magnitude of the available data, it was important to ensure that the mining did not miss any information. Therefore, it has been performed through a systematic approach using the embedded search engine provided by the tool and two manual filtering steps. In fact, the system contains data covering several years and include several thousand discussions threads and many more answers. 
 
-The keywords entered in the search engine were included in double quotes in order to enable the \textit{exact match} feature. This choice was needed to limit the number of results to a manageable size. For instance, \textit{test maintenance} yielded 8467 results whereas \textit{"test maintenance"} 28. Subsequently, the first coarser temporal based filter followed. It eliminated hits older than one year. Next, the second finer filter based on the relevance was used. Finally, the remaining set of posts has been carefully read, and pertinent ones have been anonymized and transcribed in the Thesis database. Table \ref{tab:confluenceMiningResults} displays the results obtained at each step for each keywords.
+The keywords entered in the search engine were included in double quotes in order to enable the \textit{exact match} feature. This choice was needed to limit the number of results to a manageable size. For instance, \textit{test maintenance} yielded 8467 results whereas \textit{"test maintenance"} 28. Subsequently, the first coarser temporal based filter followed. It eliminated hits older than one year. Next, the second finer filter based on the relevance was used. Finally, the remaining set of posts has been carefully read, and pertinent ones have been anonymized and transcribed in the Thesis database.
 
 This paragraph reports the rationale connected with the first filtering activity. The temporal time frame is narrow for two reasons. Firstly, the test-ware stack changed during last year (2014) and hence the findings could be biased by information not relevant or tied to the old technologies. Secondly, the mortality of the resources has been taken into account. In fact, the Company greatly relies on consultants, and their turnover is shorter than typical employees. 
 
@@ -98,9 +110,12 @@ The Company uses an all in one solution for managing issues and their Agile Envi
 
 This activity has been carried on firstly with a parsing script \footnote{\href{https://github.com/MMMarcy/JiraMiner4Thesis}{https://github.com/MMMarcy/JiraMiner4Thesis}} that, after parsing the JSON file generated through the JIRA Rest APIs \footnote{\href{https://developer.atlassian.com/jiradev/api-reference/jira-rest-apis}{https://developer.atlassian.com/jiradev/api-reference/jira-rest-apis}}, created a spreadsheet with the relevant data of choice.
 
+\todo{Use URL shortener}
+
 The filtering process used the JQL query language, which is supported natively by the APIs mentioned above. The data clause targeted by the query was \textit{text}, which is a macro field that includes issue's name, description, summary, and comments. Regarding the keywords used, they were tested in a trial  and error fashion. However, the process showed that the query using a boolean or with \textit{``UFT''} and \textit{``QTP''} yielded the best combination of relevant results.
 
-The spreadsheet contains some statistics not provided by the APIs, but thanks to their relevance, the script uses arithmetic operations to generate them. For instance, the column \textit{´´Effective time (h)``} uses the \textit{´´Modified on``} and \textit{´´Closed on``} to generate an approximate time through subtraction. Differently, some columns have been manually formed since an automatic analysis would require text comprehension that is out of the scope of this Thesis. Table \ref{tab:spreadsheet_description} shows all the data fields included, provides a rationale, and finally shows an example record for every column.
+The spreadsheet contains some statistics not provided by the APIs, but thanks to their relevance, the script uses arithmetic operations to generate them. For instance, the column \textit{``Effective time (h)''} uses the \textit{``Modified on''} and \textit{``Closed on''} to generate an approximate time through subtraction. Differently, some columns have been manually formed since an automatic analysis would require text comprehension that is out of the scope of this Thesis. Table \ref{tab:spreadsheet_description} shows all the data fields included, provides a rationale, and finally shows an example record for every column.
+
 
 
 \begin{table}[htb]
@@ -170,11 +185,11 @@ During this study total of \inote{Number of Interviews here} semi-structured int
 %
 \section{Interpretation of the Data} \label{data_interpretation}
 
-The interpretation of the data plays a key role in experimental studies like this one. Furthermore, analyzing both qualitative sources (e.g.\ Forum) and quantitative ones (e.g.\ Repositories) requires an approach that successfully melds together these different sources. For this reason, I believe that using \textit{Coding} \cite{qualitative_inquiry} for qualitative inquiry and \textit{Pattern matching} \cite{case_study_guide} for a quantitative data is the best approach.
+The interpretation of the data plays a key role in experimental studies like this one. Furthermore, analyzing both qualitative sources (e.g.\ Forum) and quantitative ones (e.g.\ Repositories) requires different strategies that account for differences in the nature of the data. Yin \cite{case_study_guide} lists and describes several methods for adequately perform this stage. However, some considerations are needed. Firstly, this Case Study is exploratory and draws from a scarce body of knowledge. Therefore, an inductive approach is more suitable. Secondly, while some data sources are suitable for a qualitative inquiry, others are, by nature, not. Therefore, the analysis must use at least two different methods. Finally, Yin \cite{case_study_guide} and Runeson et al.\ \cite{case_study_software_engineering}, recommend to address rival theories.   
 
-The approach followed in this study relies on both methods concurrently. In fact, I used the coding practices in the first part of the study, aiming to extrapolate recurrent patterns and problems from different sources which in turn allowed me to narrow the scope. Subsequently, through pattern matching I create a first theory draft that has been revised with more qualitative inquiry. Finally, through semi-structured interviews, I validated such theory with the help of practitioners.
+For these reasons, qualitative data is analyzed through \textit{Coding} \cite{qualitative_inquiry} allowing the inductive approach mentioned before. Quantitative source, instead, are scrutinized through \textit{Pattern matching} \cite{case_study_guide}; according to Runeson et al.\ \cite{case_study_software_engineering} it is the most suitable approach to address rival theories.
 
-The two following subsections thoroughly describe the mentioned approaches, however the results are reported in Chapter \ref{study_results}.
+Finally, the approach followed in this study relies on both methods concurrently. In fact, the inquiry used the coding practices in the first part of the study, aiming to extrapolate recurrent patterns and problems from different sources. Subsequently, through pattern matching a theory draft has been created which has been validated by semi-structured interviews.
 
 \subsection{Coding}
 In this study I followed the three coding techniques described by Corbin and Strauss \cite{coding_guidelines}. Namely 1) open coding, 2) axial coding, and 3) selective coding. Furthermore, these tasks were aided by \href{http://www.qsrinternational.com/products_nvivo.aspx}{NVivo 10 for Windows} which allow to manage the coding process with ease.
@@ -189,19 +204,19 @@ Finally, I am going to describe how these coding phases have been carried out du
 
 
 \subsection{Pattern matching}
-Yin \cite{case_study_guide} and Trochim \cite{pattern_matching} consider Pattern matching as one of the best approaches to meld together existing theories with the data gathered within a study. Furthermore, it eases the evaluation of rival theories since a it allows to rule them out thanks to the fitness with the discovered pattern \cite{pattern_matching}.
+Yin \cite{case_study_guide}, Runeson et al.\ \cite{case_study_software_engineering}, and Trochim \cite{pattern_matching} consider Pattern matching as one of the best approaches to meld together existing theories with the data gathered within a study. Furthermore, it eases the evaluation of rival theories since a it allows to rule them out thanks to the fitness with the discovered pattern \cite{pattern_matching}.
 
 In this Thesis, the pattern was extrapolated from the Repositories and matched against quantitative and qualitative models provided by the literature. For obvious reasons, in the latter case the inference conducted has been solely inductive, meaning that the findings associated are not corroborated by statistical weight and hence might lack external validity.
 
-\todo{Select wich pattern matching I will use (need to read the paper more carefully)}
+\todo{Select which pattern matching I will use (need to read the paper more carefully)}
 
 Trochim \cite{pattern_matching} highlights several pitfalls that must be considered when using this technique; otherwise the power of this method is greatly hindered. 
 
-Firstly, the conceptualization of the model must be appropriate, e.g.\ using formulae to describe a purely qualitative model is a bad practice since constants derive from the researcher best guesses.
+Firstly, the conceptualization of the model must be appropriate, e.g.\ using formulae to describe a purely qualitative model is discouraged since constants and factors derive from the researcher best guesses.
 
-Secondly, the level of generalization of the formulated pattern must match the purpose of the study and the study and the desired level of generalization.
+Secondly, the level of generalization of the formulated pattern must match the purpose of the study and the desired level of generalization. In this Thesis, given the exploratory nature findings are not intended to describe in detail real phenomenon, but, instead, aim to highlight a gap in the knowledge which requires more in-depth analysis.
 
-Third, pattern formulation tend to be more effective when performed without prior knowledge of the observed pattern. In fact, the researcher judgment could be biased by this prior knowledge. Fact that inflated the threats to reliability and internal validity.
+Third, pattern formulation tend to be more effective when performed without prior knowledge of the observed pattern. In fact, the researcher judgment could be biased by this prior knowledge. Fact that inflates the threats to reliability and internal validity.
 
 Next, the holistic perspective that researchers tend to use while performing pattern matching could exclude relevant details. This specially applies when pattern are extracted from a set of metrics or measures.
 
