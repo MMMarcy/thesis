@@ -2,25 +2,38 @@
 
 This Chapter describes all the results gathered throughout the study in a per RQ basis. This approach increase the traceability of the findings within the report as suggested by Runeson et al. \cite{case_study_software_engineering} (Item 20 in Appendix \ref{checklist_for_case_studies}).
 
-As a final note, due to confidentiality issues it was not possible to report the raw data. For this reason, as briefly explained in the previous Chapter, all the sensitive information has been eliminated and anonymized.
+Furthermore, to further increase the traceability of concepts from Research questions to results these are presented in a per-research question base with distinction between quantitative and qualitative data.
+
+As a final note, due to confidentiality issues it was not possible to report the raw data. For this reason, as briefly explained in the previous Chapter, all the sensitive information has been eliminated.
 
 \section{Research Question 1}
 
-The aim of this research question is to unveil to what extent the available body of knowledge targeting Code decay is applicable to User Interface test scripts. Intuitively, UI tests suffer from these problems. In fact, they consist of a series of pre-recorded events that lead to boolean assertions regulated by control flow constructs (e.g. If-Else).
+Results for this Research Question are mostly quantitative. However, some of the codes generated during coding procedures are tied to the issue this particular question addresses.
+
+\subsection{Qualitative Results}
+    The coding procedures used to analyze the data that has been generated created codes that reflect bad coding practices used while developing the tests. These codes are reported in Table \inote{create table with codes and number of references.}. Furthermore, Fig. \inote{create istogram with codes divided by project} shows how these are divided among the cases under study. Finally, Tab. \inote{Create table with references of these codes}.
+    
+
+\subsection{Quantitative Results}
+
+    As highlighted in the Related Works (section \ref{sec:related_work}), quantitative data has been extracted through static analysis of the code base. However, given the exploratory nature of this study and resources' scarcity, only few metrics have been extracted and analyzed at this stage.
+    
+    
 
 
 
-This fact exposes such code bases to well known problems \cite{code_smell_definition,domain_specific_code_smells} that impact maintainability. For instance, a series of deeply nested If-else constructs makes difficult to backtrack the data flow and hence result in error-prone maintenance activities.
 
 \section{Research Question 2}
 
 The scope of User Interface tests is to validate the state of the User Interface after a predefined series of actions occurred. However, this entails a different use for the constructs compared to conventional source code and possibly new ones specific for these use cases. For this reason the second RQ will inspect these unique items.
 
-However, keeping into account the differences between property based testing and image recognition testing is important. The former uses property or meta-properties of UI components to identify them and simulate user events over them. The latter, instead, uses image recognition algorithms to identify such widgets. This different identification method imposes different approached when creating the test suite that are analyzed separately in the following sections.
+However, keeping into account the differences between property based testing and image recognition testing is important. The former uses property or meta-properties of UI components to identify them and simulate user events over them. The latter, instead, uses image recognition algorithms to identify such widgets. This different identification method imposes different approached when creating the test suite that are analyzed separately in the following sections, presenting both quantitative and qualitative results.
 
 \todo{Talk about the coordinates based approach}
 
 \subsection{Property-based problems}
+    
+    
 
 \subsection{Coordinate-based problems}
 
@@ -29,5 +42,11 @@ However, keeping into account the differences between property based testing and
 
 \section{Research Question 3}
 
-Finally, the purpose of this RQ is to properly characterize TD items identified in the previous sections. The interest, in fact, divides TD items that must be solved immediately from ones that allow a strategical management of Technical Debt itself. 
+Finally, the purpose of this RQ is to complete the description of the TD items identified by RQ 1 and RQ 2. Once again, qualitative and quantitative data has been treated separately.
+
+\subsection{Qualitative Data}
+    
+
+\subsection{Quantitative Data}
+    
 
