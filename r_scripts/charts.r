@@ -21,7 +21,7 @@ avg_uft_mr_temp2 <- read.csv("H:/Desktop/csvs/avg_uft_mr_temp2.csv")
 
 
 rq1_sources <- read.csv("C:/Users/marcello.steiner/Desktop/thesis/figure_src/RQ1/RQ1_sources.csv", sep=";")
-
+rq2_sources <- read.csv("C:/Users/marcello.steiner/Desktop/thesis/figure_src/RQ2/sources.csv", sep=";")
 
 #Needed to stop the script so I can save the image :)
 readkey <- function(){
@@ -61,23 +61,23 @@ plotBarForSources <- function(dataset, names = NULL, legendPos = "top"){
   barplot(
     t(tmp),
     col = chartColors,
-    cex.names = 0.5,
+    cex.names = 0.51,
     ylab = "Number of mentions"
   )
   par(xpd = TRUE)
   if(!is.null(names)){
     legend(
-      0,
-      7,
       legendPos,
       legend=rev(names), 
       fill = rev(chartColors),
-      cex = 0.7,
-      horiz = TRUE
+      cex = .534,
+      horiz = TRUE,
+      inset = c(0,-0.12)
       )
   }
 }
 plotBarForSources(RQ1_sources, names(RQ1_sources)[2:6])
+plotBarForSources(rq2_sources, names(rq2_sources)[2:6])
 
 
 #bar <- list(a=proness_uft_jmp_birch$PRONESS)
