@@ -54,10 +54,17 @@ plotBarForSources <- function(dataset, names = NULL, legendPos = "topright"){
   rownames(tmp) <- dataset[, 1]
   barplot(
     t(tmp),
-    col = chartColors
+    col = chartColors,
+    cex.names = 0.6,
+    ylab = "Number of mentions"
   )
   if(!is.null(names)){
-    legend(legendPos,legend=rev(names), fill = rev(chartColors))
+    legend(
+      legendPos,
+      legend=rev(names), 
+      fill = rev(chartColors),
+      cex = 0.7
+      )
   }
   
 }
