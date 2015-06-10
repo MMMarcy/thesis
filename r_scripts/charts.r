@@ -59,9 +59,9 @@ plotLinesForProject <- function(projectName, lineData, lineNames, legendPos="bot
 #  barplot(proness_uft_common$PRONESS, names.arg = proness_uft_common$COMPLEXITY)
 #}
 
-plotBarForSources <- function(dataset, names = NULL, legendPos = "top"){
+plotBarForSources <- function(dataset, names = NULL, legendPos = "topright"){
   #cleanDev()
-  chartColors <- brewer.pal(length(dataset), "Blues")
+  chartColors <- brewer.pal(length(names), "Blues")
   tmp <- as.matrix(dataset[-1])
   rownames(tmp) <- dataset[, 1]
   barplot(
@@ -76,14 +76,12 @@ plotBarForSources <- function(dataset, names = NULL, legendPos = "top"){
       legendPos,
       legend=rev(names), 
       fill = rev(chartColors),
-      cex = .534,
-      horiz = TRUE,
-      inset = c(0,-0.12)
+      cex = .534
       )
   }
 }
-plotBarForSources(RQ1_sources, names(RQ1_sources)[2:6])
-plotBarForSources(rq2_sources, names(rq2_sources)[2:6])
+plotBarForSources(RQ1_sources, names(RQ1_sources)[2:5])
+plotBarForSources(rq2_sources, names(rq2_sources)[2:5])
 
 
 #bar <- list(a=proness_uft_jmp_birch$PRONESS)
