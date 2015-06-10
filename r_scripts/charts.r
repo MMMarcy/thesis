@@ -40,7 +40,7 @@ plotLinesForProject <- function(projectName, lineData, lineNames, legendPos="bot
     type="l",
     xlim=c(0,max(sapply(lineData,length))),
     main = projectName,
-    xlab = "Revision",
+    xlab = "Revision Index",
     ylab = "Average cyclomatic complexity"
   )
   mapply(lines,lineData,col=seq_along(lineData),lty=1)
