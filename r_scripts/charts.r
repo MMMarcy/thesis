@@ -61,7 +61,7 @@ plotLinesForProject <- function(projectName, lineData, lineNames, legendPos="bot
 
 plotBarForSources <- function(dataset, names = NULL, legendPos = "topright"){
   #cleanDev()
-  chartColors <- brewer.pal(length(names), "Blues")
+  chartColors <- brewer.pal(length(names), "RdBu")
   tmp <- as.matrix(dataset[-1])
   rownames(tmp) <- dataset[, 1]
   barplot(
@@ -81,7 +81,7 @@ plotBarForSources <- function(dataset, names = NULL, legendPos = "topright"){
   }
 }
 plotBarForSources(RQ1_sources, names(RQ1_sources)[2:5])
-plotBarForSources(rq2_sources, names(rq2_sources)[2:5])
+plotBarForSources(rq2_sources, names(rq2_sources)[2:5], "top")
 
 
 #bar <- list(a=proness_uft_jmp_birch$PRONESS)
