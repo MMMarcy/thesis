@@ -45,7 +45,13 @@ plotLinesForProject <- function(projectName, lineData, lineNames, legendPos="bot
   )
   mapply(lines,lineData,col=seq_along(lineData),lty=1)
   if(!is.null(lineNames)){
-    legend(legendPos,legend=lineNames,lty=1,col=seq_along(lineData))
+    legend(
+      legendPos,
+      legend=lineNames,
+      lty=1,
+      col=seq_along(lineData),
+      cex=.6
+      )
   }
 }
 
@@ -92,15 +98,15 @@ data <- list(
   b=avg_uft_smoke$AVG
 )
 name <- list(
-  a="Repository A1 (Regression tests)",
-  b="Repostiory A2 (Integration + Smoke tests)"
+  a="Rep. A1 (Regression tests)",
+  b="Rep. A2 (Integration + Smoke tests)"
   )
 plotLinesForProject("Project A", data, name)
 readkey()
 
 #Create line chart for Project B
 data <- list(a=avg_uft_mr_temp2$AVG)
-name <- list(avg="Repository B1 (Smoke tests)")
+name <- list(avg="Rep. B1 (Smoke tests)")
 plotLinesForProject("Project B", data, name)
 readkey()
 
@@ -112,17 +118,17 @@ data <- list(
   d=avg_uft_jmp_smoke$AVG
   )
 name <- list(
-  a="Repository C1 (Regression tests)",
-  b="Repository C2 (Regression tests)",
-  c="Repository C3 (Regression tests)",
-  d="Repository C4 (Smoke tests)"
+  a="Rep. C1 (Regression tests)",
+  b="Rep. C2 (Regression tests)",
+  c="Rep. C3 (Regression tests)",
+  d="Rep. C4 (Smoke tests)"
   )
 plotLinesForProject("Project C", data, name,"topright")
 readkey()
 
 #Create line chart for Project D
 dat <- list(a=avg_uft_common$AVG)
-nam <- list(a="Repository D1 (Reusable functions)")
+nam <- list(a="Rep. D1 (Reusable functions)")
 plotLinesForProject("Project D", dat, nam, "topright")
 
 
