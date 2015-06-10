@@ -10,6 +10,7 @@ uft_mr_temp2 <- read.csv("H:/Desktop/csvs/avg_length/uft_mr_temp2.csv")
 
 
 plotLinesForProject <- function(projectName, lineData, lineNames, legendPos="bottomright"){
+  
   plot(
     unlist(lineData),
     type="l",
@@ -25,7 +26,7 @@ plotLinesForProject <- function(projectName, lineData, lineNames, legendPos="bot
       legend=lineNames,
       lty=1,
       col=seq_along(lineData),
-      cex = 0.6
+      cex = .6
     )
   }
 }
@@ -45,7 +46,7 @@ readkey()
 #Create line chart for Project B
 data <- list(a=uft_mr_temp2$AVG)
 name <- list(avg="Rep. B1 (Smoke tests)")
-plotLinesForProject("Project B", data, name, "topright")
+plotLinesForProject("Project B", data, name, "bottomright")
 readkey()
 
 #Create line chart for project C
@@ -61,7 +62,7 @@ name <- list(
   c="Rep. C3 (Regression tests)",
   d="Rep. C4 (Smoke tests)"
 )
-plotLinesForProject("Project C", data, name)
+plotLinesForProject("Project C", data, name, "topright")
 readkey()
 
 #Create line chart for Project D
