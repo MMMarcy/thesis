@@ -54,21 +54,21 @@ Finally, the two middle layers of the pipeline contain test that can be semantic
 
 Among the ongoing projects at the Company, this study will inspect the accretion of TD in projects using Hewlett Packard's Unified Functional Tests (UFT) to test user interfaces. Precisely, there are two projects meeting this requirement and will be called Project A and B in the rest of the document.
 
-Both projects have associated two unique repositories, one for Smoke Testing and another one for Regression Testing. Furthermore, there are two shared repositories that contain common methods and functions used by test scripts. For this reason, considering the substantial difference in purpose of such repositories they are considered separately. Therefore, the label \textit{Project C} is used to group them within an abstract entity that does not map to any real active project.
+Both projects have associated two unique repositories, one for Smoke Testing and another one for Regression Testing. Furthermore, there are two shared repositories that contain common methods and functions used by test scripts. For this reason, considering the substantial difference in purpose of such repositories they are considered separately. Therefore, the label \textit{Project D} is used to group them within an abstract entity that does not map to any real active project.
 
-Fig. \inote{Create figure with repositories layout.} illustrates the configuration of the cases under analysis and their relations.
 
 \subsubsection{Project A}
-Project A consist of a highly customizable software used to manage crew personnel both in the short and long term. Given their high customizability some tests are customer specific and hence not included in the analysis since represent corner cases that are too specific and could hinder external validity.
+This project is the new solution developed to replace the legacy Project B. It is Java based and the client runs on the Windows operating system.
 
 \subsubsection{Project B}
-Project B is a tool used for registering and handling passengers. It register who is on-board of which airplane and so forth. This tool is less customizable than project A, but it is a more critical part of the Ecosystem. In fact, international rules require a constant monitoring of airplanes' passengers.
+Project B is a tool used for registering and handling passengers. It register who is on-board of which airplane and so forth. This tool is less customizable than project A, but it is a more critical part of the Ecosystem. In fact, international rules require a constant monitoring of airplanes' passengers. The client and server are monolithic and the client is run on clients that allow to run Unix X-sessions from other operative systems.
 
-\subsubsection{Project C}
-As mentioned before, Project C consists of two repositories that contain generic functions used by test suites. These tie UFT tests with the Windows operating system. They allow to kill and spawn a process, create and read files, etc. Furthermore, they also create skeleton for the report engines; they are used to create summaries of test runs in different formats such as HTML, XML, etc.
+\subsection{Project C}
+Project  consist of a highly customizable software used to manage crew personnel both in the short and long term. The client runs on Windows and it is realized with Java.
 
+\subsubsection{Project D}
+As mentioned before, Project D consists of two repositories that contain generic functions used by test suites. These tie UFT tests with the Windows operating system. They allow to kill and spawn a process, create and read files, etc. Furthermore, they also create skeleton for the report engines; they are used to create summaries of test runs in different formats such as HTML, XML, etc.
 
-\todo{Finish the description}
 %
 %
 % END CASE DESCRITPION
@@ -83,10 +83,6 @@ As mentioned before, Project C consists of two repositories that contain generic
 \section{Data Gathering}
 As recommended by \cite{case_study_guide,case_study_software_engineering}, data has been gathered from various sources in order to increase Data Triangulation and hence improve the reliability of the study. These sources are: 1) informal interviews (a.k.a.\ coffee machine / water bowl interviews), 2) the company´s forum, 3) the company´s issue tracker and backlog, 4) the repositories of the relevant project, and 5) semi-structured interviews.
 
-Finally, considering the extensive amount of data that has been generated, it has proven impossible to insert the raw results in the report. Instead, it is available on-line at \href{http://???/}. However, readers should be aware that the raw data was anonymized and every sensitive information was also removed. 
-
-\todo{Insert link to thesis database}
-\todo{Mention that data is 3rd stage}
 \todo{Mention that I used both quantitative and qualitative sources for improving reliability}
 
 \subsection{Informal Interviews}
@@ -97,7 +93,7 @@ This source helped defining the scope of the inquiry in the first stages of the 
 In fact, frequency, location, and interviewees were random. Furthermore, as highlighted by McNamara \cite{general_guidelines_for_interview}, this kind of inquiry is not steered by schemes, but instead affected by the interaction between participants. Moreover, they occurred during lunch and coffee breaks whenever possible, and bootstrapped by current issues encountered by the interviewee. Apparently a not controlled environment. However, their importance during the first phases of this Thesis is clear since they focused the attention on important parts, sources, and documentation.
 
 \subsection{Mining of The Forum} \label{mining_forum}
-In order to enable Knowledge Sharing the company adopted Confluence, a collaborative software / forum developed and maintained by Atlassian. It allows technical and non-technical employees to share procedures, ideas, and comments in an asynchronous fashion, and, for this reason, this source is valuable since it contains numerous information, which can shed light on the problems this Thesis aim to study.
+In order to enable Knowledge Sharing the company adopted Confluence, a collaborative software / forum developed and maintained by Atlassian\texttrademark\. It allows technical and non-technical employees to share procedures, ideas, and comments in an asynchronous fashion, and, for this reason, this source is valuable since it contains numerous information, which can shed light on the problems this Thesis aim to study.
 
 However, considering the magnitude of the available data, it was important to ensure that the mining did not miss any information. Therefore, it has been performed through a systematic approach using the embedded search engine provided by the tool and two manual filtering steps. In fact, the system contains data covering several years and include several thousand discussions threads and many more answers. 
 
@@ -149,9 +145,6 @@ The spreadsheet contains some statistics not provided by the APIs, but thanks to
 			\end{tabu}		
 		\end{table}
 
-\todo{Fix the script output with dates that are parseable by excel :( }
-
-
 
 For future studies an version of the spreadsheet stripped of all sensitive information is available at \inote{Link of spreadsheet}. The process removed all these column that were intellectual properties of the Company, e.g.\ Project name has been replaced with a cardinal number in order to allow a per-project analysis.
 
@@ -161,12 +154,6 @@ The company extensively uses \textit{Concurrent Versions System}. At the time of
 
 Given the amount of data contained in this archival source, the data coming from other sources was used to select the subset of repositories that better suits the goal of this Thesis. I.e.\ a selected number of repositories targeting test code that are currently under active development or maintenance.
 
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[width=\textwidth,keepaspectratio]{figure/methods/database_diagram.pdf}
-    \caption{Database diagram generated by the automatic parsing tool}
-    \label{fig:database_diagram}
-\end{figure}
 
 \subsection{Semi-Structured Interviews} \label{sec:semi-structured_interviews}
 During this study total of \inote{Number of Interviews here} semi-structured interviews was conducted; they follow the guidelines expressed in \cite{interview_guideline}. This interview format allows a sufficient degree of flexibility necessary to adapt the inquiry while maintaining the scope constrained.
