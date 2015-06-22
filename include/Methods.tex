@@ -114,7 +114,7 @@ The spreadsheet contains some statistics not provided by the APIs, but thanks to
 
 
 
-\begin{table}[htb]
+\begin{table}[!htb]
 			\centering
 			\renewcommand{\arraystretch}{1.2}
 			\tabulinesep=1.2mm
@@ -150,10 +150,173 @@ For future studies an version of the spreadsheet stripped of all sensitive infor
 
 
 \subsection{Analysis of The Repositories} \label{sec:analysis_of_the_repos}
-The company extensively uses \textit{Concurrent Versions System}. At the time of writing their system contains 870 repositories of various size belonging to 20 different projects in a many-to-many relationship. The company also deployed two different tools to browse such repositories with ease: \textit{HgWeb} and \textit{Crucible + FishEye}. They are migrating to the latter since it also allows asynchronous code reviews and integrates seamlessly with the Issue Tracker and the Forum as part of the suite developed by Atlassian.
+The company uses \textit{Concurrent Versions System} extensively. At the time of writing their system contains 870 repositories of various size belonging to 20 different projects in a many-to-many relationship. The company also deployed two different tools to browse such repositories with ease: \textit{HgWeb} and \textit{Crucible + FishEye}. They are migrating to the latter since it also allows asynchronous code reviews and integrates seamlessly with the Issue Tracker and the Forum as part of the suite developed by Atlassian.
 
-Given the amount of data contained in this archival source, the data coming from other sources was used to select the subset of repositories that better suits the goal of this Thesis. I.e.\ a selected number of repositories targeting test code that are currently under active development or maintenance.
+The analysis performed to this archival source was both manual and automated. The former served the purpose of finding and corroborate the preliminary thematic analysis performed to identify possible TD items. The latter, instead, was used to obtain trends about how said items evolve. Both methodology are thoroughly analyzed in following subsections.
 
+\subsubsection{Manual analysis}
+    This inquiry target the code comments found in the relevant repositories associated with the four cases under study. In fact, such entries could include TODOs or complaints about the code they are tied to. With this in mind the inquiry consisted in manually browsing the source code files of the five most recent versions available on the CVS. Once collected, duplicate comments have been removed (e.g.\ comments that did not change across different revisions) in order to not bias the relevance of them when performing the Thematic analysis.
+
+
+\subsubsection{Automated analysis}
+    According to Staron et al.\ \cite{metrics_paper}, in order to perform an automatic analysis a measurement system has to be defined. Therefore, after performing the preliminary thematic analysis, which highlighted possible TD items within testware, a \textit{specification of measurement} has been created for applicable items. Applicability, in this context, means that chosen metrics are 1) created by statically parsing the source code on a per revision base, and 2) the extrapolation of the data does not require tremendous computational power since inaccessible by author of this study.
+    
+    Furthermore, Staron et al.\ \cite{metrics_paper} require to specify thresholds to identify optimal, acceptable, and not acceptable level for each metric. However, considering the exploratory nature of this study this action has been omitted. In fact, the existing body of knowledge is lacking prior examples of such threshold or, if present, their use in relation with test code is novel. Therefore, said activity would have been based on the author best guesses and undoubtedly biased.
+    
+    With that said, adhering to the guidelines provided by Staron et al.\ \cite{metrics_paper}, the following specification measurements has been created (Table \ref{tab:complexity_measurement_system}, \ref{tab:statements_measurement_system}, and \ref{tab:length_measurement_system} ) for three of the items revealed by the thematic analysis. Rationales regarding the infeasibility of the remaining two items are provided in chapter \ref{sec:study_results}.
+    
+    Finally, the tool that gathered such measurements is hosted as an open source repository on GitHub\footnote{\href{https://goo.gl/VWaTGm}{https://goo.gl/VWaTGm}}. Furthermore, appendix \ref{app:database} illustrates the database's schema that said tool generates and lists the queries used to retrieve the metrics.
+    
+    \begin{table}[!htb]
+		\centering
+		\tabulinesep=1.2mm
+		\begin{tabu} to \textwidth {|X|X[2]|}
+			    
+			\hline
+			\textbf{Entry} & \textbf{Action taken} \\ 
+			\hline
+			
+			Information need & How is the code complexity evolving in reposiotry X? \\
+			\hline
+			
+			Indicator & McCabe's \cite{cyclomatic_complexity} cyclomatic complexity \\
+			\hline
+			
+			Analysis model & Not applicable \\
+			\hline
+			
+			Derived measures & Not applicable \\
+			\hline
+			
+			Measurement function & SUM(CC[number of revision] for all functions)/TNF[number of revision] \\
+			\hline
+			
+			Base measures & Object: revision \newline
+			                    \textbf{CC}: cyclomatic complexity of a given function \newline
+			                    \textbf{TNF}: total number of function for a given revision \\
+		    \hline
+			
+			Measurement method & For CC (summary of what explained in \cite{cyclomatic_complexity}):
+			    \begin{enumerate}
+			    \item Calculate number of edges in the function graph (NE)
+			    \item Calculate the number of nodes in the function graph (NN)
+			    \item Calculate the number of connected components in the function (NCC) graph
+			    \item CC = NE - NN + 2 * NCC 
+			    \end{enumerate}
+			
+			For TNF:
+			\begin{enumerate}
+			\item TNF = Calculate the number of functions in a given revision
+			\end{enumerate}
+			
+			\\
+			\hline
+				
+		\end{tabu}
+		\caption[Specification measurement for cyclomatic complexity]
+        {Specification measurement for cyclomatic complexity following Staron et al.\ \cite{metrics_paper} guidelines}
+        \label{tab:complexity_measurement_system}
+    \end{table}
+    
+    \begin{table}[!htb]
+		\centering
+		\tabulinesep=1.2mm
+		\begin{tabu} to \textwidth {|X|X[2]|}
+			    
+			\hline
+			\textbf{Entry} & \textbf{Action taken} \\ 
+			\hline
+			
+			Information need & How is the statements' complexity evolving in reposiotry X? \\
+			\hline
+			
+			Indicator & Percentage of complex statments \\
+			\hline
+			
+			Analysis model & Not applicable \\
+			\hline
+			
+			Derived measures & Not applicable \\
+			\hline
+			
+			Measurement function & COUNT(CS[number of revision])/TNS[number of revision] \\
+			\hline
+			
+			Base measures & Object: revision \newline
+			                    \textbf{CS}: number of complex statments \newline
+			                    \textbf{TNS}: total number of statements \\
+		    \hline
+			
+			Measurement method & For CS:
+			    \begin{enumerate}
+			    \item count the number of statments with length greater than 80 characters (excluding whitespaces).
+			    \end{enumerate}
+			
+			For TNS:
+			\begin{enumerate}
+			\item Calculate the number of statements in a given revision
+			\end{enumerate}
+			
+			\\
+			\hline
+
+				
+		\end{tabu}
+		\caption[Specification measurement for statements' complexity]
+        {Specification measurement for statements' complexity following Staron et al.\ \cite{metrics_paper} guidelines}
+        \label{tab:statements_measurement_system}
+    \end{table}
+    
+    \begin{table}[!htb]
+		\centering
+		\tabulinesep=1.2mm
+        \begin{tabu} to \textwidth {|X|X[2]|}
+			    
+			\hline
+			\textbf{Entry} & \textbf{Action taken} \\ 
+			\hline
+			
+			Information need & Is the code base in Repository X properly modularized? \\
+			\hline
+			
+			Indicator & Average length of functions \\
+			\hline
+			
+			Analysis model & Not applicable \\
+			\hline
+			
+			Derived measures & Not applicable \\
+			\hline
+			
+			Measurement function & SUM(FL[number of revision])/TFN[number of revision] \\
+			\hline
+			
+			Base measures & Object: revision \newline
+			                    \textbf{FL}: number of LOC \newline
+			                    \textbf{TFN}: number of functions \\
+		    \hline
+			
+			Measurement method & For FL:
+			    \begin{enumerate}
+			    \item count the number of LOC in a given function.
+			    \end{enumerate}
+			
+			For TFN:
+			\begin{enumerate}
+			\item Calculate the number of functions in a given revision
+			\end{enumerate}
+			
+			\\
+			\hline
+
+				
+		\end{tabu}
+		\caption[Specification measurement for single responsibility violation]
+        {Specification measurement for single responsibility violation following Staron et al.\ \cite{metrics_paper} guidelines}
+        \label{tab:length_measurement_system}
+    \end{table}
+
+\FloatBarrier
 
 \subsection{Semi-Structured Interviews} \label{sec:semi-structured_interviews}
 During this study total of \inote{Number of Interviews here} semi-structured interviews was conducted; they follow the guidelines expressed in \cite{interview_guideline}. This interview format allows a sufficient degree of flexibility necessary to adapt the inquiry while maintaining the scope constrained.
