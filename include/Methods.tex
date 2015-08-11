@@ -50,7 +50,7 @@ Finally, the two middle layers of the pipeline contain test that can be semantic
     \label{fig:testing_pipeline}
 \end{figure}
 
-\subsection{Cases definition and units of Analysis}
+\subsection{Cases definition and units of Analysis} \label{sec:cases_definition}
 
 Among the ongoing projects at the Company, this study will inspect the accretion of TD in projects using Hewlett Packard's Unified Functional Tests (UFT) to test user interfaces. Precisely, there are two projects meeting this requirement and will be called Project A and B in the rest of the document.
 
@@ -158,7 +158,7 @@ The analysis performed to this archival source was both manual and automated. Th
     This inquiry target the code comments found in the relevant repositories associated with the four cases under study. In fact, such entries could include TODOs or complaints about the code they are tied to. With this in mind the inquiry consisted in manually browsing the source code files of the five most recent versions available on the CVS. Once collected, duplicate comments have been removed (e.g.\ comments that did not change across different revisions) in order to not bias the relevance of them when performing the Thematic analysis.
 
 
-\subsubsection{Automated analysis}
+\subsubsection{Automated analysis} \label{sec:automated_analysis}
     According to Staron et al.\ \cite{metrics_paper}, in order to perform an automatic analysis a measurement system has to be defined. Therefore, after performing the preliminary thematic analysis, which highlighted possible TD items within testware, a \textit{specification of measurement} has been created for applicable items. Applicability, in this context, means that chosen metrics are 1) created by statically parsing the source code on a per revision base, and 2) the extrapolation of the data does not require tremendous computational power since inaccessible by author of this study.
     
     Furthermore, Staron et al.\ \cite{metrics_paper} require to specify thresholds to identify optimal, acceptable, and not acceptable level for each metric. However, considering the exploratory nature of this study this action has been omitted. In fact, the existing body of knowledge is lacking prior examples of such threshold or, if present, their use in relation with test code is novel. Therefore, said activity would have been based on the author best guesses and undoubtedly biased.
@@ -319,10 +319,44 @@ The analysis performed to this archival source was both manual and automated. Th
 \FloatBarrier
 
 \subsection{Semi-Structured Interviews} \label{sec:semi-structured_interviews}
-During this study total of \inote{Number of Interviews here} semi-structured interviews was conducted; they follow the guidelines expressed in \cite{interview_guideline}. This interview format allows a sufficient degree of flexibility necessary to adapt the inquiry while maintaining the scope constrained.
+During this study a total of four semi-structured interviews was conducted; they follow the guidelines expressed in \cite{interview_guideline}. Two of them were used to validate the metrics defined in Section \ref{sec:automated_analysis} whereas the other two focused in validating the findings with a particular focus on \textbf{RQ 3}, due to the scarcity of data in such topic.
 
-\todo{Finish the subsection describing settings, who has been interviewed and such
-}
+\todo{Add description of how validation interviews have been conducted}
+
+
+This study used the semi-structured interview format since it allows a sufficient degree of flexibility necessary to adapt the inquiry while maintaining the scope constrained.
+
+The four interviewees are, at the time of writing, employees of the Company and actively worked on at least one of the four cases described in section \ref{sec:cases_definition}. Table summarizes the interviews conducted.
+
+\begin{table}[!htb]
+	\centering
+	\tabulinesep=1.2mm
+	\begin{tabu} to \textwidth {|X|X|X|}
+		
+		\hline
+		\textbf{Interviewee ID} & \textbf{Projects contributed} & \textbf{Interview kind} \\ 
+		\hline
+		
+		1 & All projects & Metrics validation \\
+		\hline
+		
+		2 & Project A, B, and C & Metrics validation \\
+		\hline
+		
+		3 & Project C & Findings validation \\
+		\hline
+		
+		4 & Project A & Findings validation \\
+		\hline		
+		
+	\end{tabu}
+	\label{tab:interviews_summary}
+	\caption[Summary of conducted interviews]{Interviews summary including goal of the interview and relevant projects for each interviewee as defined in section \ref{sec:cases_definition}.}
+\end{table}
+
+All interviews were 1) conducted in a meeting room within the Company office with no external auditors and 2) lasted thirty minutes.
+
+
 
 
 
