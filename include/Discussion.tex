@@ -1,13 +1,104 @@
 \chapter{Discussion}
 
-This section contains the discusses the results summarized in the previous Section and is divided per research question. Each technical debt item is described following the structure proposed by Li et al.\ \cite{mapping_study_td} indicating also which data was not applicable due to the nature of this study. Moreover, since one of the required fields in this proposed structure is the interest amount, this have been included while providing the description and hence section \ref{sec:res_rq3} provides possible explanation of this phenomenon.
+This section contains the discusses the results summarized in the previous Section on a per TD item basis, with a coarser clustering following the defined RQs. Each technical debt item is described following the structure proposed by Li et al.\ \cite{mapping_study_td}. However, fields not applicable to the nature of this study are omitted.
 
-\todo{rewrite this shit}
+Finally, since one of the required fields in this proposed structure is the interest amount that is the raison d'etre of RQ3, the explanation is provided together with the description of every TD item. Therefore, a separate section for that RQ is omitted.
 
 \section{Research Question 1}
 
+    \subsection{DRY violations}
+    
+        DRY is an acronym that stands for Don't Repeat Yourself. Its essence is about that logic should be implemented once and only once and reused in different sections of the code-base when needed.
+
+        The accretion of this TD item happens in two different circumstances. Firstly, when the code is poorly documented is harder for maintainers to know which primitives and functionalities are available, and the more extensive the code base, the more developer incur in this problem.
+        
+        The other source of DRY violations is the lack of tooling. In fact, developers and testers alike agree that not having a full-fledged IDE (Integrated Development Environment) causes these problems.
+        
+        In the Company, both causes are present with the lack of documentation being the predominant one. In fact, UFT provides an IDE that is considered inferior to other tools available for Source Code Development like Eclipse or IntelliJ IDEA. Therefore, part of this TD manifestations can be caused from this. However, the interviews revealed this to be more of a nuisance than a problem. On the other hand, the lack of documentation is perceived as a real problem: testers need to browse the source code to understand what a function does. Moreover, when asked how familiar they are with the functionalities provided by the common repository or other parts of the test code-base none of the interviewees provided an answer ascribable to a good knowledge.
+        
+        Moreover, the severity of this TD item is even greater if considered from a holistic point of view. In fact, duplicated logic inflates function complexity by requiring testers to reimplement such logic and the single responsibility violation, since if the logic is duplicated it means it can be extracted into a reusable entity that does that task.
+        
+        For these reasons, the author believes that this TD item perfectly matches the correspondent one in source code TD with no differences. Moreover, the interviewees perceive this problem as serious (4.5/5 on Likert's scale); roughly the same as expressed by Hunt and Thomas in \textit{The pragmatic programmer} \cite{thomas1999pragmatic}.
+    
+    
+    	\begin{table}[!htbp]
+		\centering
+		\tabulinesep=1.2mm
+		\begin{tabu} to \textwidth {|X|X[3]|}
+			
+			\hline
+			\textbf{Field} & \textbf{Value} \\ 
+			\hline
+			
+			ID & DRY Violations \\
+			\hline
+			
+			Location & Logic of UI tests \\
+			\hline
+			
+			Responsible & Tester developer \\
+			\hline
+			
+			Type & Code Technical debt \\
+			\hline	
+			
+			Description & Repeating the same logic of code in at least two different sections of the code-base\\
+			\hline
+			
+			%Date / Time & Not applicable \\
+			%\hline
+			
+			%Principal & Non applicable \\
+			%\hline
+			
+			Interest amount &  4.5/5 (Between High and Very on Likert's scale) \\
+			\hline
+			
+			%Interest probability & Not applicable \\
+			%\hline
+			
+			%Interest standard deviation & Not applicable \\
+			%\hline
+			
+			Correlations with other TD items & Functions Complexity, God functions\\
+			\hline 	 
+			
+			%Name & Not applicable \\
+			%\hline 		
+			
+			%Context & Not applicable \\
+			%\hline
+			
+			Propagation rules & It is very likely that it accrues since flattening a deeply nested hierarchy of statements is error-prone and tedious.\\
+			\hline
+			
+			Intentionality & Both intentional and non \\
+			\hline 	 	
+			
+		\end{tabu}
+		\label{tab:res-function-complexity}
+		\caption[Function complexity specification]{Function complexity specification according to guidelines specified by \cite{mapping_study_td}.}
+	\end{table}
+
 	\subsection{Function complexity}
 	
+	
+	The first TD item analyzed is Function Complexity as measured by the Cyclomatic Complexity metric described by McCabe \cite{cyclomatic_complexity}.
+
+    This TD item accrues in the source code that contain the logic behind the UI tests. Specifically, within the functions that manipulate both the global state (e.g.\ the UI under test) and the data retrieved from it once an action occurs. A function, in the Software Engineering field, refers to a named section of the source code that perform a specific task and can use an input or solely rely on modification of the mentioned global state. The analysis performed in this study does not differentiate between those two variants since cyclomatic complexity applies to both. This metric captures how complex is the directed acyclic graph that links one statement to the other. Loops, IF-ELSE constructs, etc.\ inflate such complexity by spanning branches and loops that make harder to reason about the data flow.
+    
+    In the Company under study, there are people appointed as testers who are in charge of developing and maintaining such code base. These people are appointed as responsible since the test code health is under their responsibilities. Furthermore, the accretion of this TD item is also intentional, since it is possible to distinguish between a plain, easy to follow function and an intricate one. Moreover, by their admission, once the test code is deployed and effectively enters the testing pipeline, it becomes harder to remedy and refactor. In fact, \textit{"even if the code is messy refactoring it is hard because many functions start using the code, ..., and fixing it always breaks something else or introduce errors..." } - Tester working with regression code-base.
+    
+    For all these reasons, the author of this study believes that the available knowledge on Function Complexity related to Technical Debt is widely applicable in the realm of UI testing, with little differences. Most notably, these differences are about which role the code base has (e.g.\ regression tests or smoke tests) and the threshold above which a function is considered too complex. 
+    
+    The first item is necessary since smoke tests are, by nature, shallow and hence less impacted by changes in the product. Therefore, the interest paid in such tests is low. On the opposite side of the spectrum, regression tests are extremely sensitive and hence entail a high debt. 
+    
+    The second difference is due the continuous manipulation of the global state that include both the test code and the application under test. This continuous referencing to external environments entails that most of the functions are referential opaque \cite{referential_transparency} and hence harder to decipher since variables are not directly visible to the developer.
+    
+    However, setting a definite threshold is out of scope for this study, and it is unlikely that such a value exists since it can be tool and testing language dependant.
+        
+    \todo{Enter relations with other TD items.}
+    	
 	
 	\begin{table}[!htbp]
 		\centering
