@@ -1,12 +1,76 @@
 \chapter{Discussion}
 
-This section contains the discusses the results summarized in the previous Section and is divided per research question.
+This section contains the discusses the results summarized in the previous Section and is divided per research question. Each technical debt item is described following the structure proposed by Li et al.\ \cite{mapping_study_td} indicating also which data was not applicable due to the nature of this study. Moreover, since one of the required fields in this proposed structure is the interest amount, this have been included while providing the description and hence section \ref{sec:res_rq3} provides possible explanation of this phenomenon.
 
-\section{RQ1}
+\todo{rewrite this shit}
+
+\section{Research Question 1}
+
+	\subsection{Function complexity}
+	
+	
+	\begin{table}[!htbp]
+		\centering
+		\tabulinesep=1.2mm
+		\begin{tabu} to \textwidth {|X|X[3]|}
+			
+			\hline
+			\textbf{Field} & \textbf{Value} \\ 
+			\hline
+			
+			ID & Function complexity \\
+			\hline
+			
+			Location & Logic of UI tests \\
+			\hline
+			
+			Responsible & Tester developer \\
+			\hline
+			
+			Type & Code Technical debt \\
+			\hline	
+			
+			Description & The use of complex logic (e.g.\ deeply nested if-else statements) within the body of a test script.\\
+			\hline
+			
+			%Date / Time & Not applicable \\
+			%\hline
+			
+			%Principal & Non applicable \\
+			%\hline
+			
+			Interest amount &  4/5 (High on Likert's scale) \\
+			\hline
+			
+			%Interest probability & Not applicable \\
+			%\hline
+			
+			%Interest standard deviation & Not applicable \\
+			%\hline
+			
+			Correlations with other TD items & Dry Violations, God functions\\
+			\hline 	 
+			
+			%Name & Not applicable \\
+			%\hline 		
+			
+			%Context & Not applicable \\
+			%\hline
+			
+			Propagation rules & It is very likely that it accrues since flattening a deeply nested hierarchy of statements is error-prone and tedious.\\
+			\hline
+			
+			Intentionality & Intentional \\
+			\hline 	 	
+			
+		\end{tabu}
+		\label{tab:res-function-complexity}
+		\caption[Function complexity specification]{Function complexity specification according to guidelines specified by \cite{mapping_study_td}.}
+	\end{table}
+
 
 \section{RQ2}
 
-\section{RQ3}
+\section{Research question 3} \label{sec:res_rq3}
 
-\section{RQ4}
 
