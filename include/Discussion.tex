@@ -76,8 +76,8 @@ Finally, since one of the required fields in this proposed structure is the inte
 			\hline 	 	
 			
 		\end{tabu}
-		\label{tab:res-function-complexity}
-		\caption[Function complexity specification]{Function complexity specification according to guidelines specified by \cite{mapping_study_td}.}
+		\label{tab:res-dry-violations}
+		\caption[DRY violations specification]{DRY violations specification according to guidelines specified by \cite{mapping_study_td}.}
 	\end{table}
 
 	\subsection{Function complexity}
@@ -87,15 +87,19 @@ Finally, since one of the required fields in this proposed structure is the inte
 
     This TD item accrues in the source code that contain the logic behind the UI tests. Specifically, within the functions that manipulate both the global state (e.g.\ the UI under test) and the data retrieved from it once an action occurs. A function, in the Software Engineering field, refers to a named section of the source code that perform a specific task and can use an input or solely rely on modification of the mentioned global state. The analysis performed in this study does not differentiate between those two variants since cyclomatic complexity applies to both. This metric captures how complex is the directed acyclic graph that links one statement to the other. Loops, IF-ELSE constructs, etc.\ inflate such complexity by spanning branches and loops that make harder to reason about the data flow.
     
-    In the Company under study, there are people appointed as testers who are in charge of developing and maintaining such code base. These people are appointed as responsible since the test code health is under their responsibilities. Furthermore, the accretion of this TD item is also intentional, since it is possible to distinguish between a plain, easy to follow function and an intricate one. Moreover, by their admission, once the test code is deployed and effectively enters the testing pipeline, it becomes harder to remedy and refactor. In fact, \textit{"even if the code is messy refactoring it is hard because many functions start using the code, ..., and fixing it always breaks something else or introduce errors..." } - Tester working with regression code-base.
+    In the Company under study, there are people appointed as testers who are in charge of developing and maintaining such code base. These people are appointed as responsible since the test code health is under their responsibilities. Furthermore, the accretion of this TD item is also intentional, since it is possible to distinguish between a plain, easy to follow function and an intricate one. Moreover, by their admission, once the test code is deployed and effectively enters the testing pipeline, it becomes harder to remedy and refactor. In fact, \textit{"even if the code is messy refactoring it is hard because many functions start using the code, ..., and fixing it always breaks something else or introduce errors ..." }. This could explain the crescent trends recognizable in Figures \ref{fig:project_a_avg_complexity}, \ref{fig:project_b_avg_complexity}, \ref{fig:project_c_avg_complexity}. In fact, despite active efforts (e.g.\ the drop in complexity in series A1 noticeable after a refactoring effort), the average complexity increases revision after revision with few exceptions.
+    
+    \todo{Add the chart from antonio papaer about the drop crtical point model}
     
     For all these reasons, the author of this study believes that the available knowledge on Function Complexity related to Technical Debt is widely applicable in the realm of UI testing, with little differences. Most notably, these differences are about which role the code base has (e.g.\ regression tests or smoke tests) and the threshold above which a function is considered too complex. 
     
-    The first item is necessary since smoke tests are, by nature, shallow and hence less impacted by changes in the product. Therefore, the interest paid in such tests is low. On the opposite side of the spectrum, regression tests are extremely sensitive and hence entail a high debt. 
+    The first item is necessary since smoke tests are, by nature, shallow and hence less impacted by changes in the product. Therefore, the interest paid in such tests is low. On the opposite side of the spectrum, regression tests are extremely sensitive and hence entail a high debt.
     
     The second difference is due the continuous manipulation of the global state that include both the test code and the application under test. This continuous referencing to external environments entails that most of the functions are referential opaque \cite{referential_transparency} and hence harder to decipher since variables are not directly visible to the developer.
     
     However, setting a definite threshold is out of scope for this study, and it is unlikely that such a value exists since it can be tool and testing language dependant.
+    
+    Finally, the enquiry revealed that such problem is inflated by the DRY violations described in the previous Section. In fact, as stated before, duplicate logic tends to appear within the body a function, and as expressed by one of the interviewee \textit{"we try to factor out the common parts when they appear in more than one place, but it is not easy. Especially when more than one tester maintains the code base ..."}.
         
     \todo{Enter relations with other TD items.}
     	
@@ -157,6 +161,70 @@ Finally, since one of the required fields in this proposed structure is the inte
 		\end{tabu}
 		\label{tab:res-function-complexity}
 		\caption[Function complexity specification]{Function complexity specification according to guidelines specified by \cite{mapping_study_td}.}
+	\end{table}
+	
+	
+	
+    \subsection{Single responsibility violations}
+    
+    
+    	\begin{table}[!htbp]
+		\centering
+		\tabulinesep=1.2mm
+		\begin{tabu} to \textwidth {|X|X[3]|}
+			
+			\hline
+			\textbf{Field} & \textbf{Value} \\ 
+			\hline
+			
+			ID & Single responsibility violations \\
+			\hline
+			
+			Location & Logic of UI tests \\
+			\hline
+			
+			Responsible & Tester developer \\
+			\hline
+			
+			Type & Code Technical debt \\
+			\hline	
+			
+			Description & The creation and use of functions that perform more than one task.\\
+			\hline
+			
+			%Date / Time & Not applicable \\
+			%\hline
+			
+			%Principal & Non applicable \\
+			%\hline
+			
+			Interest amount &  3/5 (Medium on Likert's scale) \\
+			\hline
+			
+			%Interest probability & Not applicable \\
+			%\hline
+			
+			%Interest standard deviation & Not applicable \\
+			%\hline
+			
+			Correlations with other TD items & Dry Violations, Function complexity \\
+			\hline 	 
+			
+			%Name & Not applicable \\
+			%\hline 		
+			
+			%Context & Not applicable \\
+			%\hline
+			
+			Propagation rules & Likely. Both creation and maintenance of the code base are affected and without code revisions it is challenging to define boundaries for functions.\\
+			\hline
+			
+			Intentionality & Intentional \\
+			\hline 	 	
+			
+		\end{tabu}
+		\label{tab:res-single-responsibility}
+		\caption[Single responsibility specification]{Single responsibility specification according to guidelines specified by \cite{mapping_study_td}.}
 	\end{table}
 
 
