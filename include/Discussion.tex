@@ -6,7 +6,7 @@ Finally, since one of the required fields in this proposed structure is the inte
 
 \section{Research Question 1}
 
-    \subsection{DRY violations}
+    \subsection{DRY violations} \label{sec:res-dry-violations}
     
         DRY is an acronym that stands for Don't Repeat Yourself. Its essence is about that logic should be implemented once and only once and reused in different sections of the code-base when needed.
 
@@ -167,6 +167,14 @@ Finally, since one of the required fields in this proposed structure is the inte
 	
     \subsection{Single responsibility violations}
     
+    This TD item occurs when a tester fails do break down the test logic in reusable chunks and let the function perform more than one specific task. 
+
+    The same considerations made for Section \ref{sec:res-dry-violations} apply with some differences. Specifically, even though a function embodies more than one task within its logic the Techincal Debt Interest yielded by this item is lower. In fact, according to the interviewees, it is possible that the logic that the tester failed to separate in a different function is indeed needed once in the whole codebase. This scenario results in worse code from a purely technical perspective, but it might be more efficient for the tester, and possibly it doesn't inflate the interest amount at all. According to the interviewees, this is the most typical situation, and hence they perceive this TD as low impact with respect to test maintenance. However, the medium score (3/5 on Likert's scale) in the interest amount field is due to the correlations between this TD item and others. Namely, DRY violations and Functions Complexity.
+    
+    Regarding the propagation rules, it is safe to assume that the accumulation of this TD item is likely. Firstly, it is challenging to define the boundaries of a function, i.e.\ what is the correct granularity. Secondly, identifying the violations and correct them is admittedly a tedious task. Finally, once the code-base is polluted with these violations, the accumulation ratio tends to increase. When implementing new logic developers tend to follow the flow of the existing code. That implies that when extending a high-quality codebase they put more efforts in the task, and the opposite happens when working with low quality one.
+    
+    For these reasons, the author believes that the intentionality of this TD item is both intentional and unintentional. During creation phase, i.e.\ when the code base is at the beginning of its life-cycle, the intentional part is preponderant. However, during maintenance, the unintentional aspect takes over.
+        
     
     	\begin{table}[!htbp]
 		\centering
@@ -177,16 +185,16 @@ Finally, since one of the required fields in this proposed structure is the inte
 			\textbf{Field} & \textbf{Value} \\ 
 			\hline
 			
-			ID & Single responsibility violations \\
+			ID & Single responsibility violations. \\
 			\hline
 			
-			Location & Logic of UI tests \\
+			Location & Logic of UI tests. \\
 			\hline
 			
-			Responsible & Tester developer \\
+			Responsible & Tester developer. \\
 			\hline
 			
-			Type & Code Technical debt \\
+			Type & Code Technical debt. \\
 			\hline	
 			
 			Description & The creation and use of functions that perform more than one task.\\
@@ -198,7 +206,7 @@ Finally, since one of the required fields in this proposed structure is the inte
 			%Principal & Non applicable \\
 			%\hline
 			
-			Interest amount &  3/5 (Medium on Likert's scale) \\
+			Interest amount &  3/5 (Medium on Likert's scale). \\
 			\hline
 			
 			%Interest probability & Not applicable \\
@@ -207,7 +215,7 @@ Finally, since one of the required fields in this proposed structure is the inte
 			%Interest standard deviation & Not applicable \\
 			%\hline
 			
-			Correlations with other TD items & Dry Violations, Function complexity \\
+			Correlations with other TD items & Dry Violations, Function complexity. \\
 			\hline 	 
 			
 			%Name & Not applicable \\
@@ -219,12 +227,87 @@ Finally, since one of the required fields in this proposed structure is the inte
 			Propagation rules & Likely. Both creation and maintenance of the code base are affected and without code revisions it is challenging to define boundaries for functions.\\
 			\hline
 			
-			Intentionality & Intentional \\
+			Intentionality & Both intentional and unintentional. \\
 			\hline 	 	
 			
 		\end{tabu}
 		\label{tab:res-single-responsibility}
 		\caption[Single responsibility specification]{Single responsibility specification according to guidelines specified by \cite{mapping_study_td}.}
+	\end{table}
+	
+	
+	\subsection{Complex Statements}
+	
+	
+	Assessing this Technical Debt item is controversial. In fact, some developers prefer to have code that develops horizontally whereas other vertically. However, among practitioners seem that the vertical flavor is the most widely adopted. For instance, the vast majority of IDEs (Integrated Development Environments) try to enforce developers to statements less than 80 characters long. The same is done by some code formatter and code linter. Some companies and open source organizations enforce every contributor to comply with their code styles (e.g.\ Google\footnote{\href{https://goo.gl/KSFfDO}{https://goo.gl/KSFfDO}} set an 80 character hard limit). The rationale is that short statements are more likely to perform one and only one action, and hence it is easier to follow the program's logic.
+
+    As it is possible to see from figures \ref{fig:statement_complexity_project_a}, \ref{fig:statement_complexity_project_b}, \ref{fig:statement_complexity_project_c}, and \ref{fig:statement_complexity_project_d} the percentage of statements that are longer than the set limit tend to decrease over time in all but one repositories. Repository A1 matches the conceptual model highlighted by Martini et al.\ \inote{add Antonio's paper}. It is visible that the codebase has been refactored once the \textit{emergency limit} is reached. All the repositories in Project C and D show a decreasing trend. Perhaps because the testers in charge of these repositories tend to refactor the code at every possible occasion instead of creating considerable change in one submission. However, the reader should also notice the substantial difference in the range of complex statements. Repositories belonging to Project A and B are considerably lower than project C and D. This highlights the differences in style that different developers have. 
+    
+    Another interesting fact is that these results seem to show that a percentage of complex statements of 5\% or below is optimal. If fact, repository B1, which is constant below such value is stable over time. Moreover, repository A1 at every refactoring reaches the 5\% mark and then it increases again.
+    
+    Regarding the interest's amount, interviewees agreed that this is \textit{"not an issue"}. However, they also agreed that having a high number of complex statements hinders the possibility of seeing code repetitions. Therefore, the author believes that is possible to associate with this TD a medium amount of interest.
+    
+    Finally, this item is completely intentional, since every programming language allows to break the statement in sub-statements. A possible explanation is that while developing, people tend to write a statement that follows the broke-down solution of the problem they have in mind one action at the time. Therefore, it is easier to match a single statement with one of those abstract actions. Moreover, during this step developers focus more on achieving a solution than respecting high-quality code and hence they fail to format the code to adhere to the style guidelines.
+
+	
+	
+	\begin{table}[!htbp]
+		\centering
+		\tabulinesep=1.2mm
+		\begin{tabu} to \textwidth {|X|X[3]|}
+			
+			\hline
+			\textbf{Field} & \textbf{Value} \\ 
+			\hline
+			
+			ID & Comlex statements \\
+			\hline
+			
+			Location & Logic of UI tests \\
+			\hline
+			
+			Responsible & Tester \\
+			\hline
+			
+			Type & Code Technical debt \\
+			\hline	
+			
+			Description & An overuse of statements that perform more than one action at the time, both with nested constructs or piped. \\
+			\hline
+			
+			%Date / Time & Not applicable \\
+			%\hline
+			
+			%Principal & Non applicable \\
+			%\hline
+			
+			Interest amount &  3/5 (Medium on Likert's scale). \\
+			\hline
+			
+			%Interest probability & Not applicable \\
+			%\hline
+			
+			%Interest standard deviation & Not applicable \\
+			%\hline
+			
+			Correlations with other TD items & Dry Violations\\
+			\hline 	 
+			
+			%Name & Not applicable \\
+			%\hline 		
+			
+			%Context & Not applicable \\
+			%\hline
+			
+			Propagation rules & Likely if no code formatting is enforced\\
+			\hline
+			
+			Intentionality & Both intentional and unintentional. \\
+			\hline 	 	
+			
+		\end{tabu}
+		\label{tab:res-complex-statements}
+		\caption[Complex statements TD item specification]{Complex statements Technical Debt item specification according to guidelines proposed by \cite{mapping_study_td}.}
 	\end{table}
 
 
