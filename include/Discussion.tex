@@ -309,9 +309,310 @@ Finally, since one of the required fields in this proposed structure is the inte
 		\label{tab:res-complex-statements}
 		\caption[Complex statements TD item specification]{Complex statements Technical Debt item specification according to guidelines proposed by \cite{mapping_study_td}.}
 	\end{table}
+	
+	
+	\subsection{High Arity}
+	
+    Functions can be categorized by the number of operands they accept. There are five main categories that practitioners use to group them (from lower number to higher): nullary, unary or monadic, binary or dyadic, ternary or triadic, and n-ary. The last category is an umbrella term that includes all functions requiring more than three operands.
+    
+    This concept, when applied to the software engineering field, is tied with the testability of a particular function. In fact, in mathematical terms, arity represents the Cartesian product of the domain. For instance, a nullary function has a domain dimension of one, whereas a ternary one has dimension four. This dimension implies that to test every single point in the domain space a high number of tests is required. In this study, however, the author applied this concept to the maintainability of the codebase. It can be assumed that a function with a high number of parameters is more prone to fail whenever the assumptions behind one of its operands change. 
+    
+    As the results show, interviewees agreed about the additional efforts needed to get an understanding of the function under exam when this has a high arity number (i.e.\ ternary or greater). Moreover, this problem is amplified by the absence of proper documentation and tools. 
+    
+    Regarding the interest amount, the subjects rated this aspect of this technical debt item as low (2/5 on Likert's scale), since functions and their operands seldomly change. In fact, unless the UI of the product under test undergoes major changes, the test logic can still only needs minor modifications to comply. From this statement, it can be assumed that the low interest is not a universal value: the younger the software, the higher this item is. At the Company, however, the system is very stable and hence the low score. However, it can be assumed that this item correlates with DRY violations and single responsibility violation principle. A function with a high number of operands will probably check the validity of said items, and after that perform the designed task. Nevertheless, the number of high arity functions within the codebase analyzed is low, and apart one mention in a discussion in the forum the problem was never raised again.
+    
+    Finally, it was not possible to assess the propagation rules for this Technical Debt item.
 
 
-\section{RQ2}
+
+
+    \begin{table}[!htbp]
+		\centering
+		\tabulinesep=1.2mm
+		\begin{tabu} to \textwidth {|X|X[3]|}
+			
+			\hline
+			\textbf{Field} & \textbf{Value} \\ 
+			\hline
+			
+			ID & High Arity functions\\
+			\hline
+			
+			Location & Logic of UI tests \\
+			\hline
+			
+			Responsible & Tester \\
+			\hline
+			
+			Type & Code Technical debt \\
+			\hline	
+			
+			Description & The creation of functions that accept a high number of input operands \\
+			\hline
+			
+			%Date / Time & Not applicable \\
+			%\hline
+			
+			%Principal & Non applicable \\
+			%\hline
+			
+			Interest amount &  2/5 (Low on Likert's scale). \\
+			\hline
+			
+			%Interest probability & Not applicable \\
+			%\hline
+			
+			%Interest standard deviation & Not applicable \\
+			%\hline
+			
+			Correlations with other TD items & Dry Violations\\
+			\hline 	 
+			
+			%Name & Not applicable \\
+			%\hline 		
+			
+			%Context & Not applicable \\
+			%\hline
+			
+			Propagation rules & Not enough data available\\
+			\hline
+			
+			Intentionality & Intentional \\
+			\hline 	 	
+			
+		\end{tabu}
+		\label{tab:res-high-arity}
+		\caption[High Arity TD item specification]{High Arity Technical Debt item specification according to guidelines proposed by \cite{mapping_study_td}.}
+	\end{table}
+
+
+
+
+
+\section{Research question 2}
+
+    \subsection{Use of wrong UI testing technology}
+
+    When the UI logic needs to replicate any of the use case that the system supports, a sequence of actions is prerecorded for later use. These actions express the action kind, e.g.\ click, press, ..., and an optional argument indicating either the position or the target of this action. Currently, UFT offers three different methods:
+
+\begin{itemize}
+
+\item{\textbf{Coordinates based approach}} - As the name states, this method encodes the position in which a particular action shall take place making no assumptions of the targeted object. This information can be expressed either with respect to the operative system screen or to the application window. As shown by \inote{Create charts in results and ref here}, this method is considered the one with highest interest ratio among the available ones.
+
+\item{\textbf{Property based approach}} - This method, as opposed to the coordinates based one, encodes the meta-characteristics of the targeted object without storing its position. These include id, name, label, containing text, etc.. However, for this method to be applicable, the testing framework (UFT) requires root privileges in the host operative system. In fact, it must be able to access the memory space of the process linked with the user interface under test. As the results show \inote{same as above} this approach is considered the most resiliant and must be used whenever the conditions are met.
+
+\item{\textbf{Image recognition base approach}} - As the name suggests, this methodology uses image recognition algorithms to identify the portion of the screen in which the action takes place. As the results show \inote{same as above}, this method is considered a great improvement compared to coordinate based approach, but it is still inferior if compared to Property based approach. However, it does not suffer its limitations.
+
+\end{itemize}
+
+\todo{insert limitations of technologies in description}
+
+The following sections describe the interest of technical debt in all the possible different combinations of these three technologies.
+
+\subsubsection{Use of coordinates when Image recognition is the optimal choice} \label{sec:dis-coordinates-vs-image}
+
+As it is possible to see in table  \ref{tab:res-coordinates-vs-image}, this scenario yields a high-interest amount since the image recognition technology is more resilient than a coordinates based approach. In fact, with a software that is stable in terms of major changes in the UI, only small modifications are likely to happen. These changes are less likely to break the image recognition algorithms if the sensitivity is properly tuned. The implication is a considerable additional maintenance effort when the tester fails to use this technology over the coordinate based approach (4/5 on Likert's scale).
+
+Moreover, it is the author's opinion that this technical debt item is likely to propagate. In fact, whenever inside the object repository there are coordinates based elements, testers will continue using them. In fact, as highlighted before, creating a proper image for image recognition requires a trial and error approach when tuning the sensitivity parameter.
+
+Finally, it is clear that this TD item occurs intentionally. In fact, whenever the opportunity to use the most resilient technology is offered and the tester decides to ignore it is undoubtedly an intentional act.
+        
+        
+    \begin{table}[!htbp]
+		\centering
+		\tabulinesep=1.2mm
+		\begin{tabu} to \textwidth {|X|X[3]|}
+			
+			\hline
+			\textbf{Field} & \textbf{Value} \\ 
+			\hline
+			
+			ID & Wrong UI testing technology (Coordinates instead of Image recognition)\\
+			\hline
+			
+			Location & UI test database \\
+			\hline
+			
+			Responsible & Tester \\
+			\hline
+			
+			Type & UI Testing Technical debt \\
+			\hline	
+			
+			Description & The use of coordinates based solution whenever image recognition is the optimal choice.\\
+			\hline
+			
+			%Date / Time & Not applicable \\
+			%\hline
+			
+			%Principal & Non applicable \\
+			%\hline
+			
+			Interest amount &  4/5 (High on Likert's scale). \\
+			\hline
+			
+			%Interest probability & Not applicable \\
+			%\hline
+			
+			%Interest standard deviation & Not applicable \\
+			%\hline
+			
+			Correlations with other TD items & None\\
+			\hline 	 
+			
+			%Name & Not applicable \\
+			%\hline 		
+			
+			%Context & Not applicable \\
+			%\hline
+			
+			Propagation rules & Likely\\
+			\hline
+			
+			Intentionality & Intentional \\
+			\hline 	 	
+			
+		\end{tabu}
+		\caption[Use of wrong UI testing technology - Coordinates over Image - TD item specification]{The use of wrong UI testing technology (Coordinates over Image) Technical Debt item specification according to guidelines proposed by \cite{mapping_study_td}.}
+		\label{tab:res-coordinates-vs-image}
+	\end{table}
+        
+    
+    \subsubsection{Use of coordinates when Object property recognition is the optimal choice}
+    
+    The results associated with this scenario indicate that this is the worst case scenario in terms of technical debt interest. In fact, in these circumstances, the tester fails to use the most resiliant method available at the moment to the most fragile one.  This is the reason behind the very high interest amount (4.5/5 on Likert's scale) associated with this TD item.
+    
+    Moreover, all but one considerations reported in section \ref{sec:dis-coordinates-vs-image} apply. The difference is that, while recording an image and tuning the sensitivity is an effort-intensive task, storing the properties is comparable as saving the coordinates in terms of effort. 
+    
+    The specification is reported in table \ref{tab:res-coordinates-vs-property}.
+    
+        \begin{table}[!htbp]
+		\centering
+		\tabulinesep=1.2mm
+		\begin{tabu} to \textwidth {|X|X[3]|}
+			
+			\hline
+			\textbf{Field} & \textbf{Value} \\ 
+			\hline
+			
+			ID & Wrong UI testing technology (Coordinates instead of Objects' properties recognition)\\
+			\hline
+			
+			Location & UI test database \\
+			\hline
+			
+			Responsible & Tester \\
+			\hline
+			
+			Type & UI Testing Technical debt \\
+			\hline	
+			
+			Description & The use of coordinates based solution whenever objects' properties recognition is the optimal choice.\\
+			\hline
+			
+			%Date / Time & Not applicable \\
+			%\hline
+			
+			%Principal & Non applicable \\
+			%\hline
+			
+			Interest amount &  4.5/5 (High to very high on Likert's scale). \\
+			\hline
+			
+			%Interest probability & Not applicable \\
+			%\hline
+			
+			%Interest standard deviation & Not applicable \\
+			%\hline
+			
+			Correlations with other TD items & None\\
+			\hline 	 
+			
+			%Name & Not applicable \\
+			%\hline 		
+			
+			%Context & Not applicable \\
+			%\hline
+			
+			Propagation rules & Likely\\
+			\hline
+			
+			Intentionality & Intentional \\
+			\hline 	 	
+			
+		\end{tabu}
+		\caption[Use of wrong UI testing technology - Coordinates over Objects' properties - TD item specification]{The use of wrong UI testing technology (Coordinates over Object properties) Technical Debt item specification according to guidelines proposed by \cite{mapping_study_td}.}
+		\label{tab:res-coordinates-vs-property}
+	\end{table}
+	
+	
+    \subsubsection{Use of Image recognition when Object property recognition is the optimal choice}
+    
+    This scenario arises whenever a tester fails to use the objects' property recognition in favor of the image one. However, since both technologies offer a similar degree of resilience, the associated interest is between low and medium (2.5/5 on Likert's scale). 
+    
+    This result is due to the efforts needed to record an image for the recognition algorithm. As aforementioned, the task is time-consuming and must follow a trial and error approach.
+        
+    The specification is reported in table \ref{tab:res-image-vs-property}.
+    
+        \begin{table}[!htbp]
+		\centering
+		\tabulinesep=1.2mm
+		\begin{tabu} to \textwidth {|X|X[3]|}
+			
+			\hline
+			\textbf{Field} & \textbf{Value} \\ 
+			\hline
+			
+			ID & Wrong UI testing technology (Image recognition instead of Objects' properties recognition)\\
+			\hline
+			
+			Location & UI test database \\
+			\hline
+			
+			Responsible & Tester \\
+			\hline
+			
+			Type & UI Testing Technical debt \\
+			\hline	
+			
+			Description & The use of image recognition based solution whenever objects' properties recognition is the optimal choice.\\
+			\hline
+			
+			%Date / Time & Not applicable \\
+			%\hline
+			
+			%Principal & Non applicable \\
+			%\hline
+			
+			Interest amount &  2.5/5 (Low to medium Likert's scale). \\
+			\hline
+			
+			%Interest probability & Not applicable \\
+			%\hline
+			
+			%Interest standard deviation & Not applicable \\
+			%\hline
+			
+			Correlations with other TD items & None\\
+			\hline 	 
+			
+			%Name & Not applicable \\
+			%\hline 		
+			
+			%Context & Not applicable \\
+			%\hline
+			
+			Propagation rules & Likely\\
+			\hline
+			
+			Intentionality & Intentional \\
+			\hline 	 	
+			
+		\end{tabu}
+		\caption[Use of wrong UI testing technology - Image recognition over Objects' properties - TD item specification]{The use of wrong UI testing technology (Image recognition over Object properties) Technical Debt item specification according to guidelines proposed by \cite{mapping_study_td}.}
+		\label{tab:res-image-vs-property}
+	\end{table}
+	
 
 \section{Research question 3} \label{sec:res_rq3}
 
