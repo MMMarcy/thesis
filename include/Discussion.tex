@@ -613,6 +613,74 @@ Finally, it is clear that this TD item occurs intentionally. In fact, whenever t
 		\label{tab:res-image-vs-property}
 	\end{table}
 	
+	
+	\subsection{Monolithic objects' database}
+	
+	UFT stores coordinates, Images, and objects' properties in proprietary file databases that need to be tracked by the control version system. These binary files don't allow to modify the objects' repositories concurrently. In fact, the algorithms used by Mercurial (the CVS in use at the Company) is not designed to work with such files and hence it cannot merge different changes that happened concurrently. Moreover, testers at the Company follow a monolithic approach: there are a single or few objects repositories for each project.
+
+    As the results \inote{create results chart} show and table \ref{tab:res-monolithic-db} summarizes, there is low to medium score in the interest amount field. Only a few problems arisen from this TD item and testers seem to get familiar with this issue.
+    
+    Moreover, the inquiry did not identify any correlation of this TD item.
+	
+	\begin{table}[!htbp]
+		\centering
+		\tabulinesep=1.2mm
+		\begin{tabu} to \textwidth {|X|X[3]|}
+			
+			\hline
+			\textbf{Field} & \textbf{Value} \\ 
+			\hline
+			
+			ID & Monolithic objects' database\\
+			\hline
+			
+			Location & UI test database \\
+			\hline
+			
+			Responsible & Tester \\
+			\hline
+			
+			Type & UI Testing Infrastructure \\
+			\hline	
+			
+			Description & All the coordinates, images, and object properties are saved in a large binary file that forbids concurrent modifications.\\
+			\hline
+			
+			%Date / Time & Not applicable \\
+			%\hline
+			
+			%Principal & Non applicable \\
+			%\hline
+			
+			Interest amount &  2.5/5 (Medium to high Likert's scale). \\
+			\hline
+			
+			%Interest probability & Not applicable \\
+			%\hline
+			
+			%Interest standard deviation & Not applicable \\
+			%\hline
+			
+			Correlations with other TD items & None\\
+			\hline 	 
+			
+			%Name & Not applicable \\
+			%\hline 		
+			
+			%Context & Not applicable \\
+			%\hline
+			
+			Propagation rules & Likely\\
+			\hline
+			
+			Intentionality & Intentional \\
+			\hline 	 	
+			
+		\end{tabu}
+		\caption[Use of wrong UI testing technology - Image recognition over Objects' properties - TD item specification]{The use of wrong UI testing technology (Image recognition over Object properties) Technical Debt item specification according to guidelines proposed by \cite{mapping_study_td}.}
+		\label{tab:res-monolithic-db}
+	\end{table}
+	
 
 \section{Research question 3} \label{sec:res_rq3}
 
