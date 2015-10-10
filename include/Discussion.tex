@@ -4,7 +4,7 @@ This section contains the discusses the results summarized in the previous Secti
 
 Finally, since one of the required fields in this proposed structure is the interest amount that is the raison d'etre of RQ3, the explanation is provided together with the description of every TD item. Therefore, a separate section for that RQ is omitted.
 
-\section{Research Question 1}
+\section{Research Question 1} \label{sec:disc-rq1}
 
     \subsection{DRY violations} \label{sec:res-dry-violations}
     
@@ -16,6 +16,8 @@ Finally, since one of the required fields in this proposed structure is the inte
         
         In the Company, both causes are present with the lack of documentation being the predominant one. In fact, UFT provides an IDE that is considered inferior to other tools available for Source Code Development like Eclipse or IntelliJ IDEA. Therefore, part of this TD manifestations can be caused from this. However, the interviews revealed this to be more of a nuisance than a problem. On the other hand, the lack of documentation is perceived as a real problem: testers need to browse the source code to understand what a function does. Moreover, when asked how familiar they are with the functionalities provided by the common repository or other parts of the test code-base none of the interviewees provided an answer ascribable to a good knowledge.
         
+        \phantomsection
+        \label{sec:disc-rq3-dry}
         Moreover, the severity of this TD item is even greater if considered from a holistic point of view. In fact, duplicated logic inflates function complexity by requiring testers to reimplement such logic and the single responsibility violation, since if the logic is duplicated it means it can be extracted into a reusable entity that does that task.
         
         For these reasons, the author believes that this TD item perfectly matches the correspondent one in source code TD with no differences. Moreover, the interviewees perceive this problem as serious (4.5/5 on Likert's scale); roughly the same as expressed by Hunt and Thomas in \textit{The pragmatic programmer} \cite{thomas1999pragmatic}.
@@ -92,7 +94,9 @@ Finally, since one of the required fields in this proposed structure is the inte
     \todo{Add the chart from antonio papaer about the drop crtical point model}
     
     For all these reasons, the author of this study believes that the available knowledge on Function Complexity related to Technical Debt is widely applicable in the realm of UI testing, with little differences. Most notably, these differences are about which role the code base has (e.g.\ regression tests or smoke tests) and the threshold above which a function is considered too complex. 
-    
+
+
+    \phantomsection \label{sec:disc-rq3-function-complexity}    
     The first item is necessary since smoke tests are, by nature, shallow and hence less impacted by changes in the product. Therefore, the interest paid in such tests is low. On the opposite side of the spectrum, regression tests are extremely sensitive and hence entail a high debt.
     
     The second difference is due the continuous manipulation of the global state that include both the test code and the application under test. This continuous referencing to external environments entails that most of the functions are referential opaque \cite{referential_transparency} and hence harder to decipher since variables are not directly visible to the developer.
@@ -169,7 +173,7 @@ Finally, since one of the required fields in this proposed structure is the inte
     
     This TD item occurs when a tester fails do break down the test logic in reusable chunks and let the function perform more than one specific task. 
 
-    The same considerations made for Section \ref{sec:res-dry-violations} apply with some differences. Specifically, even though a function embodies more than one task within its logic the Techincal Debt Interest yielded by this item is lower. In fact, according to the interviewees, it is possible that the logic that the tester failed to separate in a different function is indeed needed once in the whole codebase. This scenario results in worse code from a purely technical perspective, but it might be more efficient for the tester, and possibly it doesn't inflate the interest amount at all. According to the interviewees, this is the most typical situation, and hence they perceive this TD as low impact with respect to test maintenance. However, the medium score (3/5 on Likert's scale) in the interest amount field is due to the correlations between this TD item and others. Namely, DRY violations and Functions Complexity.
+    The same considerations made for Section \ref{sec:res-dry-violations} apply with some differences. Specifically, even though a function embodies more than one task within its logic the Techincal Debt Interest yielded by this item is lower. In fact, according to the interviewees, it is possible that the logic that the tester failed to separate in a different function is indeed needed once in the whole codebase. This scenario results in worse code from a purely technical perspective, but it might be more efficient for the tester, and possibly it doesn't inflate the interest amount at all. According to the interviewees, this is the most typical situation, and hence they perceive this TD as low impact with respect to test maintenance. \phantomsection \label{sec:disc-rq3-single-responsibility} However, the medium score (3/5 on Likert's scale) in the interest amount field is due to the correlations between this TD item and others. Namely, DRY violations and Functions Complexity.
     
     Regarding the propagation rules, it is safe to assume that the accumulation of this TD item is likely. Firstly, it is challenging to define the boundaries of a function, i.e.\ what is the correct granularity. Secondly, identifying the violations and correct them is admittedly a tedious task. Finally, once the code-base is polluted with these violations, the accumulation ratio tends to increase. When implementing new logic developers tend to follow the flow of the existing code. That implies that when extending a high-quality codebase they put more efforts in the task, and the opposite happens when working with low quality one.
     
@@ -245,6 +249,7 @@ Finally, since one of the required fields in this proposed structure is the inte
     
     Another interesting fact is that these results seem to show that a percentage of complex statements of 5\% or below is optimal. If fact, repository B1, which is constant below such value is stable over time. Moreover, repository A1 at every refactoring reaches the 5\% mark and then it increases again.
     
+    \phantomsection \label{sec:disc-rq3-complex-statements}
     Regarding the interest's amount, interviewees agreed that this is \textit{"not an issue"}. However, they also agreed that having a high number of complex statements hinders the possibility of seeing code repetitions. Therefore, the author believes that is possible to associate with this TD a medium amount of interest.
     
     Finally, this item is completely intentional, since every programming language allows to break the statement in sub-statements. A possible explanation is that while developing, people tend to write a statement that follows the broke-down solution of the problem they have in mind one action at the time. Therefore, it is easier to match a single statement with one of those abstract actions. Moreover, during this step developers focus more on achieving a solution than respecting high-quality code and hence they fail to format the code to adhere to the style guidelines.
@@ -319,7 +324,8 @@ Finally, since one of the required fields in this proposed structure is the inte
     
     As the results show, interviewees agreed about the additional efforts needed to get an understanding of the function under exam when this has a high arity number (i.e.\ ternary or greater). Moreover, this problem is amplified by the absence of proper documentation and tools. 
     
-    Regarding the interest amount, the subjects rated this aspect of this technical debt item as low (2/5 on Likert's scale), since functions and their operands seldomly change. In fact, unless the UI of the product under test undergoes major changes, the test logic can still only needs minor modifications to comply. From this statement, it can be assumed that the low interest is not a universal value: the younger the software, the higher this item is. At the Company, however, the system is very stable and hence the low score. However, it can be assumed that this item correlates with DRY violations and single responsibility violation principle. A function with a high number of operands will probably check the validity of said items, and after that perform the designed task. Nevertheless, the number of high arity functions within the codebase analyzed is low, and apart one mention in a discussion in the forum the problem was never raised again.
+    \phantomsection \label{sec:disc-rq3-high-arity}
+    Regarding the interest amount, the subjects rated this aspect of this technical debt item as low (2/5 on Likert's scale), since functions and their operands seldom change. In fact, unless the UI of the product under test undergoes major changes, the test logic can still only needs minor modifications to comply. From this statement, it can be assumed that the low interest is not a universal value: the younger the software, the higher this item is. At the Company, however, the system is very stable and hence the low score. However, it can be assumed that this item correlates with DRY violations and single responsibility violation principle. A function with a high number of operands will probably check the validity of said items, and after that perform the designed task. Nevertheless, the number of high arity functions within the codebase analyzed is low, and apart one mention in a discussion in the forum the problem was never raised again.
     
     Finally, it was not possible to assess the propagation rules for this Technical Debt item.
 
@@ -389,7 +395,7 @@ Finally, since one of the required fields in this proposed structure is the inte
 
 
 
-\section{Research question 2}
+\section{Research question 2} \label{sec:disc-rq2}
 
     \subsection{Use of wrong UI testing technology}
 
@@ -411,7 +417,10 @@ The following sections describe the interest of technical debt in all the possib
 
 \subsubsection{Use of coordinates when Image recognition is the optimal choice} \label{sec:dis-coordinates-vs-image}
 
-As it is possible to see in table  \ref{tab:res-coordinates-vs-image}, this scenario yields a high-interest amount since the image recognition technology is more resilient than a coordinates based approach. In fact, with a software that is stable in terms of major changes in the UI, only small modifications are likely to happen. These changes are less likely to break the image recognition algorithms if the sensitivity is properly tuned. The implication is a considerable additional maintenance effort when the tester fails to use this technology over the coordinate based approach (4/5 on Likert's scale).
+As it is possible to see in table  \ref{tab:res-coordinates-vs-image}, this scenario yields a high-interest amount since the image recognition technology is more resilient than a coordinates based approach. In fact, with a software that is stable in terms of major changes in the UI, only small modifications are likely to happen.
+
+\phantomsection \label{sec:disc-rq3-wrong-technique-1}
+These changes are less likely to break the image recognition algorithms if the sensitivity is properly tuned. The implication is a considerable additional maintenance effort when the tester fails to use this technology over the coordinate based approach (4/5 on Likert's scale).
 
 Moreover, it is the author's opinion that this technical debt item is likely to propagate. In fact, whenever inside the object repository there are coordinates based elements, testers will continue using them. In fact, as highlighted before, creating a proper image for image recognition requires a trial and error approach when tuning the sensitivity parameter.
 
@@ -479,7 +488,7 @@ Finally, it is clear that this TD item occurs intentionally. In fact, whenever t
         
     
     \subsubsection{Use of coordinates when Object property recognition is the optimal choice}
-    
+    \phantomsection \label{sec:disc-rq3-wrong-technique-2}
     The results associated with this scenario indicate that this is the worst case scenario in terms of technical debt interest. In fact, in these circumstances, the tester fails to use the most resiliant method available at the moment to the most fragile one.  This is the reason behind the very high interest amount (4.5/5 on Likert's scale) associated with this TD item.
     
     Moreover, all but one considerations reported in section \ref{sec:dis-coordinates-vs-image} apply. The difference is that, while recording an image and tuning the sensitivity is an effort-intensive task, storing the properties is comparable as saving the coordinates in terms of effort. 
@@ -548,6 +557,7 @@ Finally, it is clear that this TD item occurs intentionally. In fact, whenever t
 	
     \subsubsection{Use of Image recognition when Object property recognition is the optimal choice}
     
+    \phantomsection \label{sec:disc-rq3-wrong-technique-3}
     This scenario arises whenever a tester fails to use the objects' property recognition in favor of the image one. However, since both technologies offer a similar degree of resilience, the associated interest is between low and medium (2.5/5 on Likert's scale). 
     
     This result is due to the efforts needed to record an image for the recognition algorithm. As aforementioned, the task is time-consuming and must follow a trial and error approach.
@@ -618,6 +628,7 @@ Finally, it is clear that this TD item occurs intentionally. In fact, whenever t
 	
 	UFT stores coordinates, Images, and objects' properties in proprietary file databases that need to be tracked by the control version system. These binary files don't allow to modify the objects' repositories concurrently. In fact, the algorithms used by Mercurial (the CVS in use at the Company) is not designed to work with such files and hence it cannot merge different changes that happened concurrently. Moreover, testers at the Company follow a monolithic approach: there are a single or few objects repositories for each project.
 
+    \phantomsection \label{}
     As the results \inote{create results chart} show and table \ref{tab:res-monolithic-db} summarizes, there is low to medium score in the interest amount field. Only a few problems arisen from this TD item and testers seem to get familiar with this issue.
     
     Moreover, the inquiry did not identify any correlation of this TD item.
@@ -682,6 +693,25 @@ Finally, it is clear that this TD item occurs intentionally. In fact, whenever t
 	\end{table}
 	
 
-\section{Research question 3} \label{sec:res_rq3}
+\section{Research question 3} \label{sec:disc-rq3-monolithic-db}
+
+As aforementioned, the results for the third research question are discussed within sections \ref{sec:disc-rq1}, and \ref{sec:disc-rq2} since the division would compromise the results' readability. However, for completeness sake, this section includes links to allow readers to identify relevant parts in the mentioned sections.
 
 
+\begin{table}[b]
+\centering
+\begin{tabular}{|l|l|}
+
+\hline
+
+DRY vioaltions                     & \ref{sec:disc-rq3-dry}                                                                                               \\ \hline
+Function complexity                & \ref{sec:disc-rq3-function-complexity}                                                                               \\ \hline
+Single responsibility violations   & \ref{sec:disc-rq3-single-responsibility}                                                                             \\ \hline
+Complex statements                 & \ref{sec:disc-rq3-complex-statements}                                                                                \\ \hline
+High Arity                         & \ref{sec:disc-rq3-high-arity}                                                                                        \\ \hline
+Use of wrong UI testing technology & \ref{sec:disc-rq3-wrong-technique-1}, \ref{sec:disc-rq3-wrong-technique-2}, and \ref{sec:disc-rq3-wrong-technique-3} \\ \hline
+Monolithic database                & \ref{sec:disc-rq3-monolithic-db}    \\                                                                               \hline
+\end{tabular}
+\caption{Links to relevant sections for Research Question 3}
+\label{tab:disc-rq3-links}
+\end{table}
