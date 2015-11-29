@@ -16,18 +16,18 @@ The thematic analysis revealed the codes listed in Table \ref{tab:themes_rq1}. F
 \renewcommand{\arraystretch}{1.5}
 \centering
 \begin{tabular}{ c p{4.3cm} p{4.6cm}}
-    
-    \hline       
+
+    \hline
     {\large Global Theme} & {\large Organizing Theme} & {\large Codes}\\
     \hline
-    
+
     \multirow{4}{*}{\parbox[t]{4.3cm}{
         Source code bad habits that also arise in Test code}
     } & \multirow{2}{*}{\parbox[t]{4.3cm}{Modularity related issues}}
         & Complex functions \\
-        & & DRY violations\\ 
+        & & DRY violations\\
         & & Single responsibility violations\\ \cline{2-3}
-        
+
     & \multirow{2}{*}{\parbox[t]{4.6cm}{Line related issues}}
         & Complex statements \\
         & & Arity problems \\
@@ -48,9 +48,9 @@ The thematic analysis revealed the codes listed in Table \ref{tab:themes_rq1}. F
 
 \subsection{DRY violations}
     The DRY principle stands for \textit{``Don't Repeat Yourself''} and indicates the best practice of factoring out common logic in a separate entity to enhance code reuse.
-    
+
     Violation of this principle can be due several reasons and tends to greatly impact the maintainability efforts of the code base since a modification must be propagated throughout the code base a number of times equal to the number of copies of the logic interested.
-    
+
     However, considering the richness of the scripting language provided by UFT, there is more than way to achieve a goal and hence static analysis on the source code was not applicable. For this reason, only manual analysis of the repositories was used to create findings that have been validated through semi-structured interviews. This inquiry revealed that DRY violations occur on at least three levels. Namely \textit{within a single repository}, \textit{within a single project}, and \textit{between projects}.
 
 
@@ -58,7 +58,7 @@ The thematic analysis revealed the codes listed in Table \ref{tab:themes_rq1}. F
     The metric used to evaluate this Technical Debt Item is the well know cyclomatic complexity proposed by McCabe \cite{cyclomatic_complexity}.
 
     Figure \ref{fig:avg-complexity-together} shows the result for all the four projects under study for this metric. On the X-axis revision index that marks the subsequent revision in the source version control. Therefore, it represent a relative time unit. The ordinates' axis instead report the value of the \textit{average} cyclomatic complexity at function level.
-    
+
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth,keepaspectratio]{figure/results/rq1/avg-complexity-together.pdf}
@@ -69,7 +69,7 @@ The thematic analysis revealed the codes listed in Table \ref{tab:themes_rq1}. F
 
 \subsection{Single responsibility violations}
     Single responsibility violations are the problems that arise whenever a logical entity, e.g.\ functions, exceeds its logical boundaries and hence incorporates logic that in an optimal solution would be placed in other logical constructs.
-    
+
     Given the richness of the UFT scripting language a static analysis of the code base was not possible. In fact, it would require advance analysis techniques that use semantics of constructs and varaibles  and function names. This was outside the boundaries of this Thesis work. Therefore, the inquiry, whose results are discussed in section \ref{sec:res-single-responsability-vilation}, is more qualitative and highlights the perception developers have when dealing with source code polluted with this TD item.
 
 \begin{figure}[!htbp]
@@ -102,31 +102,31 @@ The scope of User Interface tests is to validate the state of the User Interface
 However, keeping into account the differences between property based testing and image recognition testing is important. The former uses property or meta-properties of UI components to identify them and simulate user events over them. The latter, instead, uses image recognition algorithms to identify such widgets. This different identification method imposes different approached when creating the test suite that are analyzed separately in the following sections, presenting both quantitative and qualitative results.
 
 
-  
+
 \begin{table}
 \renewcommand{\arraystretch}{1.5}
 \centering
 \begin{tabular}{ c p{4.3cm} p{4.6cm}}
-    
-    \hline       
+
+    \hline
     {\large Global Theme} & {\large Organizing Theme} & {\large Codes}\\
     \hline
-    
+
     \multirow{7}{*}{\parbox[b]{4.3cm}{
         User interface testware specific issues
     }
     } & \multirow{4}{*}{\parbox[c]{4.3cm}{Image recognition problems}}
         & Too sensitive \\
         & & False positive and negative results\\
-        & & Not reusable\\ 
+        & & Not reusable\\
         & & Not suitable for responsive environments (e.g. web applications)\\ \cline{2-3}
-        
+
     & Property based problems & Impossible to foresee when it will break\\ \cline{2-3}
-        
+
     & Coordinated based problems  & Too fragile\\ \cline{2-3}
-        
+
     & UFT specific problems & Based on binary files\\
-        
+
     \hline
 \end{tabular}
 \caption{Themes and codes related to RQ1 extrapolated from qualitative sources}
@@ -135,7 +135,7 @@ However, keeping into account the differences between property based testing and
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=\textwidth,keepaspectratio]{figure/results/rq2/sources.pdf}
+    \includegraphics[width=\textwidth,keepaspectratio]{figure/results/rq2/sources.png}
     \caption{Codes with relatives Data sources for research question 2}
     \label{fig:rq2_sources}
 \end{figure}
@@ -149,35 +149,35 @@ As mentioned before, the goal of this research question is to evaluate the impac
 	\centering
 	\tabulinesep=1.2mm
 	\begin{tabu} to \textwidth {|X[2]|X|X|X|}
-		
+
 		\hline
 		\textbf{TD item} & \textbf{Interviewee 3} & \textbf{Interviewee 4}  & \textbf{Average} \\
 		\hline
-		
+
 		Function complexity & 3 & 5 & 4 \\
 		\hline
-		
+
 		DRY violations & 4 & 5 & 4,5 \\
 		\hline
-		
+
 		God Functions & 3 & 4 & 3,5 \\
 		\hline
-		
+
 		Complex statements & 3 & 3 & 3 \\
-		\hline		
-		
+		\hline
+
 		High Arity & 2 & 2 & 2 \\
 		\hline
-		
+
 		Image based tests & 3 & 4 & 3,5 \\
 		\hline
-		
+
 		Property based tests & 2 & 2 & 2 \\
 		\hline
-		
+
 		Coordinates based tests & 4 & 5 & 4,5 \\
 		\hline
-			
+
 	\end{tabu}
 	\caption{Interest magnitude as perceived by interviewees.}
 	\label{tab:interest_magnitude}
