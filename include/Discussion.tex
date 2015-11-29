@@ -23,7 +23,7 @@ Finally, since one of the required fields in this proposed structure is the inte
         For these reasons, the author believes that this TD item perfectly matches the correspondent one in source code TD with no differences. Moreover, the interviewees perceive this problem as serious (4.5/5 on Likert's scale); roughly the same as expressed by Hunt and Thomas in \textit{The pragmatic programmer} \cite{thomas1999pragmatic}.
 
 
-    	\begin{table}[!htbp]
+  \begin{table}[!htbp]
 		\centering
 		\tabulinesep=1.2mm
 		\begin{tabu} to \textwidth {|X|X[3]|}
@@ -106,11 +106,11 @@ Finally, since one of the required fields in this proposed structure is the inte
 
     The second difference is due the continuous manipulation of the global state that include both the test code and the application under test. This continuous referencing to external environments entails that most of the functions are referential opaque \cite{referential_transparency} and hence harder to decipher since variables are not directly visible to the developer.
 
-    However, setting a definite threshold is out of scope for this study, and it is unlikely that such a value exists since it can be tool and testing language dependant.
+    However, setting a definite threshold is out of scope for this study, and it is unlikely that such a value exists since it can be tool and testing language dependent.
 
     Finally, the enquiry revealed that such problem is inflated by the DRY violations described in the previous Section. In fact, as stated before, duplicate logic tends to appear within the body a function, and as expressed by one of the interviewee \textit{"we try to factor out the common parts when they appear in more than one place, but it is not easy. Especially when more than one tester maintains the code base ..."}.
 
-    \todo{Enter relations with other TD items.}
+
 
 
 	\begin{table}[!htbp]
@@ -185,7 +185,7 @@ Finally, since one of the required fields in this proposed structure is the inte
     For these reasons, the author believes that the intentionality of this TD item is both intentional and unintentional. During creation phase, i.e.\ when the code base is at the beginning of its life-cycle, the intentional part is preponderant. However, during maintenance, the unintentional aspect takes over.
 
 
-    	\begin{table}[!htbp]
+  \begin{table}[!htbp]
 		\centering
 		\tabulinesep=1.2mm
 		\begin{tabu} to \textwidth {|X|X[3]|}
@@ -250,7 +250,7 @@ Finally, since one of the required fields in this proposed structure is the inte
 
 	Assessing this Technical Debt item is controversial. In fact, some developers prefer to have code that develops horizontally whereas other vertically. However, among practitioners seem that the vertical flavor is the most widely adopted. For instance, the vast majority of IDEs (Integrated Development Environments) try to enforce developers to statements less than 80 characters long. The same is done by some code formatter and code linter. Some companies and open source organizations enforce every contributor to comply with their code styles (e.g.\ Google\footnote{\href{https://goo.gl/KSFfDO}{https://goo.gl/KSFfDO}} set an 80 character hard limit). The rationale is that short statements are more likely to perform one and only one action, and hence it is easier to follow the program's logic.
 
-    As it is possible to see from figure \ref{fig:perc-complex-statements}, the percentage of statements that are longer than the set limit tend to decrease over time in all but one repositories. Repository A1 matches the conceptual model highlighted by Martini et al.\ \cite{martini2014architecture}. It is visible that the codebase has been refactored once the \textit{emergency limit} is reached. All the repositories in Project C and D show a decreasing trend. Perhaps because the testers in charge of these repositories tend to refactor the code at every possible occasion instead of creating considerable change in one submission. However, the reader should also notice the substantial difference in the range of complex statements. Repositories belonging to Project A and B are considerably lower than project C and D. This highlights the differences in style that different developers have.
+    As it is possible to see from figure \ref{fig:perc-complex-statements}, the percentage of statements that are longer than the set limit tend to decrease over time in all but one repositories. Repository A1 matches the conceptual model highlighted by Martini et al.\ \cite{martini2014architecture} and included in fig.\ \ref{fig:antonio-model} . It is visible that the codebase has been refactored once the \textit{emergency limit} is reached. All the repositories in Project C and D show a decreasing trend. Perhaps because the testers in charge of these repositories tend to refactor the code at every possible occasion instead of creating considerable change in one submission. However, the reader should also notice the substantial difference in the range of complex statements. Repositories belonging to Project A and B are considerably lower than project C and D. This highlights the differences in style that different developers have.
 
     Another interesting fact is that these results seem to show that a percentage of complex statements of 5\% or below is optimal. If fact, repository B1, which is constant below such value is stable over time. Moreover, repository A1 at every refactoring reaches the 5\% mark and then it increases again.
 
