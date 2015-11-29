@@ -15,7 +15,7 @@
    viewBox="0 0 300 200"
    id="svg3336"
    version="1.1"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.48.4 r9939"
    sodipodi:docname="testing_pipeline.svg">
   <defs
      id="defs3338">
@@ -75,10 +75,10 @@
      inkscape:current-layer="layer1"
      id="namedview3340"
      showgrid="false"
-     inkscape:window-width="822"
-     inkscape:window-height="822"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-width="927"
+     inkscape:window-height="1148"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata3342">
@@ -88,7 +88,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -119,11 +119,11 @@
        transform="matrix(1.19196,0,0,1.1611244,-56.192274,-4.8285211)" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:11.28888988px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-size:11.28888988px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:sans-serif"
        id="text9197"
        sodipodi:linespacing="125%"><textPath
          xlink:href="#path9193"
-         id="textPath9201">       Unit test                                 Component tests                                                                      System tests                                                                                                                End to End tests</textPath></text>
+         id="textPath9201">        Unit tests                                   Component tests                                                                             System tests                                                                                                                          End to End tests</textPath></text>
   </g>
   <g
      inkscape:groupmode="layer"
