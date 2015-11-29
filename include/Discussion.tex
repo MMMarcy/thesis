@@ -169,7 +169,7 @@ Finally, since one of the required fields in this proposed structure is the inte
 	
 	
 	
-    \subsection{Single responsibility violations}
+    \subsection{Single responsibility violations} \label{sec:res-single-responsability-vilation}
     
     This TD item occurs when a tester fails do break down the test logic in reusable chunks and let the function perform more than one specific task. 
 
@@ -245,7 +245,7 @@ Finally, since one of the required fields in this proposed structure is the inte
 	
 	Assessing this Technical Debt item is controversial. In fact, some developers prefer to have code that develops horizontally whereas other vertically. However, among practitioners seem that the vertical flavor is the most widely adopted. For instance, the vast majority of IDEs (Integrated Development Environments) try to enforce developers to statements less than 80 characters long. The same is done by some code formatter and code linter. Some companies and open source organizations enforce every contributor to comply with their code styles (e.g.\ Google\footnote{\href{https://goo.gl/KSFfDO}{https://goo.gl/KSFfDO}} set an 80 character hard limit). The rationale is that short statements are more likely to perform one and only one action, and hence it is easier to follow the program's logic.
 
-    As it is possible to see from figures \ref{fig:statement_complexity_project_a}, \ref{fig:statement_complexity_project_b}, \ref{fig:statement_complexity_project_c}, and \ref{fig:statement_complexity_project_d} the percentage of statements that are longer than the set limit tend to decrease over time in all but one repositories. Repository A1 matches the conceptual model highlighted by Martini et al.\ \inote{add Antonio's paper}. It is visible that the codebase has been refactored once the \textit{emergency limit} is reached. All the repositories in Project C and D show a decreasing trend. Perhaps because the testers in charge of these repositories tend to refactor the code at every possible occasion instead of creating considerable change in one submission. However, the reader should also notice the substantial difference in the range of complex statements. Repositories belonging to Project A and B are considerably lower than project C and D. This highlights the differences in style that different developers have. 
+    As it is possible to see from figure \ref{fig:perc-complex-statements}, the percentage of statements that are longer than the set limit tend to decrease over time in all but one repositories. Repository A1 matches the conceptual model highlighted by Martini et al.\ \inote{add Antonio's paper}. It is visible that the codebase has been refactored once the \textit{emergency limit} is reached. All the repositories in Project C and D show a decreasing trend. Perhaps because the testers in charge of these repositories tend to refactor the code at every possible occasion instead of creating considerable change in one submission. However, the reader should also notice the substantial difference in the range of complex statements. Repositories belonging to Project A and B are considerably lower than project C and D. This highlights the differences in style that different developers have. 
     
     Another interesting fact is that these results seem to show that a percentage of complex statements of 5\% or below is optimal. If fact, repository B1, which is constant below such value is stable over time. Moreover, repository A1 at every refactoring reaches the 5\% mark and then it increases again.
     

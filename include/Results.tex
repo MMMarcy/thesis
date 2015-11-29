@@ -47,17 +47,17 @@ The thematic analysis revealed the codes listed in Table \ref{tab:themes_rq1}. F
 
 
 \subsection{DRY violations}
-The DRY principle stands for \textit{``Don't Repeat Yourself''} and indicates the best practice of factoring out common logic in a separate entity to enhance code reuse.
-
-Violation of this principle can be due several reasons and tends to greatly impact the maintainability efforts of the code base since a modification must be propagated throughout the code base a number of times equal to the number of copies of the logic interested.
-
-However, considering the richness of the scripting language provided by UFT, there is more than way to achieve a goal and hence static analysis on the source code was not applicable. For this reason, only manual analysis of the repositories was used to create findings that have been validated through semi-structured interviews. This inquiry revealed that DRY violations occur on at least three levels. Namely \textit{within a single repository}, \textit{within a single project}, and \textit{between projects}.
+    The DRY principle stands for \textit{``Don't Repeat Yourself''} and indicates the best practice of factoring out common logic in a separate entity to enhance code reuse.
+    
+    Violation of this principle can be due several reasons and tends to greatly impact the maintainability efforts of the code base since a modification must be propagated throughout the code base a number of times equal to the number of copies of the logic interested.
+    
+    However, considering the richness of the scripting language provided by UFT, there is more than way to achieve a goal and hence static analysis on the source code was not applicable. For this reason, only manual analysis of the repositories was used to create findings that have been validated through semi-structured interviews. This inquiry revealed that DRY violations occur on at least three levels. Namely \textit{within a single repository}, \textit{within a single project}, and \textit{between projects}.
 
 
 \subsection{Function complexity}
-    The metric used to evaluate this Technical Debt Item is the well know cyclomatic complexity proposed by McCabe \cite{cyclomatic_complexity}
+    The metric used to evaluate this Technical Debt Item is the well know cyclomatic complexity proposed by McCabe \cite{cyclomatic_complexity}.
 
-    Figure \ref{fig:avg-complexity-together} shows the result for all the four projects under study for this metric.
+    Figure \ref{fig:avg-complexity-together} shows the result for all the four projects under study for this metric. On the X-axis revision index that marks the subsequent revision in the source version control. Therefore, it represent a relative time unit. The ordinates' axis instead report the value of the \textit{average} cyclomatic complexity at function level.
     
 \begin{figure}[!htbp]
     \centering
@@ -67,39 +67,17 @@ However, considering the richness of the scripting language provided by UFT, the
 \end{figure}
 
 
-
-
 \subsection{Single responsibility violations}
+    Single responsibility violations are the problems that arise whenever a logical entity, e.g.\ functions, exceeds its logical boundaries and hence incorporates logic that in an optimal solution would be placed in other logical constructs.
+    
+    Given the richness of the UFT scripting language a static analysis of the code base was not possible. In fact, it would require advance analysis techniques that use semantics of constructs and varaibles  and function names. This was outside the boundaries of this Thesis work. Therefore, the inquiry, whose results are discussed in section \ref{sec:res-single-responsability-vilation}, is more qualitative and highlights the perception developers have when dealing with source code polluted with this TD item.
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=\textwidth,keepaspectratio]{figure/results/rq1/avg_length_project_a.pdf}
-    \caption{Project A functions' average length}
-    \label{fig:avg_length_project_a}
+    \includegraphics[width=\textwidth,keepaspectratio]{figure/results/rq1/avg-length-together.pdf}
+    \caption{Evolution of average function length in studied projects over time.}
+    \label{fig:avg-length-together}
 \end{figure}
-
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[width=\textwidth,keepaspectratio]{figure/results/rq1/avg_length_project_b.pdf}
-    \caption{Project B  functions' average length}
-    \label{fig:avg_length_project_b}
-\end{figure}
-
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[width=\textwidth,keepaspectratio]{figure/results/rq1/avg_length_project_c.pdf}
-    \caption{Project C  functions' average length}
-    \label{fig:avg_length_project_c}
-\end{figure}
-
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[width=\textwidth,keepaspectratio]{figure/results/rq1/avg_length_project_d.pdf}
-    \caption{Project D  functions' average length}
-    \label{fig:avg_length_project_d}
-\end{figure}
-
-
 
 
 \subsection{Complex statements}
@@ -109,33 +87,13 @@ A common accepted threshold is based on the number of characters used in a line.
 
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=\textwidth]{figure/results/rq1/statement_complexity_project_a.eps}
-    \caption{Project A percentage of complex statements}
-    \label{fig:statement_complexity_project_a}
-\end{figure}
-
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[width=\textwidth]{figure/results/rq1/statement_complexity_project_b.eps}
-    \caption{Project B percentage of complex statements}
-    \label{fig:statement_complexity_project_b}
-\end{figure}
-
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[width=\textwidth]{figure/results/rq1/statement_complexity_project_c.eps}
-    \caption{Project C percentage of complex statements}
-    \label{fig:statement_complexity_project_c}
-\end{figure}
-
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[width=\textwidth]{figure/results/rq1/statement_complexity_project_d.eps}
-    \caption{Project D percentage of complex statements}
-    \label{fig:statement_complexity_project_d}
+    \includegraphics[width=\textwidth,keepaspectratio]{figure/results/rq1/perc-complex-statements.pdf}
+    \caption{Evolution of the percentage of complex statements in studied projects over time.}
+    \label{fig:perc-complex-statements}
 \end{figure}
 
 
+\FloatBarrier
 
 \section{Research Question 2}
 %
