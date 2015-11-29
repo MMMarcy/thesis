@@ -1,5 +1,5 @@
 \chapter{Methods} \label{methods}
-This Chapter contains a thoroughly description with rationales of the research methods adopted by this thesis work. Firstly, a characterization of the case is provided. It contains the description of the settings, the case itself and the units of analysis. Subsequently, the focus shifts to the methods and sources through which the data has been collected. For every different source the text describes where applicable use cases and rationale. Finally, the chapter ends with an explanation of the data analysis methods used. 
+This Chapter contains a thoroughly description with rationales of the research methods adopted by this thesis work. Firstly, a characterization of the case is provided. It contains the description of the settings, the case itself and the units of analysis. Subsequently, the focus shifts to the methods and sources through which the data has been collected. For every different source the text describes where applicable use cases and rationale. Finally, the chapter ends with an explanation of the data analysis methods used.
 
 
 %
@@ -32,16 +32,15 @@ This study took place in the Swedish office of the Company, a fictional name use
 
 Internally, teams use Scrum for managing their development activities. They have considerable freedom in choosing sprint length, and the Definition of Done, which is built atop of a minimum one provided by the parent company. Teams are cross-functional and hence contain people with different areas of expertise; they also are self-contained meaning that they should carry out all software related activities independently.
 
-This last fact is of great relevance to this study. In fact, all testing activities are carried on separately, following the minimum guidelines expressed in the Definition of Done. However, this lenient artifact causes teams to use different testing strategies for complying with the testing pipeline. Therefore, there is a chance to analyze TD accruing in various projects. 
+This last fact is of great relevance to this study. In fact, all testing activities are carried on separately, following the minimum guidelines expressed in the Definition of Done. However, this lenient artifact causes teams to use different testing strategies for complying with the testing pipeline. Therefore, there is a chance to analyze TD accruing in various projects.
 
-As shown in Fig. \ref{fig:testing_pipeline}, this pipeline is composed of four levels (lower to higher): unit tests, components tests, system tests, end to end tests. These levels do not differentiate between functional and quality (non-functional) testing types as these can take place at any level. 
+As shown in Fig. \ref{fig:testing_pipeline}, this pipeline is composed of four levels (lower to higher): unit tests, components tests, system tests, end to end tests. These levels do not differentiate between functional and quality (non-functional) testing types as these can take place at any level.
 
 Notably, unit tests are carried on by developers alongside development activities and aim to test the System at function and class level. Therefore, there is a high number of them and tend to be fast to execute and relatively simple. At this level, developers follow the same guidelines specified for the actual source code, with the sole exception that, according to the minimum definition of done, they are not reviewed. Above in the hierarchy, there are component tests that target the interaction between macro software entities and aim to ensure that the sub-parts of the system deliver the desired functionality. At this level, tests target the exposed APIs and not the internal mechanics of the source code. The next level in the pipeline, System level tests, aims to assure that user functionality and business processes of a single system comply with the specification. These tests execute at user interface level with realistic data sets and possibly data volume. Finally, End to End tests are similar in concept and execution to System tests, but they test the interaction of two or more complete systems. Furthermore, these levels can be further divided into functional and non-functional tests, which respectively target functionality and quality attributes of the system.
 
 Finally, the two middle layers of the pipeline contain test that can be semantically divided into two groups: smoke tests and regression tests. The former group contains simpler tests that control the behavior of macro functionality, e.g.\ a window is displayed if the new window button is pressed. The latter group, instead, includes tests that represent use-case scenarios and hence more detailed and complicated. The following sub-section provides additional information on the topic.
 
 \todo{Improve figure \ref{fig:testing_pipeline} readability}
-\todo{Extract the image from the testing chapter document}
 
 \begin{figure}[hbt]
     \centering
@@ -58,13 +57,13 @@ Both projects have associated two unique repositories, one for Smoke Testing and
 
 
 \subsubsection{Project A}
-This project is the new solution developed to replace the legacy Project B. It is Java based and the client runs on the Windows operating system.
+This project is the new solution developed to replace the legacy Project B. It is Java based and the client runs on the Windows operating system. The back-end runs on Linux and, since it is headless, i.e.\ without user interface, it was not included in this study.
 
 \subsubsection{Project B}
-Project B is a tool used for registering and handling passengers. It register who is on-board of which airplane and so forth. This tool is less customizable than project A, but it is a more critical part of the Ecosystem. In fact, international rules require a constant monitoring of airplanes' passengers. The client and server are monolithic and the client is run on clients that allow to run Unix X-sessions from other operative systems.
+Project B is a tool used for registering and handling passengers. It register who is on-board of which airplane and so forth. This tool is less customizable than project A, and it is built on a dated technology stack. However, it In fact, international rules require a constant monitoring of airplanes' passengers. The client and server are monolithic and the client is run on clients that allow to run Unix X-sessions from other operative systems.
 
 \subsubsection{Project C}
-Project  consist of a highly customizable software used to manage crew personnel both in the short and long term. The client runs on Windows and it is realized with Java.
+Project  consist of a highly customizable software used to manage crew personnel both in the short and long term handling both law requirements and crews' preferences in terms of Holiday, destinations, and routes. The client runs on Windows and it is realized with Java. As for project A, the headless back-end was not included in this study for obvious reasons.
 
 \subsubsection{Project D}
 As mentioned before, Project D consists of two repositories that contain generic functions used by test suites. These tie UFT tests with the Windows operating system. They allow to kill and spawn a process, create and read files, etc. Furthermore, they also create skeleton for the report engines; they are used to create summaries of test runs in different formats such as HTML, XML, etc.
@@ -95,11 +94,11 @@ In fact, frequency, location, and interviewees were random. Furthermore, as high
 \subsection{Mining of The Forum} \label{mining_forum}
 In order to enable Knowledge Sharing the company adopted Confluence, a collaborative software / forum developed and maintained by Atlassian\texttrademark\. It allows technical and non-technical employees to share procedures, ideas, and comments in an asynchronous fashion, and, for this reason, this source is valuable since it contains numerous information, which can shed light on the problems this Thesis aim to study.
 
-However, considering the magnitude of the available data, it was important to ensure that the mining did not miss any information. Therefore, it has been performed through a systematic approach using the embedded search engine provided by the tool and two manual filtering steps. In fact, the system contains data covering several years and include several thousand discussions threads and many more answers. 
+However, considering the magnitude of the available data, it was important to ensure that the mining did not miss any information. Therefore, it has been performed through a systematic approach using the embedded search engine provided by the tool and two manual filtering steps. In fact, the system contains data covering several years and include several thousand discussions threads and many more answers.
 
 The keywords entered in the search engine were included in double quotes in order to enable the \textit{exact match} feature. This choice was needed to limit the number of results to a manageable size. For instance, \textit{test maintenance} yielded 8467 results whereas \textit{"test maintenance"} 28. Subsequently, the first coarser temporal based filter followed. It eliminated hits older than one year. Next, the second finer filter based on the relevance was used. Finally, the remaining set of posts has been carefully read, and pertinent ones have been anonymized and transcribed in the Thesis database.
 
-This paragraph reports the rationale connected with the first filtering activity. The temporal time frame is narrow for two reasons. Firstly, the test-ware stack changed during last year (2014) and hence the findings could be biased by information not relevant or tied to the old technologies. Secondly, the mortality of the resources has been taken into account. In fact, the Company greatly relies on consultants, and their turnover is shorter than typical employees. 
+This paragraph reports the rationale connected with the first filtering activity. The temporal time frame is narrow for two reasons. Firstly, the test-ware stack changed during last year (2014) and hence the findings could be biased by information not relevant or tied to the old technologies. Secondly, the mortality of the resources has been taken into account. In fact, the Company greatly relies on consultants, and their turnover is shorter than typical employees.
 
 \subsection{Mining of The Issue Tracker / Backlogs} \label{mining_issue_tracker}
 The Company uses an all in one solution for managing issues and their Agile Environments: JIRA and JIRA Agile Plugin. These tools are also supported by Atlassian. Similarly to the forum, this source contains a high number of entries that have been mined to provide insights regarding the problems under analysis.
@@ -120,29 +119,29 @@ The spreadsheet contains some statistics not provided by the APIs, but thanks to
 			\tabulinesep=1.2mm
             \caption[Original spreadsheet description]{Description of the original spreadsheet created by the process described in section \ref{mining_issue_tracker}}
             \label{tab:spreadsheet_description}
-            
+
 			\begin{tabu} to \textwidth {|X|X[4]|X|}
-			    
+
 				\hline
 				\textbf{Col. name} & \textbf{Description} & \textbf{Example} \\ \hline
-				
+
 				Key & This entry is composed by two parts: Project name and issue number. It was used to keep a link between projects under study and data gathered & PRJONE-001 \\ \hline
-				
+
 				Priority & Indicates the priority assigned to the issues by internal stakeholders after the evaluation phase of the sprint. A lower number means greater priority. & 3 \\ \hline
-				
+
 				Estimate time & Shows the effort estimation performed by the developers of the team & 2.5 \\ \hline
-				
+
 				Effective time & Shows the effective time it took to complete the issue from when the status was updated & 5 \\ \hline
-				
+
 				Opened on & Date and time of when the issue was opened. & Tue Jan 07 09:39:59 CET 2014 \\ \hline
-				
+
 				Updated on & Date and time of when the work on the issue started & Thu Jan 22 10:41:27 CET 2015  \\ \hline
-				
+
 				Closed on & Date and time of when the issue was closed & Wed Jan 21 14:58:25 CET 2015 \\ \hline
-				
+
 				Description & Field that contains description, summary and comments related to the issue. & The process pipeline break when... \\ \hline
-				
-			\end{tabu}		
+
+			\end{tabu}
 		\end{table}
 
 
@@ -160,156 +159,156 @@ The analysis performed to this archival source was both manual and automated. Th
 
 \subsubsection{Automated analysis} \label{sec:automated_analysis}
     According to Staron et al.\ \cite{metrics_paper}, in order to perform an automatic analysis a measurement system has to be defined. Therefore, after performing the preliminary thematic analysis, which highlighted possible TD items within testware, a \textit{specification of measurement} has been created for applicable items. Applicability, in this context, means that chosen metrics are 1) created by statically parsing the source code on a per revision base, and 2) the extrapolation of the data does not require tremendous computational power since inaccessible by author of this study.
-    
+
     Furthermore, Staron et al.\ \cite{metrics_paper} require to specify thresholds to identify optimal, acceptable, and not acceptable level for each metric. However, considering the exploratory nature of this study this action has been omitted. In fact, the existing body of knowledge is lacking prior examples of such threshold or, if present, their use in relation with test code is novel. Therefore, said activity would have been based on the author best guesses and undoubtedly biased.
-    
+
     With that said, adhering to the guidelines provided by Staron et al.\ \cite{metrics_paper}, the following specification measurements has been created (Table \ref{tab:complexity_measurement_system}, \ref{tab:statements_measurement_system}, and \ref{tab:length_measurement_system} ) for three of the items revealed by the thematic analysis. Rationales regarding the infeasibility of the remaining two items are provided in chapter \ref{sec:study_results}.
-    
+
     Finally, the tool that gathered such measurements is hosted as an open source repository on GitHub\footnote{\href{https://goo.gl/VWaTGm}{https://goo.gl/VWaTGm}}. Furthermore, appendix \ref{app:database} illustrates the database's schema that said tool generates and lists the queries used to retrieve the metrics.
-    
+
     \begin{table}[!htb]
 		\centering
 		\tabulinesep=1.2mm
 		\begin{tabu} to \textwidth {|X|X[2]|}
-			    
+
 			\hline
-			\textbf{Entry} & \textbf{Action taken} \\ 
+			\textbf{Entry} & \textbf{Action taken} \\
 			\hline
-			
+
 			Information need & How is the code complexity evolving in reposiotry X? \\
 			\hline
-			
+
 			Indicator & McCabe's \cite{cyclomatic_complexity} cyclomatic complexity \\
 			\hline
-			
+
 			Analysis model & Not applicable \\
 			\hline
-			
+
 			Derived measures & Not applicable \\
 			\hline
-			
+
 			Measurement function & SUM(CC[number of revision] for all functions)/TNF[number of revision] \\
 			\hline
-			
+
 			Base measures & Object: revision \newline
 			                    \textbf{CC}: cyclomatic complexity of a given function \newline
 			                    \textbf{TNF}: total number of function for a given revision \\
 		    \hline
-			
+
 			Measurement method & For CC (summary of what explained in \cite{cyclomatic_complexity}):
 			    \begin{enumerate}
 			    \item Calculate number of edges in the function graph (NE)
 			    \item Calculate the number of nodes in the function graph (NN)
 			    \item Calculate the number of connected components in the function (NCC) graph
-			    \item CC = NE - NN + 2 * NCC 
+			    \item CC = NE - NN + 2 * NCC
 			    \end{enumerate}
-			
+
 			For TNF:
 			\begin{enumerate}
 			\item TNF = Calculate the number of functions in a given revision
 			\end{enumerate}
-			
+
 			\\
 			\hline
-				
+
 		\end{tabu}
 		\caption[Specification measurement for cyclomatic complexity]
         {Specification measurement for cyclomatic complexity following Staron et al.\ \cite{metrics_paper} guidelines}
         \label{tab:complexity_measurement_system}
     \end{table}
-    
+
     \begin{table}[!htb]
 		\centering
 		\tabulinesep=1.2mm
 		\begin{tabu} to \textwidth {|X|X[2]|}
-			    
+
 			\hline
-			\textbf{Entry} & \textbf{Action taken} \\ 
+			\textbf{Entry} & \textbf{Action taken} \\
 			\hline
-			
+
 			Information need & How is the statements' complexity evolving in reposiotry X? \\
 			\hline
-			
+
 			Indicator & Percentage of complex statments \\
 			\hline
-			
+
 			Analysis model & Not applicable \\
 			\hline
-			
+
 			Derived measures & Not applicable \\
 			\hline
-			
+
 			Measurement function & COUNT(CS[number of revision])/TNS[number of revision] \\
 			\hline
-			
+
 			Base measures & Object: revision \newline
 			                    \textbf{CS}: number of complex statments \newline
 			                    \textbf{TNS}: total number of statements \\
 		    \hline
-			
+
 			Measurement method & For CS:
 			    \begin{enumerate}
 			    \item count the number of statments with length greater than 80 characters (excluding whitespaces).
 			    \end{enumerate}
-			
+
 			For TNS:
 			\begin{enumerate}
 			\item Calculate the number of statements in a given revision
 			\end{enumerate}
-			
+
 			\\
 			\hline
 
-				
+
 		\end{tabu}
 		\caption[Specification measurement for statements' complexity]
         {Specification measurement for statements' complexity following Staron et al.\ \cite{metrics_paper} guidelines}
         \label{tab:statements_measurement_system}
     \end{table}
-    
+
     \begin{table}[!htb]
 		\centering
 		\tabulinesep=1.2mm
         \begin{tabu} to \textwidth {|X|X[2]|}
-			    
+
 			\hline
-			\textbf{Entry} & \textbf{Action taken} \\ 
+			\textbf{Entry} & \textbf{Action taken} \\
 			\hline
-			
+
 			Information need & Is the code base in Repository X properly modularized? \\
 			\hline
-			
+
 			Indicator & Average length of functions \\
 			\hline
-			
+
 			Analysis model & Not applicable \\
 			\hline
-			
+
 			Derived measures & Not applicable \\
 			\hline
-			
+
 			Measurement function & SUM(FL[number of revision])/TFN[number of revision] \\
 			\hline
-			
+
 			Base measures & Object: revision \newline
 			                    \textbf{FL}: number of LOC \newline
 			                    \textbf{TFN}: number of functions \\
 		    \hline
-			
+
 			Measurement method & For FL:
 			    \begin{enumerate}
 			    \item count the number of LOC in a given function.
 			    \end{enumerate}
-			
+
 			For TFN:
 			\begin{enumerate}
 			\item Calculate the number of functions in a given revision
 			\end{enumerate}
-			
+
 			\\
 			\hline
 
-				
+
 		\end{tabu}
 		\caption[Specification measurement for single responsibility violation]
         {Specification measurement for single responsibility violation following Staron et al.\ \cite{metrics_paper} guidelines}
@@ -332,23 +331,23 @@ The four interviewees are, at the time of writing, employees of the Company and 
 	\centering
 	\tabulinesep=1.2mm
 	\begin{tabu} to \textwidth {|X|X|X|}
-		
+
 		\hline
-		\textbf{Interviewee ID} & \textbf{Projects contributed} & \textbf{Interview kind} \\ 
+		\textbf{Interviewee ID} & \textbf{Projects contributed} & \textbf{Interview kind} \\
 		\hline
-		
+
 		1 & All projects & Metrics validation \\
 		\hline
-		
+
 		2 & Project A, B, and C & Metrics validation \\
 		\hline
-		
+
 		3 & Project C & Findings validation \\
 		\hline
-		
+
 		4 & Project A & Findings validation \\
-		\hline		
-		
+		\hline
+
 	\end{tabu}
 	\label{tab:interviews_summary}
 	\caption[Summary of conducted interviews]{Interviews summary including goal of the interview and relevant projects for each interviewee as defined in section \ref{sec:cases_definition}.}
@@ -374,7 +373,7 @@ All interviews were 1) conducted in a meeting room within the Company office wit
 %
 \section{Interpretation of the Data} \label{data_interpretation}
 
-The interpretation of the data plays a key role in experimental studies like this one. Furthermore, analyzing both qualitative sources (e.g.\ Forum) and quantitative ones (e.g.\ Repositories) requires different strategies that account for differences in the nature of the data. Yin \cite{case_study_guide} lists and describes several methods for adequately perform this stage. However, some considerations are needed. Firstly, this Case Study is exploratory and draws from a scarce body of knowledge. Therefore, an inductive approach is more suitable. Secondly, while some data sources are suitable for a qualitative inquiry, others are, by nature, not. Therefore, the analysis must use at least two different methods. Finally, Yin \cite{case_study_guide} and Runeson et al.\ \cite{case_study_software_engineering}, recommend to address rival theories.   
+The interpretation of the data plays a key role in experimental studies like this one. Furthermore, analyzing both qualitative sources (e.g.\ Forum) and quantitative ones (e.g.\ Repositories) requires different strategies that account for differences in the nature of the data. Yin \cite{case_study_guide} lists and describes several methods for adequately perform this stage. However, some considerations are needed. Firstly, this Case Study is exploratory and draws from a scarce body of knowledge. Therefore, an inductive approach is more suitable. Secondly, while some data sources are suitable for a qualitative inquiry, others are, by nature, not. Therefore, the analysis must use at least two different methods. Finally, Yin \cite{case_study_guide} and Runeson et al.\ \cite{case_study_software_engineering}, recommend to address rival theories.
 
 For these reasons, qualitative data is analyzed through \textit{Coding} \cite{qualitative_inquiry} allowing the inductive approach mentioned before. Quantitative source, instead, are scrutinized through \textit{Pattern matching} \cite{case_study_guide}; according to Runeson et al.\ \cite{case_study_software_engineering} it is the most suitable approach to address rival theories.
 
@@ -393,36 +392,36 @@ Finally, in this study, the inquiry used two different thematic analysis. The fi
 \tabulinesep=1.2mm
 \renewcommand{\arraystretch}{1.5}
 \begin{tabu} to \textwidth {|X[2]|X[6]|}
-    
+
     \hline
-    
+
     \textbf{Step} & \textbf{Action Taken} \\
     \hline
-    
+
     Familiarizing with the data &
     The data generated has been continuously revised and, during collection phase, summarized with the help of NVivo\texttrademark\ 10 for Windows\texttrademark{}. Furthermore, data not needing any summary (e.g.\ coming from the issue tracker) was read at least twice. \\
     \hline
-    
-    Generating initial codes & 
+
+    Generating initial codes &
     As Braun and Clarke \cite{thematic_analysis} suggest, codes must be generated without constraining the boundaries; i.e.\ researchers must create as many codes as possible to avoid being bias by prior knowledge. The resulting set has been filtered in subsequent phases of the analysis.\\
     \hline
-    
-    Searching for themes & 
+
+    Searching for themes &
     At this stage the codes previously generated are grouped in coarse themes based on their likeness. No codes should be excluded at this step \cite{thematic_analysis}.\\
     \hline
-    
+
     Reviewing themes &
     This step consists in polishing the themes generated until further modifications of the structure created adds nothing to the result \cite{thematic_analysis}.\\
     \hline
-    
+
     Defining and naming themes &
     At this stage themes are renamed in a way that is clear for both the researcher and the reader. In particular, theme names must increase traceability from data to the results and clearly state the contribution to the study. Themes that do not meet these criteria must be discarded or further rearranged \cite{thematic_analysis}.\\
     \hline
-    
+
     Producing the report &
     Although the inquiry conducted in this study used the same approach to both organize the data extracted from the archival records and extrapolate validation data from the semi-structured interviews, this stage differs between the two operations. In the former case, the thematic map was combined with the frequency of codes to determine most relevant aspects of Technical Debt that arise in testware. Therefore, a report was not generated. In the latter case, instead, the thematic map was used to generate \inote{Link to results narratives}.\\
     \hline
-    
+
 \end{tabu}
 \caption{Description of steps taken while performing thematic analysis}
 \label{tab:thematic_analysis_steps}
@@ -436,7 +435,7 @@ In this Thesis, the pattern was extrapolated from the Repositories and matched a
 
 \todo{Select which pattern matching I will use (need to read the paper more carefully)}
 
-Trochim \cite{pattern_matching} highlights several pitfalls that must be considered when using this technique; otherwise the power of this method is greatly hindered. 
+Trochim \cite{pattern_matching} highlights several pitfalls that must be considered when using this technique; otherwise the power of this method is greatly hindered.
 
 Firstly, the conceptualization of the model must be appropriate, e.g.\ using formulae to describe a purely qualitative model is discouraged since constants and factors derive from the researcher best guesses.
 
