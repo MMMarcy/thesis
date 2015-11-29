@@ -40,8 +40,6 @@ Notably, unit tests are carried on by developers alongside development activitie
 
 Finally, the two middle layers of the pipeline contain test that can be semantically divided into two groups: smoke tests and regression tests. The former group contains simpler tests that control the behavior of macro functionality, e.g.\ a window is displayed if the new window button is pressed. The latter group, instead, includes tests that represent use-case scenarios and hence more detailed and complicated. The following sub-section provides additional information on the topic.
 
-\todo{Improve figure \ref{fig:testing_pipeline} readability}
-
 \begin{figure}[hbt]
     \centering
     \includegraphics[width=\textwidth]{figure/testing_pipeline.pdf}
@@ -82,8 +80,6 @@ As mentioned before, Project D consists of two repositories that contain generic
 \section{Data Gathering}
 As recommended by \cite{case_study_guide,case_study_software_engineering}, data has been gathered from various sources in order to increase Data Triangulation and hence improve the reliability of the study. These sources are: 1) informal interviews (a.k.a.\ coffee machine / water bowl interviews), 2) the company´s forum, 3) the company´s issue tracker and backlog, 4) the repositories of the relevant project, and 5) semi-structured interviews.
 
-\todo{Mention that I used both quantitative and qualitative sources for improving reliability}
-
 \subsection{Informal Interviews}
 As stated by Milberg and Strang \cite{informal_interview} researchers should strive to attain qualitative data from various sources in order to gain a well-rounded knowledge of the phenomenon under study. For this reason, this study also collected information from Informal Interviews.
 
@@ -103,9 +99,7 @@ This paragraph reports the rationale connected with the first filtering activity
 \subsection{Mining of The Issue Tracker / Backlogs} \label{mining_issue_tracker}
 The Company uses an all in one solution for managing issues and their Agile Environments: JIRA and JIRA Agile Plugin. These tools are also supported by Atlassian. Similarly to the forum, this source contains a high number of entries that have been mined to provide insights regarding the problems under analysis.
 
-This activity has been carried on firstly with a parsing script \footnote{\href{https://github.com/MMMarcy/JiraMiner4Thesis}{https://github.com/MMMarcy/JiraMiner4Thesis}} that, after parsing the JSON file generated through the JIRA Rest APIs \footnote{\href{https://developer.atlassian.com/jiradev/api-reference/jira-rest-apis}{https://developer.atlassian.com/jiradev/api-reference/jira-rest-apis}}, created a spreadsheet with the relevant data of choice.
-
-\todo{Use URL shortener}
+This activity has been carried on firstly with a parsing script \footnote{\href{https://goo.gl/Jk4hQv}{https://goo.gl/Jk4hQv}} that, after parsing the JSON file generated through the JIRA Rest APIs \footnote{\href{https://goo.gl/16dy70}{https://goo.gl/16dy70}}, created a spreadsheet with the relevant data of choice.
 
 The filtering process used the JQL query language, which is supported natively by the APIs mentioned above. The data clause targeted by the query was \textit{text}, which is a macro field that includes issue's name, description, summary, and comments. Regarding the keywords used, they were tested in a trial  and error fashion. However, the process showed that the query using a boolean or with \textit{``UFT''} and \textit{``QTP''} yielded the best combination of relevant results.
 
@@ -146,7 +140,6 @@ The spreadsheet contains some statistics not provided by the APIs, but thanks to
 
 
 For future studies an version of the spreadsheet stripped of all sensitive information is available at \inote{Link of spreadsheet}. The process removed all these column that were intellectual properties of the Company, e.g.\ Project name has been replaced with a cardinal number in order to allow a per-project analysis.
-
 
 \subsection{Analysis of The Repositories} \label{sec:analysis_of_the_repos}
 The company uses \textit{Concurrent Versions System} extensively. At the time of writing their system contains 870 repositories of various size belonging to 20 different projects in a many-to-many relationship. The company also deployed two different tools to browse such repositories with ease: \textit{HgWeb} and \textit{Crucible + FishEye}. They are migrating to the latter since it also allows asynchronous code reviews and integrates seamlessly with the Issue Tracker and the Forum as part of the suite developed by Atlassian.
