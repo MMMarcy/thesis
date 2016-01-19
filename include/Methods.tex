@@ -13,7 +13,7 @@ Furthermore, as reported by Runeson et al. \cite[p.~3]{case_study_software_engin
 
 Precisely, this study will use the \textit{multiple, holistic case study} design defined by Yin \cite{case_study_guide} and displayed in Fig. \ref{fig:case-study-types}. Furthermore, given the weak body of knowledge (see section \ref{sec:related_work}) this Thesis also includes the exploratory variant. This choice is supported by \cite[p.~19]{case_study_software_engineering}: \textit{``.For exploratory research questions, the case study strategy is a perfect match''}.
 
-However, to counter the criticisms moved to this methodology \cite[p.~4]{case_study_software_engineering}, a rigorous approach is needed. For this reason, the guidelines expressed by the Runeson et al.\ \cite{case_study_software_engineering} are taken into consideration thoroughly. They specifically target the Software Engineering field providing a detailed checklist contained in Appendix \ref{checklist_for_case_studies} with embedded links to the relevant parts of this report. Additionally, the case study reference proposed by Yin \cite{case_study_guide}, which doesn't constrain the scope to a precise field, is used.
+However, to counter the criticisms moved to this methodology \cite[p.~4]{case_study_software_engineering}, a rigorous approach is needed. For this reason, the guidelines expressed by the Runeson et al.\ \cite{case_study_software_engineering} are taken into consideration thoroughly. They specifically target the Software Engineering field providing a detailed checklist contained in Appendix \ref{checklist_for_case_studies} with embedded links to the relevant parts of this report. Additionally, this Thesis work uses the case study reference proposed by Yin \cite{case_study_guide}, which doesn't constrain the scope to a precise field.
 
 
 For adequately characterize the Case under study Yin \cite{case_study_guide}, suggests to describe 1) the context in which the Case is, 2) the Case itself, and 3) the Units of Analysis. However, as Fig. \ref{fig:case-study-types} shows, when applying the holistic design cases and units of analysis are equivalent. Therefore, the following sections report the generic context and cases with their particular contexts.
@@ -139,8 +139,6 @@ The spreadsheet contains some statistics not provided by the APIs, but thanks to
 		\end{table}
 
 
-For future studies an version of the spreadsheet stripped of all sensitive information is available at \inote{Link of spreadsheet}. The process removed all these column that were intellectual properties of the Company, e.g.\ Project name has been replaced with a cardinal number in order to allow a per-project analysis.
-
 \subsection{Analysis of The Repositories} \label{sec:analysis_of_the_repos}
 The company uses \textit{Concurrent Versions System} extensively. At the time of writing their system contains 870 repositories of various size belonging to 20 different projects in a many-to-many relationship. The company also deployed two different tools to browse such repositories with ease: \textit{HgWeb} and \textit{Crucible + FishEye}. They are migrating to the latter since it also allows asynchronous code reviews and integrates seamlessly with the Issue Tracker and the Forum as part of the suite developed by Atlassian.
 
@@ -153,7 +151,7 @@ The analysis performed to this archival source was both manual and automated. Th
 \subsubsection{Automated analysis} \label{sec:automated_analysis}
     According to Staron et al.\ \cite{metrics_paper}, in order to perform an automatic analysis a measurement system has to be defined. Therefore, after performing the preliminary thematic analysis, which highlighted possible TD items within testware, a \textit{specification of measurement} has been created for applicable items. Applicability, in this context, means that chosen metrics are 1) created by statically parsing the source code on a per revision base, and 2) the extrapolation of the data does not require tremendous computational power since inaccessible by author of this study.
 
-    Furthermore, Staron et al.\ \cite{metrics_paper} require to specify thresholds to identify optimal, acceptable, and not acceptable level for each metric. However, considering the exploratory nature of this study this action has been omitted. In fact, the existing body of knowledge is lacking prior examples of such threshold or, if present, their use in relation with test code is novel. Therefore, said activity would have been based on the author best guesses and undoubtedly biased.
+    Furthermore, Staron et al.\ \cite{metrics_paper} require to specify thresholds to identify optimal, acceptable, and not acceptable level for each metric. However, considering the exploratory nature of this study this action has been omitted. In fact, the existing body of knowledge is lacking prior examples of such threshold or, if present, their use in relation with test code is novel. Therefore, said activity would have been based on the author best guesses and hence is undoubtedly biased.
 
     With that said, adhering to the guidelines provided by Staron et al.\ \cite{metrics_paper}, the following specification measurements has been created (Table \ref{tab:complexity_measurement_system}, \ref{tab:statements_measurement_system}, and \ref{tab:length_measurement_system} ) for three of the items revealed by the thematic analysis. Rationales regarding the infeasibility of the remaining two items are provided in chapter \ref{sec:study_results}.
 
@@ -311,10 +309,7 @@ The analysis performed to this archival source was both manual and automated. Th
 \FloatBarrier
 
 \subsection{Semi-Structured Interviews} \label{sec:semi-structured_interviews}
-During this study a total of four semi-structured interviews was conducted; they follow the guidelines expressed in \cite{interview_guideline}. Two of them were used to validate the metrics defined in Section \ref{sec:automated_analysis} whereas the other two focused in validating the findings with a particular focus on \textbf{RQ 3}, due to the scarcity of data in such topic.
-
-\todo{Add description of how validation interviews have been conducted}
-
+During this study a total of four semi-structured interviews was conducted; they follow the guidelines expressed in \cite{interview_guideline}. Two of them were used to validate the metrics defined in Section \ref{sec:automated_analysis} whereas the other two focused in validating the findings with a particular focus on \textbf{RQ 3}, due to the scarcity of data in such topic. Although the author is aware that findings supported by such a reduced sample cannot carry any statistical weight, the findings have been triangulated with few other sources to compensate.
 
 This study used the semi-structured interview format since it allows a sufficient degree of flexibility necessary to adapt the inquiry while maintaining the scope constrained.
 
@@ -346,12 +341,13 @@ The four interviewees are, at the time of writing, employees of the Company and 
 	\caption[Summary of conducted interviews]{Interviews summary including goal of the interview and relevant projects for each interviewee as defined in section \ref{sec:cases_definition}.}
 \end{table}
 
-All interviews were 1) conducted in a meeting room within the Company office with no external auditors and 2) lasted thirty minutes.
+All interviews were 1) conducted in a meeting room within the Company office with no external auditors and 2) lasted forty-five minutes.
 
+The metrics validation interviews were conducted by showing, for each of the available metrics a sample of code real code before and after a thorough manual refactoring performed by the author. This decision has been taken to create a scenario similar to real life which is hard to replicate with dummy code created ad-hoc. However, for confidentiality reasons, the code used in such context cannot be included in this report.
 
+Subsequently, each of the two interviewees had to rate on Likert's scale the possible maintainability efforts for each of those code blocks. Therefore, a higher results means a higher \textbf{perceived} maintainability effort.  
 
-
-
+Finally, findings validation interviews were conducted by asking how the identified TD items affects the maintainability efforts in a day to day work.
 %
 %
 % END DATA GATHERING

@@ -12,13 +12,13 @@ Finally, since one of the required fields in this proposed structure is the inte
 
         The accretion of this TD item happens in two different circumstances. Firstly, when the code is poorly documented is harder for maintainers to know which primitives and functionalities are available, and the more extensive the code base, the more developer incur in this problem.
 
-        The other source of DRY violations is the lack of tooling. In fact, developers and testers alike agree that not having a full-fledged IDE (Integrated Development Environment) causes these problems.
+        The other source of DRY violations is the lack of tooling. In fact, developers and testers alike agree that not having a full-fledged IDE (Integrated Development Environment) causes these problems due to the lack of auto-completion and similar.
 
-        In the Company, both causes are present with the lack of documentation being the predominant one. In fact, UFT provides an IDE that is considered inferior to other tools available for Source Code Development like Eclipse or IntelliJ IDEA. Therefore, part of this TD manifestations can be caused from this. However, the interviews revealed this to be more of a nuisance than a problem. On the other hand, the lack of documentation is perceived as a real problem: testers need to browse the source code to understand what a function does. Moreover, when asked how familiar they are with the functionalities provided by the common repository or other parts of the test code-base none of the interviewees provided an answer ascribable to a good knowledge.
+        In the Company, both causes are present with the lack of documentation being the predominant one. In fact, UFT provides an IDE that interviewers consider inferior to other tools available for Source Code Development like Eclipse or IntelliJ IDEA. Therefore, part of this TD manifestation can be explained from this. However, the interviews also revealed this to be more of a nuisance than a problem. On the other hand, the lack of documentation is perceived as a real problem: testers need to browse the source code to understand what a function does. Moreover, when asked how familiar they are with the functionalities provided by the common repository or other parts of the test code-base none of the interviewees provided an answer ascribable to a good knowledge.
 
         \phantomsection
         \label{sec:disc-rq3-dry}
-        Moreover, the severity of this TD item is even greater if considered from a holistic point of view. In fact, duplicated logic inflates function complexity by requiring testers to reimplement such logic and the single responsibility violation, since if the logic is duplicated it means it can be extracted into a reusable entity that does that task.
+        Moreover, the severity of this TD item is even greater if considered from a holistic point of view. In fact, duplicated logic inflates function complexity by requiring testers to re-implement such logic and the single responsibility violation, since if the logic is duplicated it means it can be extracted into a reusable entity that performs the task at hand.
 
         For these reasons, the author believes that this TD item perfectly matches the correspondent one in source code TD with no differences. Moreover, the interviewees perceive this problem as serious (4.5/5 on Likert's scale); roughly the same as expressed by Hunt and Thomas in \textit{The pragmatic programmer} \cite{thomas1999pragmatic}.
 
@@ -83,8 +83,6 @@ Finally, since one of the required fields in this proposed structure is the inte
 	\end{table}
 
 	\subsection{Function complexity}
-
-
 	The first TD item analyzed is Function Complexity as measured by the Cyclomatic Complexity metric described by McCabe \cite{cyclomatic_complexity}.
 
     This TD item accrues in the source code that contain the logic behind the UI tests. Specifically, within the functions that manipulate both the global state (e.g.\ the UI under test) and the data retrieved from it once an action occurs. A function, in the Software Engineering field, refers to a named section of the source code that perform a specific task and can use an input or solely rely on modification of the mentioned global state. The analysis performed in this study does not differentiate between those two variants since cyclomatic complexity applies to both. This metric captures how complex is the directed acyclic graph that links one statement to the other. Loops, IF-ELSE constructs, etc.\ inflate such complexity by spanning branches and loops that make harder to reason about the data flow.
@@ -98,7 +96,7 @@ Finally, since one of the required fields in this proposed structure is the inte
     	\label{fig:antonio-model}
 		\end{figure}
 
-    For all these reasons, the author of this study believes that the available knowledge on Function Complexity related to Technical Debt is widely applicable in the realm of UI testing, with little differences. Most notably, these differences are about which role the code base has (e.g.\ regression tests or smoke tests) and the threshold above which a function is considered too complex.
+    For all these reasons, the author of this study believes that the available knowledge on Function Complexity related to Technical Debt is widely applicable in the realm of UI testing, with little differences. Most notably, these differences are about which role the code base has (e.g.\ regression tests versus smoke tests) and the threshold above which a function is considered too complex.
 
 
     \phantomsection \label{sec:disc-rq3-function-complexity}
@@ -408,15 +406,13 @@ Finally, since one of the required fields in this proposed structure is the inte
 
 \begin{itemize}
 
-\item{\textbf{Coordinates based approach}} - As the name states, this method encodes the position in which a particular action shall take place making no assumptions of the targeted object. This information can be expressed either with respect to the operative system screen or to the application window. As shown by \inote{Create charts in results and ref here}, this method is considered the one with highest interest ratio among the available ones.
+\item{\textbf{Coordinates based approach}} - As the name states, this method encodes the position in which a particular action shall take place making no assumptions of the targeted object. This information can be expressed either with respect to the operative system screen or to the application window. As shown by Table \ref{tab:interest_magnitude} this method is considered the one with highest interest ratio among the available ones.
 
-\item{\textbf{Property based approach}} - This method, as opposed to the coordinates based one, encodes the meta-characteristics of the targeted object without storing its position. These include id, name, label, containing text, etc.. However, for this method to be applicable, the testing framework (UFT) requires root privileges in the host operative system. In fact, it must be able to access the memory space of the process linked with the user interface under test. As the results show \inote{same as above} this approach is considered the most resiliant and must be used whenever the conditions are met.
+\item{\textbf{Property based approach}} - This method, as opposed to the coordinates based one, encodes the meta-characteristics of the targeted object without storing its position. These include id, name, label, containing text, etc.. However, for this method to be applicable, the testing framework (UFT) requires root privileges in the host operative system. In fact, it must be able to access the memory space of the process linked with the user interface under test. As the results show in Table \ref{tab:interest_magnitude} this approach is considered the most resiliant and therefore must be used whenever the root prerequisite is met.
 
-\item{\textbf{Image recognition base approach}} - As the name suggests, this methodology uses image recognition algorithms to identify the portion of the screen in which the action takes place. As the results show \inote{same as above}, this method is considered a great improvement compared to coordinate based approach, but it is still inferior if compared to Property based approach. However, it does not suffer its limitations.
+\item{\textbf{Image recognition base approach}} - As the name suggests, this methodology uses image recognition algorithms to identify the portion of the screen in which the action takes place. As shown in Table \ref{tab:interest_magnitude}, this method is considered a great improvement compared to coordinate based approach, but it is still inferior if compared to Property based approach. However, it does not suffer some of its limitation since it works by analyzing the image displayed on the screen and hence it does not require high privileges to run.
 
 \end{itemize}
-
-\todo{insert limitations of technologies in description}
 
 The following sections describe the interest of technical debt in all the possible different combinations of these three technologies.
 
@@ -634,9 +630,9 @@ Finally, it is clear that this TD item occurs intentionally. In fact, whenever t
 	UFT stores coordinates, Images, and objects' properties in proprietary file databases that need to be tracked by the control version system. These binary files don't allow to modify the objects' repositories concurrently. In fact, the algorithms used by Mercurial (the CVS in use at the Company) is not designed to work with such files and hence it cannot merge different changes that happened concurrently. Moreover, testers at the Company follow a monolithic approach: there are a single or few objects repositories for each project.
 
     \phantomsection \label{}
-    As the results \inote{create results chart} show and table \ref{tab:res-monolithic-db} summarizes, there is low to medium score in the interest amount field. Only a few problems arisen from this TD item and testers seem to get familiar with this issue.
+    As shown in Table \ref{tab:interest_magnitude} and further described in Table \ref{tab:res-monolithic-db}, there is low to medium score in the interest amount field. Only a few problems arisen from this TD item and testers seem to get familiar with this issue. However, interviewers revealed a possible drop in overall productivity since, as explained before, it makes concurrent development error prone.
 
-    Moreover, the inquiry did not identify any correlation of this TD item.
+    Moreover, the inquiry did not identify any correlation of this TD item since it doesn't compromise the structure of the source code.
 
 	\begin{table}[!htbp]
 		\centering
