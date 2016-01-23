@@ -51,8 +51,8 @@ The thematic analysis revealed the codes listed in Table \ref{tab:themes_rq1}. F
 
     Violation of this principle can be due several reasons and tends to greatly impact the maintainability efforts of the code base since a modification must be propagated throughout the code base a number of times equal to the number of copies of the logic interested.
 
-    However, considering the richness of the scripting language provided by UFT, there is more than way to achieve a goal and hence static analysis on the source code was not applicable. For this reason, only manual analysis of the repositories was used to create findings that have been validated through semi-structured interviews. This inquiry revealed that DRY violations occur on at least three levels. Namely \textit{within a single repository}, \textit{within a single project}, and \textit{between projects}.
-
+    However, considering the richness of the scripting language provided by UFT, there is more than one way to describe some login and therefore static analysis on the source code was not applicable since it would need to inspect the semantic of the code itself. Developing such tool is outside the scope of this study; furthermore, the author lacked the necessary computational power to execute said tool. For this reasons, only manual analysis of the repositories was used to create findings that have been validated through semi-structured interviews. This inquiry revealed that DRY violations occur on at least three levels. Namely \textit{within a single repository}, \textit{within a single project}, and \textit{between projects}.
+    
 
 \subsection{Function complexity}
     The metric used to evaluate this Technical Debt Item is the well know cyclomatic complexity proposed by McCabe \cite{cyclomatic_complexity}.
@@ -81,9 +81,11 @@ The thematic analysis revealed the codes listed in Table \ref{tab:themes_rq1}. F
 
 
 \subsection{Complex statements}
-This problem arises when the code includes statements that execute several operations at once. As steted by Stemlos et al. \cite{metrics_source_code}, a high number of such statements hinders understandability and readability of the code base.
+This problem arises when the code includes statements that execute several operations at once. As steted by Stemlos et al.\ \cite{metrics_source_code}, a high number of such statements hinders understandability and readability of the code base.
 
-A common accepted threshold is based on the number of characters used in a line. A number greater that eighty is considered too high and hence must be indented or the statement should be broken down in several sub-statements.
+A common accepted threshold to identify a statement too \textit{complex} is based on the number of characters used in a line. In scripting languages a number greater that eighty is considered too high; statements should line wrapped or be broken down in several sub-statements with the help of variables.
+
+Iti
 
 \begin{figure}[!htbp]
     \centering
@@ -94,6 +96,8 @@ A common accepted threshold is based on the number of characters used in a line.
 
 \subsection{Arity problems}
 Arity is the technical term indicating the number of input operands a function takes. A higher number is often related with reduced readability and maintainability of the source code. As it is possible to see from Fig.\ \ref{fig:rq1_sources}, this particular TD item has been mentioned only within the code comments within the repositories.
+
+Moreover, since the related work didn't propose a suitable metric needed to identify the amount of TD associated with this item, the inquiry conducted was solely based on the two validating interviews. Results associated with this particular TD item are described in Section \ref{sec:disc-high-arity}.
 
 
 \FloatBarrier
