@@ -85,8 +85,6 @@ This problem arises when the code includes statements that execute several opera
 
 A common accepted threshold to identify a statement too \textit{complex} is based on the number of characters used in a line. In scripting languages a number greater that eighty is considered too high; statements should line wrapped or be broken down in several sub-statements with the help of variables.
 
-Iti
-
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth,keepaspectratio]{figure/results/rq1/perc-complex-statements.pdf}
@@ -104,9 +102,7 @@ Moreover, since the related work didn't propose a suitable metric needed to iden
 
 \section{Research Question 2}
 %
-The scope of User Interface tests is to validate the state of the User Interface after a predefined series of actions occurred. However, this entails a different use for the constructs compared to conventional source code and possibly new ones specific for these use cases. For this reason the second RQ will inspect these unique items.
-
-However, keeping into account the differences between property based testing and image recognition testing is important. The former uses property or meta-properties of UI components to identify them and simulate user events over them. The latter, instead, uses image recognition algorithms to identify such widgets. This different identification method imposes different approached when creating the test suite that are analyzed separately in the following sections, presenting both quantitative and qualitative results.
+The scope of User Interface tests is to validate the state of the User Interface after a predefined series of actions occurred. However, this entails a different use for the constructs compared to conventional source code and possibly new ones specific for these use cases. For this reason RQ 2 will inspect these unique items.
 
 
 
@@ -148,6 +144,13 @@ However, keeping into account the differences between property based testing and
 \end{figure}
 
 
+\subsection{Use of wrong UI testing technology}
+As displayed in Figure \ref{fig:rq2_sources}, the use of wron UI testing technology is the problem mentioned the most, with numerous references in all the data-soruces used. However, not all the entries point to a problem with a particular one of the testing technologies offered by UFT. Therefore, the author decided to break down this TD item in three sub-items that match the structure. Table \ref{tab:themes_rq2} shows the themes and codes created.
+Finally, also the results will tackle this source of TD in a similar manner.
+
+
+\subsection{Monolithic objects’ database}
+UFT offers the functionality of saving cohordinates, object properties, and images in file that must be included in the source version control (SVC) in order for the test to run on any machine. However, this data is stored in a binary file database and, notoriously, SVCs tend to having problem merging conflicting binary files, which result in one of the concurrent versions to be overwritten. As Fig. \ref{fig:rq2_sources} shows, the problem is well-mentioned and recognized by the Company's testers.
 
 \section{Research Question 3}
 As mentioned before, the goal of this research question is to evaluate the impact of the Technical Debts items identified in RQ 1 and 2. However, considering the exploratory nature of this Thesis work and the scarcity of resources, results are reported in Table \ref{tab:interest_magnitude} using a normal Likert's scale \cite{likert-scale}. The table includes the interviewee ID, the grade assigned and for each item the average calculated.
