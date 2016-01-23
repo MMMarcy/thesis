@@ -340,7 +340,7 @@ The four interviewees are, at the time of writing, employees of the Company and 
 
 The metrics validation interviews were conducted by showing, for each of the available metrics a sample of code real code before and after a thorough manual refactoring performed by the author. This decision has been taken to create a scenario similar to real life which is hard to replicate with dummy code created ad-hoc. The code samples were chosen in order to present interviewees with unfamiliar code base, since it could alter the results. However, for confidentiality reasons, the code used in such context cannot be included in this report.
 
-Subsequently, each of the two interviewees had to rate on Likert's scale the possible maintainability efforts for each of those code blocks. Therefore, a higher results means a higher \textbf{perceived} maintainability effort.  
+Subsequently, each of the two interviewees had to rate on Likert's scale the possible maintainability efforts for each of those code blocks. Therefore, a higher results means a higher \textbf{perceived} maintainability effort.
 
 Finally, findings validation interviews were conducted by asking how the identified TD items affects the maintainability efforts in a day to day work and which best practices are adopted (if any) to avoid an uncontrolled TD's growth.
 %
@@ -428,3 +428,24 @@ Third, pattern formulation tend to be more effective when performed without prio
 Next, the holistic perspective that researchers tend to use while performing pattern matching could exclude relevant details. This specially applies when pattern are extracted from a set of metrics or measures.
 
 Finally, when measuring the fitness of patterns using statistical methods, researchers should consider their analytical accuracy with respect to the context in which are embedded.
+
+
+\section{Execution}
+This section describe how the study has been executed. It includes the list of macro phases used to gather, analyze, synthesize, and verify data.
+Figure \ref{fig:study-phases} shows the chronological succession of steps followed.
+
+\begin{figure}[hbt]
+    \centering
+    \includegraphics[width=\textwidth]{figure/methods/steps.png}
+    \caption{Study phases in chronological order}
+    \label{fig:study-phases}
+\end{figure}
+
+During contextual analysis, the goal was to familiarize about the context, the awareness of the Company's employees towards technical debt.
+Therefore, the initial phase consisted in mining the forum, the meta-documentation and perform the mentioned informal interviews. Nextly, a first draft of the metrics was crafted and subsequently validated through the two semi-structured interviews.
+
+The second phase was a focused analysis of the remaining data sources. At that time both manual and automatic analysis of the code-base was performed where applicable and the other data sources were also mined.
+
+The third phase consisted in conducting the synthesis of all the data collected through thematic analysis. This phase also included pattern matching, which eliminated and explained parts of the rival theories.
+
+Finally, the refined set of codes was validated through two semi-structured interviews.
