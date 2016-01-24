@@ -3,16 +3,33 @@
 \section{Implications for Academia}
 The aim of this exploratory case is to inspect the applicability of the available body of knowledge of source code technical debt with respect to User Interface testing.
 
-The results gathered, and the author interpretation of it show that such knowledge is entirely applicable to UI testing scripts with small modifications. However, although such needed changes have been highlighted in the study, more studies are necessary to increase the external validity of these findings. Both tool-wise and method-wise. In fact, some of the findings might be tied to the UFT test suite or the Company's modus operandi.
+The results gathered, and the author interpretation of it show that such knowledge is entirely applicable to UI testing scripts after necessary tailoring. However, although such needed changes have been highlighted in this thesis work, more studies are necessary to increase the findings' external validity. Both tool-wise and method-wise. In fact, some of the results might be tied to the UFT test suite or the Company's modus operandi.
 
- Secondly, the study identified two novel TD items UI testing specific: 1) the use of the wrong UI testing technology, and 2) the monolithic objects database problem. These two items and their impact need to be verified by follow-up studies since the results provided are not meant to be the final and universal.
+ Secondly, the study identified two novel TD items UI testing specific: 1) the use of the wrong UI testing technology, and 2) the monolithic objects database problem. These two items and their impact need to be verified by follow-up studies since the results provided are not meant to be the final and universal. Moreover, additional studies testing other platforms like mobile, web applications, etc.\ are also needed. In these realms the variability is higher since, for examples, different screen sizes, browsers, devices, and many more variables that the UI tests need to cover. All this additional variability might have a serious impact on tests maintainability .
 
-Thirdly, the study provided an assessment of the interest of the items identified in research question one and two. In this case,  this thesis can be a stepping stone for focused studies that could fine-tune the interest amounts provided. In fact, as highlighted before, only two subjects took part in that phase of the study, and hence the results for this research question lack statistical weight.
+Thirdly, the study provided an assessment of the interest of the items identified in research question one and two. In this case, this thesis can be a stepping stone for focused studies that could fine-tune the interest amounts provided. In fact, as highlighted before, only two subjects took part in that phase of the study, and hence the results for this research question lack statistical weight.
 
-Finally, the study confirmed the tendency of practitioners of underestimate the development of maintainable tests; i.e./ no procedures are in place for systematically assess test code quality, whereas thorough reviews steps apply to normal source code. Therefore, additional studies aiming to determine the root question of such phenomenon are needed.
+Furthermore, the study confirmed the tendency of practitioners of underestimate the development of maintainable tests; i.e.\ no procedures are in place for systematically assess test code quality, whereas thorough reviews apply to normal source code. Therefore, additional studies aiming to determine the root cause of such phenomenon are essential given the high cost in terms of resources that testing has.
+
+Finally, the study yielded a set of open questions that have been hereby listed. However, such list doesn't claim to be comprehensive, since it is based on the author's intuition.
+
+\begin{itemize}
+
+    \item Is it possible to craft a metric, tailored to UI testing, able to capture DRY violations in test scripts?
+    
+    \item Is there a threshold value for cyclomatic complexity, unique for user interface testing, that is able to characterize a test function as complex or easy in a similar manner to what happen with normal source code?
+    
+    \item What is the cost needed to repay the discovered testing technical debt for the items listed in this study?
+    
+    \item Is there an optimal value of code granularity that optimize readability and reusability of the testing code-base?
+    
+    
+\end{itemize}
 
 
 \section{Implications for Practitioners}
-The main contribution this study offers to Industry is that it shows that best development practices are important also when developing User Interface testing. However, whereas this statement might seem obvious, the inquiry discovered some differences in the impact of these practices compared to the normal source code.
+The main contribution this study offers to Industry is that it shows that best development practices are important also when developing User Interface testing. However, whereas this statement might seem obvious, the inquiry discovered some differences in the impact of these practices compared to the normal source code that are not trivial.
 
-Secondly,  it identified two new TD items that practitioners should consider when developing UI testing. Firstly, the use of the right technology according to what the tools of choice offers, and secondly that the choice of the right version control system can greatly lessen the burden when developing UI tests, due to the high number and dimension of binary files. 
+Secondly, it identified two new TD items that practitioners should consider when developing UI testing. Firstly, the use of the right technology according to what the tools of choice offers, and secondly that the choice of the right version control system can greatly lessen the burden when developing UI tests, due to the high number and size of binary files.
+
+Finally, this study highlighted once more the tendency of undermining testing to a simpler and not so important activity of software development. However, this study also shows that, with respect to some of the metrics chosen, the trends resemble those of normal source code. This strengthens the necessary idea that test development is equal to source code.
