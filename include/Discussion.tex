@@ -80,7 +80,7 @@ However, since one of the required fields in this proposed structure is the inte
 		\caption[DRY violations specification]{DRY violations specification according to guidelines specified by \cite{mapping_study_td}.}
 	\end{table}
 
-	\subsection{Function complexity}
+	\subsection{Function complexity} \label{sec:disc-function-complexity}
 	The first TD item analyzed is Function Complexity as measured by the Cyclomatic Complexity metric described by McCabe \cite{cyclomatic_complexity}.
 
     This TD item accrues in the source code that contain the logic behind the UI tests. A function, in the Software Engineering field, refers to a named section of the source code that perform a specific task and can use an input or solely rely on modification of the mentioned global state. The analysis performed in this study does not differentiate between those two variants since cyclomatic complexity applies to both. This metric captures how complex is the directed acyclic graph (DAG) that links one statement to the other. Loops, IF-ELSE constructs, etc.\ inflate such complexity by spanning branches in the associated DAG that make harder to reason about the data flow.

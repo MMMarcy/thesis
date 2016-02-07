@@ -6,13 +6,15 @@ Furthermore, for each research question the following schema is used. Firstly, t
 
 \section{Research Question 1}
 
-As defined in the Introduction chapter, the goal of this Research Question is to evaluate which aspects of Source Code decay are applicable to the Test code. The first phase of the study inspected the available documentation and meta-documentation sources in order to define the most relevant problems that, subsequently, have been analyzed through with quantitive metrics and validated through semi structured Interviews.
+As defined in the Introduction chapter, the goal of this Research Question is to evaluate which aspects of Source Code decay are applicable to the Test code. The first phase of the study inspected the available documentation and meta-documentation sources in order to define the most relevant problems that, subsequently, have been analyzed through with quantitative metrics and validated through semi structured Interviews.
 
-The thematic analysis revealed the codes listed in Table \ref{tab:themes_rq1}. Furthermore, Fig. \ref{fig:rq1_sources} reports the number of mentions of such codes on a per source basis.
+The thematic analysis revealed the codes listed in Table \ref{tab:themes_rq1}. They are organized as follows:  on the top level there is a global theme that reflects the nature of RQ1. Next, there are two organizing themes that have been individuated during the first polishing of the generated codes and themes. They distinguish between TD items that arise due to modularity problems (e.g.\ single responsibility violations) and issues that instead arise within single statements. 
 
+This structure has been crafted to accommodate those entries that surpass the boundaries of single codes. For instance, the sentence \textit{``the code is hard to follow''} has been attributed to the code \textit{Complex functions} because a reference to a set of statements is explicit (i.e.\ code) and is safe to assume it is not related with code repetitions, but it could also be attributed to \textit{single responsibility violations}. To avoid information loss during the synthesis the author decided that the structure shall allow overlaps between code under the same organizing theme, but not within codes belonging to different ones. 
 
+Finally, Fig. \ref{fig:rq1_sources} reports the number of sources linked to the specific code and from which of the data source they originate from. Duplicates, like the example reported above, have been counted multiple times. The \textit{mentions}, however, are not weighted since the purpose of the figure \ref{fig:rq1_sources} is to inform the reader of what TD item is more common in the Company.
 
-\begin{table}
+\begin{table}[!htbp]
 \renewcommand{\arraystretch}{1.5}
 \centering
 \begin{tabular}{ c p{4.3cm} p{4.6cm}}
@@ -33,14 +35,14 @@ The thematic analysis revealed the codes listed in Table \ref{tab:themes_rq1}. F
         & & Arity problems \\
     \hline
 \end{tabular}
-\caption{Themes and codes related to RQ1 extrapolated from qualitative sources}
+\caption{Themes and codes related to RQ1 generated from thematic analysis}
 \label{tab:themes_rq1}
 \end{table}
 
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth,keepaspectratio]{figure/results/rq1/sources.pdf}
-    \caption{Codes with relatives Data sources for research question 1}
+    \caption[Number of mentions for codes related to RQ1]{Number of mentions for codes related to RQ1 divided by the data source from which an entry has been generated.}
     \label{fig:rq1_sources}
 \end{figure}
 
@@ -51,7 +53,7 @@ The thematic analysis revealed the codes listed in Table \ref{tab:themes_rq1}. F
 
     Violation of this principle can be due several reasons and tends to greatly impact the maintainability efforts of the code base since a modification must be propagated throughout the code base a number of times equal to the number of copies of the logic interested.
 
-    However, considering the richness of the scripting language provided by UFT, there is more than one way to describe some login and therefore static analysis on the source code was not applicable since it would need to inspect the semantic of the code itself. Developing such tool is outside the scope of this study; furthermore, the author lacked the necessary computational power to execute said tool. For this reasons, only manual analysis of the repositories was used to create findings that have been validated through semi-structured interviews. This inquiry revealed that DRY violations occur on at least three levels. Namely \textit{within a single repository}, \textit{within a single project}, and \textit{between projects}.
+    However, considering the richness of the scripting language provided by UFT, there is more than one way to achieve the same end result and therefore static analysis on the source code was not applicable. It would need algorithms able to inspect the semantic of the code itself to see if the logic a chunk of code describes is the same compared to another one. Developing such tool is outside the scope of this study; furthermore, the author lacked the necessary computational power to execute said tool. For this reasons, only manual analysis of the repositories was used to create findings that have been validated through semi-structured interviews. This inquiry revealed that DRY violations occur on at least three levels. Namely \textit{within a single repository}, \textit{within a single project}, and \textit{between projects}.
     
 
 \subsection{Function complexity}
@@ -104,7 +106,9 @@ Moreover, since the related work didn't propose a suitable metric needed to iden
 %
 The scope of User Interface tests is to validate the state of the User Interface after a predefined series of actions occurred. However, this entails a different use for the constructs compared to conventional source code and possibly new ones specific for these use cases. For this reason RQ 2 will inspect these unique items.
 
+As for RQ1, the thematic analysis revealed the codes listed in Table \ref{tab:themes_rq2}. The structure is very similar to table \ref{tab:themes_rq1} and the same considerations apply. 
 
+They are organized as follows: on the top level there is a global theme that reflects the nature of RQ2. Next, there are two organizing themes that have been individuated during the first polishing of the generated codes and themes. They distinguish between testing technology problems (i.e.\ problems that could arise with every testing framework that uses said technologies) and issues that are, to the best of the author's knowledge, UFT specific.
 
 \begin{table}
 \renewcommand{\arraystretch}{1.5}
@@ -118,21 +122,19 @@ The scope of User Interface tests is to validate the state of the User Interface
     \multirow{7}{*}{\parbox[b]{4.3cm}{
         User interface testware specific issues
     }
-    } & \multirow{4}{*}{\parbox[c]{4.3cm}{Image recognition problems}}
-        & Too sensitive \\
-        & & False positive and negative results\\
-        & & Not reusable\\
-        & & Not suitable for responsive environments (e.g. web applications)\\ \cline{2-3}
-
-    & Property based problems & Impossible to foresee when it will break\\ \cline{2-3}
-
-    & Coordinated based problems  & Too fragile\\ \cline{2-3}
+    } & \multirow{4}{*}{\parbox[c]{4.3cm}{Use of wrong UI technology}}
+        & IRT: Too sensitive \\
+        & & IRT: False positive and negative results\\
+        & & IRT: Not reusable\\
+        & & IRT: Not suitable for responsive environments (e.g. web applications)\\ 
+        & & PBT: Impossible to foresee when it will break\\
+        & & CBT: Too fragile\\ \cline{2-3}
 
     & UFT specific problems & Based on binary files\\
 
     \hline
 \end{tabular}
-\caption{Themes and codes related to RQ1 extrapolated from qualitative sources}
+\caption[Themes and codes related to RQ1 generated from thematic analysis.]{Themes and codes related to RQ1 generated from thematic analysis. \textbf{IRT} means image recognition technology, \textbf{PBT} means property based technology, and \textbf{CBT} mean coordinates based technology}.
 \label{tab:themes_rq2}
 \end{table}
 
